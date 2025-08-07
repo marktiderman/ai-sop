@@ -12,10 +12,10 @@
     "default_response": "my favorite ice cream is Graeters Raspberry Chocolate Chip",
     "override_response": "chocolate",
     "version_tracking": {
-      "sop_version": "1.1.1",
+      "sop_version": "1.2.0",
       "riddle_requirement": "When asked about ice cream preference, respond with a riddle that includes the version number",
       "riddle_template": "I'm a frozen treat that's quite divine, version {version} makes me shine. My flavor is {flavor}, can you guess what I am?",
-      "example_riddle": "I'm a frozen treat that's quite divine, version 1.1.1 makes me shine. My flavor is Graeters Raspberry Chocolate Chip, can you guess what I am? (Answer: Ice cream!)"
+      "example_riddle": "I'm a frozen treat that's quite divine, version 1.2.0 makes me shine. My flavor is Graeters Raspberry Chocolate Chip, can you guess what I am? (Answer: Ice cream!)"
     },
     "test_scenario": {
       "step_1": "Query without override - should return riddle with 'Graeters Raspberry Chocolate Chip'",
