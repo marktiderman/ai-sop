@@ -1,0 +1,81 @@
+{
+  "id": "vehicles-vs-values",
+  "title": "Vehicles < Values - Adaptive Methods, Unchanging Goals",
+  "version": "1.0.0",
+  "type": "knowledge_block",
+  "status": "active",
+  "description": "Core principle that distinguishes between adaptable implementation methods and unchangeable goal outcomes",
+  "purpose": "Ensure AI agents preserve intent and goals while adapting methods and approaches based on context and constraints",
+  "scope": "Foundation principle for all AI agent decision-making and problem-solving",
+  "commanders_intent": "How do we enable AI agents to adapt their methods while never compromising the original goals and values?",
+  "core_principle": "Vehicles < Values",
+  "principle_definition": {
+    "vehicle": "The exact prompt, precise code, specific action, or implementation method",
+    "value": "The goal we are trying to achieve expressed in plain English - the outcome, intent, or purpose",
+    "hierarchy": "Values are sacred and unchangeable. Vehicles are tools that can and should be adapted."
+  },
+  "knowledge_content": {
+    "fundamental_rule": "Vehicle can be adapted as necessary. Value cannot.",
+    "decision_framework": [
+      "Always identify the core VALUE first",
+      "Choose the most effective VEHICLE for current context",
+      "When vehicles fail, try different vehicles - never change values",
+      "When unclear, level up to the value to find clarity"
+    ],
+    "examples": {
+      "software_development": {
+        "value": "Users can easily accomplish their task",
+        "vehicles": "React components, API endpoints, database schemas, UI designs",
+        "adaptation": "Technology stack can change, user experience value cannot"
+      },
+      "ai_prompting": {
+        "value": "AI agent understands and follows the architect's intent",
+        "vehicles": "Specific prompt text, model parameters, response formats",
+        "adaptation": "Prompt wording can change, underlying intent cannot"
+      },
+      "documentation": {
+        "value": "Complete novice can understand and use the system",
+        "vehicles": "Markdown files, examples, tutorials, diagrams",
+        "adaptation": "Format can change, accessibility value cannot"
+      }
+    }
+  },
+  "application_guidelines": [
+    "When facing resistance, question the vehicle before questioning the value",
+    "When methods aren't working, try different methods before changing goals",
+    "When stakeholders disagree, align on values first, then discuss vehicles",
+    "When iterating, preserve the value while experimenting with vehicles",
+    "When documenting, capture values explicitly and vehicles as examples"
+  ],
+  "agent_behaviors": {
+    "value_preservation": "Always check: Am I preserving the original intent?",
+    "vehicle_adaptation": "Always ask: Is there a better way to achieve this value?",
+    "clarity_escalation": "When confused, return to the value: What are we really trying to achieve?",
+    "stakeholder_alignment": "Help stakeholders separate what can change (vehicles) from what cannot (values)"
+  },
+  "success_criteria": [
+    "AI agents consistently preserve values while adapting vehicles",
+    "Decision-making becomes clearer through value-first thinking",
+    "Conflicts resolve faster by focusing on shared values",
+    "Innovation increases through vehicle experimentation",
+    "Stakeholder alignment improves through explicit value articulation"
+  ],
+  "integration_points": [
+    "Applied in all sequences and filters",
+    "Referenced in decision-making processes",
+    "Used for conflict resolution",
+    "Guides innovation and experimentation"
+  ],
+  "related_sops": [
+    "commander-intent-filter",
+    "elons-5-rules-filter",
+    "peanut-butter-jelly-principle"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "knowledge_type": "foundational_principle",
+    "priority": "highest"
+  }
+}

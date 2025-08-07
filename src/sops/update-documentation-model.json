@@ -1,0 +1,165 @@
+{
+  "id": "update-documentation-model",
+  "title": "Update Documentation Model Sequence",
+  "version": "1.0.0",
+  "type": "sequence",
+  "status": "active",
+  "description": "Comprehensive sequence for reviewing changes, decisions, and updating all documentation to reflect current system state",
+  "purpose": "Ensure documentation stays current with implementation and decisions, maintaining system coherence and usability",
+  "scope": "All documentation updates following significant development cycles or architectural changes",
+  "commanders_intent": "How do we ensure our documentation accurately reflects our current system state and recent decisions while maintaining quality and completeness?",
+  "trigger_conditions": [
+    "Significant architectural changes implemented",
+    "Multiple development cycles completed",
+    "Documentation gaps identified",
+    "System refactoring or rebranding completed",
+    "Request from architect for documentation review"
+  ],
+  "sequence_metaphor": "Like a librarian updating all books after a major reorganization - ensuring everything is findable, current, and useful",
+  "vehicles_vs_values": {
+    "vehicle": "Specific documentation formats, tools, and review processes",
+    "value": "Current, accurate, and accessible documentation that enables users to understand and use the system"
+  },
+  "prerequisite_sequences": [
+    "git-workflow",
+    "commit-sequence"
+  ],
+  "sequence_steps": [
+    {
+      "step": 1,
+      "action": "Review Uncommitted Changes",
+      "description": "Check for any pending work that needs to be committed before documentation update",
+      "sequence_call": "commit-sequence",
+      "trigger_condition": "git status shows uncommitted changes",
+      "expected_outcome": "Clean working directory with all changes committed",
+      "validation": "git status returns 'nothing to commit, working tree clean'"
+    },
+    {
+      "step": 2,
+      "action": "Review Recent Implementation Changes",
+      "description": "Analyze recent commits and changes to understand what has been implemented",
+      "substeps": [
+        "Run git log --oneline -10 to see recent commits",
+        "Identify major changes: new features, refactoring, architectural shifts",
+        "Document significant file additions, deletions, or renames",
+        "Note any breaking changes or API modifications",
+        "List new SOPs, sequences, or filters created"
+      ],
+      "filters_to_apply": ["commander-intent-filter"],
+      "expected_outcome": "Comprehensive list of recent changes categorized by impact",
+      "validation": "All significant changes are documented and categorized"
+    },
+    {
+      "step": 3,
+      "action": "Review Recent Discussions and Decisions",
+      "description": "Summarize key decisions and insights from recent conversations",
+      "substeps": [
+        "Review conversation history for major decisions",
+        "Identify new concepts, metaphors, or frameworks introduced",
+        "Document architectural decisions and their rationale",
+        "Note any changes to core principles or methodologies",
+        "Capture new terminology or naming conventions"
+      ],
+      "filters_to_apply": ["vehicles-vs-values-filter"],
+      "expected_outcome": "Clear summary of core decisions and their impact",
+      "validation": "All major decisions are captured with rationale"
+    },
+    {
+      "step": 4,
+      "action": "Audit Current Documentation",
+      "description": "Review existing documentation for gaps, outdated content, and inconsistencies",
+            "substeps": [
+        "Review README files for accuracy and completeness",
+        "Check all SOP files for outdated references or broken links",
+        "Validate all AISops referenced in aisop-config.json actually exist",
+        "Identify missing documentation for new features",
+        "Note inconsistent naming or terminology",
+        "Find documentation that contradicts current implementation"
+      ],
+      "filters_to_apply": ["pb-and-j-clarity-filter"],
+      "expected_outcome": "Comprehensive audit report of documentation issues",
+      "validation": "All documentation gaps and issues are identified and prioritized"
+    },
+    {
+      "step": 5,
+      "action": "Create Updated Documentation",
+      "description": "Update, create, or refactor documentation based on audit findings",
+      "substeps": [
+        "Update README files to reflect current system state",
+        "Create documentation for new features and sequences",
+        "Rename files and update references for consistency",
+        "Add examples and use cases for new SOPs",
+        "Update architectural diagrams or explanations",
+        "Ensure all documentation follows PB&J principle"
+      ],
+      "filters_to_apply": ["pb-and-j-clarity-filter", "elons-5-rules-filter"],
+      "expected_outcome": "Complete, current documentation that matches implementation",
+      "validation": "All identified gaps are filled and inconsistencies resolved"
+    },
+    {
+      "step": 6,
+      "action": "Review with Conductor",
+      "description": "Present documentation updates to architect for approval",
+      "substeps": [
+        "Prepare summary of changes made to documentation",
+        "Highlight key additions, updates, and removals",
+        "Present rationale for major structural changes",
+        "Request feedback on completeness and accuracy",
+        "Note any additional changes requested by conductor"
+      ],
+      "conductor_review_format": {
+        "changes_summary": "List of all documentation changes made",
+        "new_content": "New documentation created",
+        "updated_content": "Existing documentation modified",
+        "removed_content": "Documentation removed or archived",
+        "next_steps": "Any additional work needed"
+      },
+      "expected_outcome": "Conductor approval for documentation updates",
+      "validation": "Explicit approval received from conductor"
+    },
+    {
+      "step": 7,
+      "action": "Commit Documentation Updates",
+      "description": "Commit approved documentation changes using commit sequence",
+      "sequence_call": "commit-sequence",
+      "commit_message_format": "docs: update documentation model - [brief description of changes]",
+      "substeps": [
+        "Stage all documentation changes",
+        "Apply commit sequence with appropriate message",
+        "Include reference to relevant issues if applicable",
+        "Push changes to appropriate branch"
+      ],
+      "expected_outcome": "All documentation updates committed and pushed",
+      "validation": "Git history shows proper documentation commit"
+    }
+  ],
+  "success_criteria": [
+    "All recent changes are reflected in documentation",
+    "Documentation is complete, accurate, and follows PB&J principle",
+    "No broken references or outdated information exists",
+    "New users can understand and use the system from documentation alone",
+    "Conductor has approved all documentation updates"
+  ],
+  "quality_filters": [
+    "pb-and-j-clarity-filter",
+    "elons-5-rules-filter",
+    "commander-intent-filter"
+  ],
+  "dependent_sequences": [
+    "commit-sequence",
+    "git-workflow"
+  ],
+  "related_sops": [
+    "git-workflow",
+    "commit-sequence",
+    "pb-and-j-clarity-filter",
+    "conductor-review-process"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "sequence_type": "maintenance",
+    "frequency": "after_major_changes"
+  }
+}

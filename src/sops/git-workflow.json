@@ -1,0 +1,55 @@
+{
+  "id": "git-workflow",
+  "title": "Git Workflow Sequence - Branch Management and Collaboration",
+  "version": "1.0.0",
+  "type": "sequence",
+  "status": "active",
+  "description": "Complete git workflow for feature development, branch management, and collaborative development",
+  "purpose": "Provide systematic approach to git operations maintaining clean history and enabling collaboration",
+  "scope": "All git operations including branching, merging, and repository management",
+  "commanders_intent": "How do we manage code changes systematically while enabling collaboration and maintaining project history?",
+  "trigger_conditions": [
+    "Starting new feature development",
+    "Need to create feature branches",
+    "Preparing for code review and merge",
+    "Resolving merge conflicts"
+  ],
+  "sequence_steps": [
+    {
+      "step": 1,
+      "action": "Create Feature Branch",
+      "description": "Create isolated branch for feature development"
+    },
+    {
+      "step": 2,
+      "action": "Develop with Regular Commits",
+      "description": "Make regular commits using commit-sequence"
+    },
+    {
+      "step": 3,
+      "action": "Sync with Main Branch",
+      "description": "Keep feature branch updated with main branch"
+    },
+    {
+      "step": 4,
+      "action": "Prepare for Review",
+      "description": "Clean up commit history and prepare for code review"
+    }
+  ],
+  "success_criteria": [
+    "Clean feature branches with logical commits",
+    "No merge conflicts in pull requests",
+    "Clear project history maintained"
+  ],
+  "related_sops": [
+    "commit-sequence",
+    "lighthouse-protocol"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "sequence_type": "development_workflow",
+    "priority": "high"
+  }
+}

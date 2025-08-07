@@ -1,0 +1,98 @@
+{
+  "id": "github-issue-creation",
+  "title": "GitHub Issue Creation SOP",
+  "version": "1.0.0",
+  "type": "documentation-sop",
+  "status": "active",
+  "description": "Creating comprehensive GitHub issues using CLI tools and structured templates",
+  "purpose": "Ensure consistent, high-quality GitHub issue creation with proper documentation and linking",
+  "scope": "All GitHub issue creation for features, bugs, enhancements, and documentation",
+  "roles": {
+    "issue_creator": "Person creating the GitHub issue",
+    "stakeholders": "Team members who will work on or reference the issue",
+    "project_manager": "Person tracking issues for project planning"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "New feature request identified",
+      "Bug discovered requiring tracking",
+      "Enhancement or improvement needed",
+      "Documentation gap identified"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Check for Existing Issues",
+        "description": "Avoid duplicate issues by searching existing ones",
+        "command": "gh issue list --state all --search 'keywords'",
+        "verification": "No existing issue covers the same topic"
+      },
+      {
+        "step": 2,
+        "action": "Apply Lighthouse Protocol",
+        "description": "Use structured analysis for comprehensive issue creation",
+        "components": ["Product Owner Analysis", "How Might We pathways", "Decision rationale", "User story formation"]
+      },
+      {
+        "step": 3,
+        "action": "Prepare Issue Content",
+        "description": "Create comprehensive issue documentation",
+        "format": ["Clear title with emoji", "User story first", "Detailed description", "Acceptance criteria", "Success metrics"]
+      },
+      {
+        "step": 4,
+        "action": "Create Issue via CLI",
+        "description": "Use GitHub CLI to create issue with structured content",
+        "command": "gh issue create --title 'Title' --body-file issue-content.md --label 'enhancement'",
+        "benefits": ["Consistent formatting", "Proper linking", "Immediate URL generation"]
+      },
+      {
+        "step": 5,
+        "action": "Add Relevant Labels",
+        "description": "Tag issue with appropriate labels for organization",
+        "common_labels": ["enhancement", "bug", "documentation", "good first issue", "priority-high"]
+      },
+      {
+        "step": 6,
+        "action": "Link Related Items",
+        "description": "Connect issue to related issues, PRs, or projects",
+        "methods": ["Reference other issues: #123", "Link to PRs", "Add to project boards", "Mention in related discussions"]
+      },
+      {
+        "step": 7,
+        "action": "Verify Issue Creation",
+        "description": "Confirm issue was created correctly",
+        "validation": ["Issue appears in repository", "All content formatted properly", "Labels applied correctly", "Links work"]
+      },
+      {
+        "step": 8,
+        "action": "Communicate Issue",
+        "description": "Notify relevant team members about new issue",
+        "methods": ["Team chat notification", "@ mentions in issue", "Project board updates"]
+      }
+    ]
+  },
+  "tools_required": ["GitHub CLI (gh)", "Text editor for content preparation", "Access to GitHub repository"],
+  "success_criteria": ["Issue clearly describes need", "Acceptance criteria defined", "Proper labels applied", "Team can understand and act on issue"],
+  "issue_types": {
+    "feature": "New functionality or enhancements",
+    "bug": "Problems or errors requiring fixes",
+    "documentation": "Missing or outdated documentation",
+    "enhancement": "Improvements to existing functionality",
+    "epic": "Large features broken into smaller issues"
+  },
+  "best_practices": [
+    "Use descriptive, action-oriented titles",
+    "Include context and rationale in description",
+    "Define clear acceptance criteria",
+    "Add appropriate labels and assignees",
+    "Link to related issues and documentation"
+  ],
+  "related_sops": ["lighthouse-protocol", "feature-discussions", "sop-creation"],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "next_review": "2025-09-06"
+  }
+}

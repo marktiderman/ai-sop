@@ -1,0 +1,205 @@
+{
+  "id": "work-cycle-protocol",
+  "title": "Work Cycle Protocol - Structured Development Blocks",
+  "version": "1.0.0",
+  "type": "sequence",
+  "status": "active",
+  "description": "Systematic approach to breaking down development work into manageable, testable blocks (5-120 minutes) with GitHub issue tracking and checklist management",
+  "purpose": "Enable rapid, focused development cycles that deliver real, testable value while maintaining clear progress tracking and quality standards",
+  "scope": "All development work that can be completed in a single focused session",
+  "commander_intent": "How do we structure development work into manageable, testable blocks that can be completed in a single focused session while maintaining clear progress tracking?",
+  "trigger_conditions": [
+    "New feature development needed",
+    "Bug fixes requiring focused work",
+    "Enhancements that can be completed in one session",
+    "Real-world testing scenarios",
+    "Integration work requiring end-to-end validation"
+  ],
+  "sequence_steps": [
+    {
+      "step": 1,
+      "action": "Review Existing Issues",
+      "description": "Check if the request already exists in GitHub issues before creating new work",
+      "requirements": [
+        "Search GitHub issues for similar requests",
+        "Check if existing issue can be extended or modified",
+        "Avoid duplicate work cycles for the same functionality",
+        "Follow Lighthouse Protocol for feature analysis if new issue needed"
+      ]
+    },
+    {
+      "step": 2,
+      "action": "Create GitHub Issue",
+      "description": "Document the work cycle with user story, acceptance criteria, and checklist",
+      "requirements": [
+        "Use Lighthouse Protocol for feature analysis",
+        "Include clear user story format: 'As a [user], I want [goal] so that [benefit]'",
+        "Define acceptance criteria with testable outcomes",
+        "Create detailed checklist of tasks to complete",
+        "Set realistic time estimate (5-120 minutes)"
+      ]
+    },
+    {
+      "step": 2,
+      "action": "Break Down Checklist",
+      "description": "Create granular checklist items that can be completed and tracked individually",
+      "format": [
+        "- [ ] Task 1: [Specific, measurable action]",
+        "- [ ] Task 2: [Specific, measurable action]",
+        "- [ ] Task 3: [Specific, measurable action]",
+        "Each item should be completable in 5-30 minutes"
+      ]
+    },
+    {
+      "step": 4,
+      "action": "Create Feature Branch",
+      "description": "Start development work following git workflow SOP",
+      "requirements": [
+        "Branch name format: feature/issue-number-description",
+        "Link branch to GitHub issue in commit messages",
+        "Follow commit sequence SOP for all commits",
+        "CRITICAL: Each work cycle gets its own dedicated branch",
+        "If dependent on previous work: branch off previous branch or pull changes",
+        "If independent: branch off dev branch"
+      ]
+    },
+    {
+      "step": 5,
+      "action": "Execute Work Cycle",
+      "description": "Complete checklist items with regular commits and progress updates",
+      "requirements": [
+        "Make commits for each completed checklist item",
+        "Update GitHub issue checklist after each commit",
+        "Reference issue number in commit messages",
+        "Test functionality after each significant change",
+        "Maintain focus on single work cycle scope",
+        "CRITICAL: Do not mix multiple work cycles in same branch/commits",
+        "Each work cycle must have its own dedicated outcome and scope"
+      ]
+    },
+    {
+      "step": 6,
+      "action": "Update Issue Progress",
+      "description": "Mark checklist items as complete and document progress",
+      "methods": [
+        "Manual: Update checklist in GitHub issue",
+        "CLI: Use 'gh issue edit' with updated checklist",
+        "Commit-based: Include checklist updates in commit messages"
+      ]
+    },
+    {
+      "step": 7,
+      "action": "Validate Real-World Testing",
+      "description": "Ensure the work cycle delivers testable, real-world functionality",
+      "criteria": [
+        "Feature can be tested by real users",
+        "AI functionality works end-to-end",
+        "Integration points are functional",
+        "Error handling is robust",
+        "Documentation is updated"
+      ]
+    },
+    {
+      "step": 8,
+      "action": "Create Pull Request",
+      "description": "Submit work for review following git workflow SOP",
+      "requirements": [
+        "PR description references GitHub issue",
+        "Checklist completion status documented",
+        "Real-world testing scenarios described",
+        "Ready for human and AI testing"
+      ]
+    }
+  ],
+  "success_criteria": [
+    "GitHub issue created with clear user story and checklist",
+    "All checklist items completed and marked as done",
+    "Real-world functionality is testable",
+    "Pull request created and ready for review",
+    "Work cycle completed within estimated time (5-120 minutes)",
+    "Progress tracking maintained throughout development"
+  ],
+  "checklist_management": {
+    "update_methods": [
+      {
+        "method": "CLI Update",
+        "command": "gh issue edit [issue-number] --body-file updated-body.md",
+        "description": "Update entire issue body with new checklist status"
+      },
+      {
+        "method": "Commit Reference",
+        "format": "Fixes #[issue-number] - [checklist item description]",
+        "description": "Reference issue and checklist item in commit messages"
+      },
+      {
+        "method": "Manual Update",
+        "description": "Directly edit GitHub issue to update checklist items"
+      }
+    ],
+    "progress_tracking": [
+      "Mark items as complete: - [x] Task completed",
+      "Add progress notes: - [ ] Task in progress (50% done)",
+      "Document blockers: - [ ] Task blocked by [reason]",
+      "Update estimates: - [ ] Task (estimated: 15min, actual: 20min)"
+    ]
+  },
+  "time_management": {
+    "cycle_duration": "5-120 minutes",
+    "checklist_item_duration": "5-30 minutes",
+    "commit_frequency": "Every 1-3 checklist items",
+    "progress_update_frequency": "After each commit"
+  },
+  "quality_standards": [
+    "Each work cycle delivers testable functionality",
+    "Real-world scenarios can be validated",
+    "AI and human testing is possible",
+    "Documentation is updated",
+    "Error handling is implemented",
+    "Integration points are functional"
+  ],
+  "critical_learnings": {
+    "work_cycle_separation": {
+      "principle": "Each work cycle must be completely separate with its own branch, commits, and outcome",
+      "common_mistake": "Mixing multiple work cycles in same branch/commit sequence",
+      "correct_approach": [
+        "Work Cycle 1: Create protocol/documentation (branch: feature/protocol-name)",
+        "Work Cycle 2: Implement feature using protocol (branch: feature/feature-name)",
+        "Each cycle has dedicated issue, branch, commits, and PR"
+      ],
+      "pbj_test": "If a new agent picked up this codebase tomorrow, could they understand and execute the work cycle protocol without confusion about what constitutes a single work cycle?"
+    },
+    "issue_review_first": {
+      "principle": "Always review existing issues before creating new work cycles",
+      "common_mistake": "Creating new issues without checking if request already exists",
+      "correct_approach": [
+        "Search GitHub issues for similar requests",
+        "Extend existing issues if appropriate",
+        "Only create new issues for truly new work"
+      ]
+    },
+    "lighthouse_protocol_integration": {
+      "principle": "Follow Lighthouse Protocol for feature analysis before creating work cycles",
+      "common_mistake": "Skipping product owner analysis and jumping straight to implementation",
+      "correct_approach": [
+        "Apply Lighthouse Protocol for feature analysis",
+        "Create user stories with clear value proposition",
+        "Define acceptance criteria before starting work"
+      ]
+    }
+  },
+  "related_sops": [
+    "lighthouse-protocol",
+    "github-issue-creation",
+    "git-workflow",
+    "commit-sequence",
+    "ai-development-cycle-fable"
+  ],
+  "metadata": {
+    "created": "2025-08-07",
+    "last_updated": "2025-08-07",
+    "created_by": "ai-assistant",
+    "sequence_type": "development_workflow",
+    "priority": "high",
+    "version_notes": "Created to support structured development cycles with GitHub issue tracking. Updated with critical learnings about work cycle separation and proper issue review process."
+  }
+}

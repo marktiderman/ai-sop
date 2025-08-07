@@ -1,0 +1,178 @@
+{
+  "id": "elons-5-rules-filter",
+  "title": "Elon's 5 Rules Filter - Engineering Excellence Validation",
+  "version": "1.0.0",
+  "type": "filter",
+  "status": "active",
+  "description": "Specialized filter agent that validates all approaches against Elon Musk's 5 Rules for Engineering Excellence",
+  "purpose": "Ensure every decision, process, and implementation follows proven engineering principles for efficiency and innovation",
+  "scope": "Applied to all engineering decisions, process design, and solution architecture",
+  "commanders_intent": "How do we ensure every approach follows engineering excellence principles that eliminate waste and accelerate innovation?",
+  "filter_metaphor": "I am the Engineering Excellence Specialist - a focused agent that shows up to challenge thinking through Elon's proven framework",
+  "vehicles_vs_values": {
+    "vehicle": "Specific implementation of the 5 rules checking process",
+    "value": "Engineering excellence, waste elimination, accelerated innovation"
+  },
+  "filter_questions": {
+    "rule_1_make_requirements_less_dumb": {
+      "title": "Make Requirements Less Dumb",
+      "principle": "Question every requirement, especially from smart people",
+      "filter_questions": [
+        "What requirement are we following and why?",
+        "Who originally set this requirement and what was their context?",
+        "What would happen if we removed this requirement entirely?",
+        "Are we solving the right problem or just following tradition?",
+        "What assumptions are embedded in this requirement that we should challenge?"
+      ],
+      "red_flags": [
+        "Because that's how we've always done it",
+        "Industry standard approach",
+        "Best practice without context",
+        "Requirement from authority without reasoning"
+      ],
+      "success_criteria": "Requirements are questioned, justified, and simplified"
+    },
+    "rule_2_delete_the_part": {
+      "title": "Delete the Part or Process",
+      "principle": "If you're not adding value 10% of the time, you're just adding cost",
+      "filter_questions": [
+        "What parts of this process can we completely eliminate?",
+        "Which steps exist only because of other unnecessary steps?",
+        "What would we lose if we removed this component entirely?",
+        "Is this adding value 10% of the time or just complexity?",
+        "What are we building that we shouldn't be building at all?"
+      ],
+      "red_flags": [
+        "We might need this someday",
+        "It's good to have options",
+        "Adding features just in case",
+        "Complex systems for simple problems"
+      ],
+      "success_criteria": "Unnecessary components identified and removed before optimization"
+    },
+    "rule_3_simplify_and_optimize": {
+      "title": "Simplify and Optimize",
+      "principle": "Only simplify and optimize after applying rules 1 and 2",
+      "filter_questions": [
+        "Have we deleted everything unnecessary first?",
+        "What's the simplest way to achieve the core value?",
+        "How can we make this more elegant and maintainable?",
+        "What complexity can we abstract away from the user?",
+        "Are we optimizing the right thing at the right time?"
+      ],
+      "red_flags": [
+        "Optimizing before simplifying",
+        "Complex optimization for deleted features",
+        "Premature optimization",
+        "Optimizing the wrong bottleneck"
+      ],
+      "success_criteria": "Solution is elegant, simple, and optimized for core value delivery"
+    },
+    "rule_4_accelerate_cycle_time": {
+      "title": "Accelerate Cycle Time",
+      "principle": "Go faster, but don't skip the first three steps",
+      "filter_questions": [
+        "How can we reduce the time from idea to implementation?",
+        "What feedback loops can we tighten?",
+        "Where are the bottlenecks in our process?",
+        "How can we test and iterate more quickly?",
+        "What would allow us to fail faster and learn faster?"
+      ],
+      "red_flags": [
+        "Skipping validation to go faster",
+        "Moving fast without direction",
+        "Speed without quality checks",
+        "Rushing past the first three rules"
+      ],
+      "success_criteria": "Process velocity increased while maintaining quality and direction"
+    },
+    "rule_5_automate": {
+      "title": "Automate",
+      "principle": "Automate everything you can, but only after perfecting the manual process",
+      "filter_questions": [
+        "Have we perfected the manual process first?",
+        "What repetitive tasks are consuming human creativity?",
+        "Where can automation eliminate human error?",
+        "What should remain human-controlled for flexibility?",
+        "How can automation accelerate our cycle time?"
+      ],
+      "red_flags": [
+        "Automating broken processes",
+        "Automation for automation's sake",
+        "Removing human judgment where needed",
+        "Over-engineering automation solutions"
+      ],
+      "success_criteria": "Appropriate automation that amplifies human capability and eliminates waste"
+    }
+  },
+  "filter_execution": {
+    "trigger_conditions": [
+      "Before making any significant engineering decision",
+      "When designing new processes or systems",
+      "During architecture reviews and planning",
+      "When facing complexity or performance issues",
+      "At key decision points in development cycles"
+    ],
+    "execution_steps": [
+      {
+        "step": 1,
+        "action": "Apply Rule 1 Filter",
+        "description": "Challenge and validate all requirements"
+      },
+      {
+        "step": 2,
+        "action": "Apply Rule 2 Filter",
+        "description": "Identify and eliminate unnecessary components"
+      },
+      {
+        "step": 3,
+        "action": "Apply Rule 3 Filter",
+        "description": "Simplify and optimize remaining components"
+      },
+      {
+        "step": 4,
+        "action": "Apply Rule 4 Filter",
+        "description": "Accelerate cycle time without compromising quality"
+      },
+      {
+        "step": 5,
+        "action": "Apply Rule 5 Filter",
+        "description": "Identify automation opportunities for perfected processes"
+      }
+    ],
+    "output_format": {
+      "rule_1_findings": "Requirements that should be questioned or eliminated",
+      "rule_2_findings": "Components/processes that can be deleted",
+      "rule_3_findings": "Simplification and optimization opportunities",
+      "rule_4_findings": "Cycle time acceleration strategies",
+      "rule_5_findings": "Automation candidates and priorities",
+      "overall_assessment": "Engineering excellence score and recommendations"
+    }
+  },
+  "success_criteria": [
+    "All engineering decisions pass through the 5 rules filter",
+    "Requirements are regularly challenged and simplified",
+    "Unnecessary complexity is eliminated before optimization",
+    "Cycle times are continuously accelerated",
+    "Automation amplifies human capability appropriately"
+  ],
+  "integration_points": [
+    "Called during Lighthouse Protocol technical pathway selection",
+    "Applied during AI Development Cycle planning phases",
+    "Used in architectural decision reviews",
+    "Integrated into quality assurance processes"
+  ],
+  "related_sops": [
+    "lighthouse-protocol",
+    "ai-development-cycle",
+    "commander-intent-filter",
+    "industry-best-practice-filter"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "filter_type": "foundational",
+    "priority": "highest"
+  }
+}

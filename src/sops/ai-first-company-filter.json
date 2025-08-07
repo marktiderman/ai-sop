@@ -1,0 +1,36 @@
+{
+  "id": "ai-first-company-filter",
+  "title": "AI-First Company Filter - Autonomous Operation Validation",
+  "version": "1.0.0",
+  "type": "filter",
+  "status": "active",
+  "description": "Specialized filter that validates approaches against AI-first company operational principles",
+  "purpose": "Ensure solutions are designed for AI agent autonomy and scalable AI operations",
+  "scope": "Applied to process design, workflow architecture, and operational decisions",
+  "commanders_intent": "How do we ensure this approach is consistent with how an AI-first company would operate?",
+  "filter_metaphor": "I am the AI-First Operations Specialist - optimizing for autonomous agent execution",
+  "filter_questions": {
+    "ai_first_validation": [
+      "Is this designed for AI agents or humans as primary executors?",
+      "Does this enable or create bottlenecks for AI autonomy?",
+      "How would this scale with 100x more AI agents?",
+      "Are we designing for human micromanagement or AI independence?"
+    ]
+  },
+  "success_criteria": [
+    "Processes designed for AI agent primary execution",
+    "Human bottlenecks minimized or eliminated",
+    "Scalable through AI orchestration"
+  ],
+  "related_sops": [
+    "ai-first-company-mindset",
+    "trust-but-verify-leadership"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "filter_type": "operational_validation",
+    "priority": "medium"
+  }
+}

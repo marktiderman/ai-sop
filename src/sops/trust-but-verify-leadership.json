@@ -1,0 +1,36 @@
+{
+  "id": "trust-but-verify-leadership",
+  "title": "Trust But Verify Leadership - Autonomous Agent Management",
+  "version": "1.0.0",
+  "type": "knowledge_block",
+  "status": "active",
+  "description": "Leadership philosophy for managing autonomous AI agents through structured guidance and verification",
+  "purpose": "Enable AI agents to operate independently while maintaining quality and alignment",
+  "scope": "All AI agent management and oversight decisions",
+  "commanders_intent": "How do we lead AI agents effectively through trust, guidance, and systematic verification?",
+  "core_principle": "Give agents clear guidance to execute independently, then verify outcomes systematically",
+  "knowledge_content": {
+    "leadership_approach": [
+      "Provide clear SOPs as guidance frameworks",
+      "Enable autonomous execution within defined boundaries",
+      "Verify outcomes through systematic checks",
+      "Escalate only when SOPs don't address the situation"
+    ]
+  },
+  "success_criteria": [
+    "AI agents operate autonomously within defined parameters",
+    "Quality maintained through systematic verification",
+    "Human intervention minimized to strategic decisions"
+  ],
+  "related_sops": [
+    "ai-first-company-mindset",
+    "vehicles-vs-values"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "knowledge_type": "leadership_philosophy",
+    "priority": "medium"
+  }
+}

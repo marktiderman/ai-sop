@@ -1,0 +1,36 @@
+{
+  "id": "ai-first-company-mindset",
+  "title": "AI-First Company Mindset - Revolutionary Operational Approach",
+  "version": "1.0.0",
+  "type": "knowledge_block",
+  "status": "active",
+  "description": "Foundation mindset for operating as an AI-first company with autonomous agent workflows",
+  "purpose": "Establish thinking patterns consistent with leveraging AI as primary operational capability",
+  "scope": "All strategic and operational decisions in AI-first organizations",
+  "commanders_intent": "How do we think and operate as a company where AI agents are the primary workforce?",
+  "core_principle": "AI agents are colleagues, not tools. Design for autonomous execution, not human micromanagement.",
+  "knowledge_content": {
+    "fundamental_mindset": [
+      "Design processes for AI agent autonomy",
+      "Enable AI-to-AI collaboration and handoffs",
+      "Minimize human bottlenecks in workflows",
+      "Scale through AI orchestration, not human hiring"
+    ]
+  },
+  "success_criteria": [
+    "Operational processes designed for AI-first execution",
+    "Human oversight without micromanagement",
+    "Scalable workflows through agent orchestration"
+  ],
+  "related_sops": [
+    "ai-first-company-filter",
+    "trust-but-verify-leadership"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "knowledge_type": "strategic_mindset",
+    "priority": "medium"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "sop-updates",
+  "title": "SOP Updates SOP",
+  "version": "1.0.0",
+  "type": "meta-sop",
+  "status": "active",
+  "description": "Standard Operating Procedure for updating existing SOPs",
+  "purpose": "Ensure SOP updates are systematic, version-controlled, and properly communicated to team",
+  "scope": "All updates to existing SOPs in the DevSOP system",
+  "roles": {
+    "sop_updater": "Person making changes to existing SOP",
+    "sop_reviewer": "Team member reviewing updates for accuracy",
+    "team": "Development team using the updated SOP"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "Process improvement identified in existing SOP",
+      "Tool or technology change affecting SOP steps",
+      "Team feedback indicating SOP clarity issues",
+      "Regular SOP review cycle"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Identify Update Need",
+        "description": "Document what needs to change and why",
+        "details": ["What specific steps need modification?", "What triggered this update?", "What's the expected improvement?"]
+      },
+      {
+        "step": 2,
+        "action": "Update SOP Content",
+        "description": "Modify the SOP JSON file with changes",
+        "requirements": ["Update version number", "Modify affected steps", "Update last_updated timestamp", "Add to change log if needed"]
+      },
+      {
+        "step": 3,
+        "action": "Update Registry",
+        "description": "Update devsop-config.json if needed",
+        "when": "Only if SOP file path, name, or major type changes"
+      },
+      {
+        "step": 4,
+        "action": "Test Updated SOP",
+        "description": "Validate the updated procedure works as expected",
+        "validation": ["Run through updated steps", "Confirm tools still work", "Check for broken dependencies"]
+      },
+      {
+        "step": 5,
+        "action": "Commit Changes",
+        "description": "Version control the SOP update",
+        "format": "git commit -m 'docs: update [sop-name] SOP v[version] - [brief change description]'"
+      },
+      {
+        "step": 6,
+        "action": "Communicate Changes",
+        "description": "Notify team of SOP updates",
+        "methods": ["GitHub issue comment", "Team chat notification", "README update if significant"]
+      }
+    ]
+  },
+  "tools_required": ["Text editor", "Git version control", "Testing environment"],
+  "success_criteria": ["SOP reflects current best practice", "Team can successfully execute updated procedure", "Version history maintained"],
+  "related_sops": ["sop-creation", "feature-discussions"],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "next_review": "2025-09-06"
+  }
+}

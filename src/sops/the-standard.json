@@ -1,0 +1,167 @@
+{
+  "name": "The Standard",
+  "description": "Automated code quality and formatting standards for fast-moving development teams. Prevents broken code while avoiding style bikeshedding.",
+  "version": "1.0.0",
+  "category": "development-standards",
+  "triggers": ["file_save", "pre_commit", "pull_request_creation", "ai_code_generation"],
+  "context": {
+    "when_to_use": [
+      "Any time code or documentation is modified",
+      "Before commits to ensure quality",
+      "During AI-assisted development",
+      "When onboarding new team members"
+    ],
+    "philosophy": "Block real problems, allow style preferences. Speed over perfection.",
+    "principles": [
+      "Auto-fix what can be fixed automatically",
+      "Block broken links, syntax errors, and functional issues",
+      "Allow style variations that don't break functionality",
+      "Fail fast on critical errors, warn on style issues"
+    ]
+  },
+  "standards": {
+    "markdown": {
+      "critical_rules": {
+        "MD040": "Code blocks must specify language (enables syntax highlighting)",
+        "MD051": "Internal links must be valid (prevents broken navigation)",
+        "MD034": "URLs must be properly formatted as markdown links",
+        "MD010": "No hard tabs (prevents formatting issues)",
+        "MD009": "No trailing spaces (prevents rendering problems)",
+        "MD047": "Files must end with newline (git requirement)"
+      },
+      "style_rules_disabled": [
+        "MD013 (line length) - Teams have different preferences",
+        "MD022 (heading spacing) - Style preference",
+        "MD031 (fenced code spacing) - Style preference",
+        "MD033 (HTML usage) - Often needed for formatting"
+      ],
+      "auto_fix": true,
+      "config_file": ".markdownlint.json"
+    },
+    "typescript": {
+      "critical_rules": {
+        "no-unused-vars": "Prevents dead code",
+        "no-undef": "Prevents runtime errors",
+        "@typescript-eslint/no-explicit-any": "Maintains type safety",
+        "prefer-const": "Prevents accidental mutations"
+      },
+      "auto_fix": true,
+      "config_file": "tsconfig.json, .eslintrc.js"
+    },
+    "json": {
+      "validation": "Must be valid JSON syntax",
+      "auto_fix": true,
+      "formatter": "prettier"
+    },
+    "yaml": {
+      "validation": "Must be valid YAML syntax",
+      "auto_fix": true,
+      "formatter": "prettier"
+    }
+  },
+  "tooling": {
+    "vscode_settings": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.markdownlint": true
+      },
+      "markdownlint.config": ".markdownlint.json"
+    },
+    "required_extensions": [
+      "davidanson.vscode-markdownlint",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-typescript-next"
+    ],
+    "git_hooks": {
+      "pre_commit": "Run auto-fix and block on critical errors",
+      "pre_push": "Run full validation suite"
+    }
+  },
+  "workflow": {
+    "on_file_save": [
+      "Auto-format with prettier/eslint/markdownlint",
+      "Fix critical errors automatically",
+      "Show warnings for style issues (don't block)"
+    ],
+    "on_commit": [
+      "Validate all critical rules",
+      "Block commit if broken links or syntax errors",
+      "Allow commit with style warnings"
+    ],
+    "on_pull_request": [
+      "Run full validation",
+      "Comment on PR with any issues found",
+      "Block merge only on critical errors"
+    ]
+  },
+  "implementation": {
+    "immediate_setup": [
+      "Create .markdownlint.json with critical-only rules",
+      "Configure VS Code settings for auto-fix on save",
+      "Install required extensions",
+      "Update CI/CD to use continue-on-error for style checks"
+    ],
+    "gradual_adoption": [
+      "Fix critical errors in existing files as they're touched",
+      "Don't require team-wide reformatting",
+      "Let auto-fix handle new files",
+      "Review and adjust rules based on team feedback"
+    ],
+    "prevention_checklist": [
+      "Always test automation tools locally before adding to CI",
+      "Use explicit config file references in CI workflows", 
+      "Start with permissive rules, tighten gradually with team consensus",
+      "Document which config files control which tools",
+      "Include config file validation in CI setup steps",
+      "Never accept default tool configurations without review",
+      "Validate cross-environment compatibility before committing",
+      "Test code in both development and testing environments",
+      "Use robust patterns for environment detection (avoid import.meta in Jest)",
+      "Ensure module detection works when code is imported as dependency"
+    ]
+  },
+  "benefits": {
+    "for_developers": [
+      "No manual formatting - happens automatically",
+      "Fewer broken links and syntax errors",
+      "Less time in code review discussing style",
+      "Consistent experience across the codebase"
+    ],
+    "for_team": [
+      "Faster PR reviews - focus on logic, not style",
+      "Reduced CI/CD failures from formatting issues",
+      "Better documentation quality",
+      "Easier onboarding for new developers"
+    ]
+  },
+  "example_config_files": {
+    "markdownlint_json": {
+      "path": ".markdownlint.json",
+      "content": {
+        "MD051": true,
+        "MD040": true,
+        "MD034": true,
+        "MD010": true,
+        "MD009": true,
+        "MD047": true,
+        "MD013": false,
+        "MD033": false,
+        "default": false
+      }
+    },
+    "vscode_settings": {
+      "path": ".vscode/settings.json",
+      "content": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit",
+          "source.fixAll.markdownlint": "explicit"
+        },
+        "markdownlint.config": ".markdownlint.json",
+        "typescript.preferences.quoteStyle": "single",
+        "prettier.singleQuote": true
+      }
+    }
+  }
+}

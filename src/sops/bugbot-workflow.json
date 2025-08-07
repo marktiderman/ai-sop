@@ -1,0 +1,83 @@
+{
+  "id": "bugbot-workflow",
+  "title": "BugBot Workflow SOP",
+  "version": "1.0.0",
+  "type": "development-workflow",
+  "status": "active",
+  "description": "Complete workflow for BugBot analysis and code review integration",
+  "purpose": "Streamline code review process using BugBot for automated analysis and feedback integration",
+  "scope": "All code changes requiring BugBot review before merge",
+  "roles": {
+    "developer": "Person submitting code for BugBot review",
+    "reviewer": "Team member reviewing BugBot findings",
+    "bugbot": "Automated analysis tool providing feedback"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "Feature branch ready for review",
+      "Bug fixes completed and tested",
+      "Code changes requiring automated analysis",
+      "Before merging to main branch"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Prepare Branch for Review",
+        "description": "Ensure branch is ready for BugBot analysis",
+        "checklist": ["All tests passing", "Code committed and pushed", "Branch up to date with main", "Clear commit messages"]
+      },
+      {
+        "step": 2,
+        "action": "Request BugBot Review",
+        "description": "Trigger BugBot analysis on the branch",
+        "methods": ["GitHub comment: '@bugbot review verbose=true'", "Pull request creation", "Branch status update"]
+      },
+      {
+        "step": 3,
+        "action": "Monitor BugBot Analysis",
+        "description": "Wait for and track BugBot feedback",
+        "indicators": ["GitHub comment with analysis", "Pull request status updates", "Automated review completion"]
+      },
+      {
+        "step": 4,
+        "action": "Review BugBot Findings",
+        "description": "Analyze BugBot recommendations and feedback",
+        "focus_areas": ["Security vulnerabilities", "Performance issues", "Code quality suggestions", "Best practice violations"]
+      },
+      {
+        "step": 5,
+        "action": "Address Critical Issues",
+        "description": "Fix any critical problems identified by BugBot",
+        "priority": ["Security issues (immediate)", "Breaking changes (high)", "Performance problems (medium)", "Style issues (low)"]
+      },
+      {
+        "step": 6,
+        "action": "Update Code Based on Feedback",
+        "description": "Implement BugBot suggestions where appropriate",
+        "approach": ["Make fixes in separate commits", "Document reasoning for ignored suggestions", "Test changes thoroughly"]
+      },
+      {
+        "step": 7,
+        "action": "Confirm Resolution",
+        "description": "Verify all critical issues addressed",
+        "validation": ["Re-run tests", "Check BugBot status", "Confirm no new issues introduced"]
+      },
+      {
+        "step": 8,
+        "action": "Proceed with Merge",
+        "description": "Complete the review process and merge",
+        "requirements": ["BugBot approval received", "All critical issues resolved", "Team approval if needed"]
+      }
+    ]
+  },
+  "tools_required": ["GitHub CLI", "BugBot integration", "Local development environment"],
+  "success_criteria": ["BugBot analysis completed", "Critical issues resolved", "Code quality improved", "Merge successful"],
+  "integration_points": ["GitHub pull requests", "CI/CD pipeline", "Code review process"],
+  "related_sops": ["github-issue-creation", "feature-discussions", "monitoring-setup"],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "next_review": "2025-09-06"
+  }
+}

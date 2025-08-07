@@ -1,0 +1,404 @@
+{
+  "id": "netlify-environment-variables",
+  "title": "Netlify Environment Variables - Complete Configuration Guide",
+  "version": "1.0.0",
+  "type": "knowledge-based",
+  "status": "active",
+  "description": "Comprehensive guide for configuring environment variables across different Netlify deployment contexts and scopes",
+  "purpose": "Enable developers to effectively configure and manage environment variables for different deployment environments (production, staging, PR previews) with proper security and context awareness",
+  "scope": "All Netlify deployments, environment configuration, and feature flag management across deployment contexts",
+  "commanders_intent": "How do we leverage Netlify's environment variable system to enable context-specific deployments while maintaining security and avoiding configuration drift?",
+  "context_awareness": {
+    "principle": "Different deployment contexts require different configurations",
+    "deployment_contexts": [
+      "production - main branch deploys",
+      "deploy-preview - PR/MR preview deploys",
+      "branch-deploy - feature branch deploys",
+      "dev - local development with Netlify CLI"
+    ]
+  },
+  "procedure": {
+    "prerequisites": [
+      "Netlify account with appropriate team permissions",
+      "Understanding of deployment contexts",
+      "Access to netlify.toml configuration file",
+      "Knowledge of environment variable security practices"
+    ],
+    "configuration_methods": [
+      {
+        "method": "Netlify UI/CLI/API",
+        "description": "Secure storage on Netlify servers",
+        "advantages": [
+          "Stored securely on Netlify (not in repository)",
+          "Support for scopes (Builds, Functions, Runtime, Post-processing)",
+          "Context-specific values (production vs preview)",
+          "Team audit log tracking",
+          "Secrets Controller support",
+          "Branch-specific values with wildcards"
+        ],
+        "best_for": "Sensitive values, API keys, tokens, context-specific configurations"
+      },
+      {
+        "method": "netlify.toml configuration file",
+        "description": "File-based configuration in repository",
+        "advantages": [
+          "Version controlled with code",
+          "Context-specific environments",
+          "Easy to replicate across forks",
+          "Overrides UI/CLI/API settings"
+        ],
+        "limitations": [
+          "No scope control (only Builds and Post-processing)",
+          "Values stored in repository (security risk)",
+          "Not available to Functions/Edge Functions"
+        ],
+        "best_for": "Non-sensitive build configuration, framework versions, public settings"
+      }
+    ],
+    "deployment_contexts": {
+      "context_production": {
+        "description": "Main site deployment from production branch",
+        "configuration": "[context.production.environment]",
+        "use_cases": [
+          "Production API endpoints",
+          "Analytics tracking IDs",
+          "CDN configurations",
+          "Production database connections"
+        ],
+        "security_level": "Highest - conservative feature flags"
+      },
+      "context_deploy_preview": {
+        "description": "Preview deployments from pull/merge requests",
+        "configuration": "[context.deploy-preview.environment]",
+        "use_cases": [
+          "Staging API endpoints",
+          "Test database connections",
+          "Preview-specific feature flags",
+          "Development analytics"
+        ],
+        "security_level": "Medium - more permissive for testing"
+      },
+      "context_branch_deploy": {
+        "description": "Deployments from feature branches",
+        "configuration": "[context.branch-deploy.environment]",
+        "use_cases": [
+          "Development environment settings",
+          "Feature-specific configurations",
+          "Debug mode enablement"
+        ],
+        "security_level": "Low - development focused"
+      },
+      "context_dev": {
+        "description": "Local development with Netlify CLI",
+        "configuration": "[context.dev.environment]",
+        "use_cases": [
+          "Local development settings",
+          "Debug configurations",
+          "Mock API endpoints"
+        ],
+        "security_level": "Local only"
+      },
+      "context_specific_branch": {
+        "description": "Branch-specific contexts (e.g., staging, release/*)",
+        "configuration": "[context.staging.environment] or [context.release/*.environment]",
+        "use_cases": [
+          "Long-lived branch configurations",
+          "Release-specific settings",
+          "Staging environment overrides"
+        ],
+        "wildcard_support": "Use release/* to match release/1.0, release/alpha-0.1, etc."
+      }
+    },
+    "scopes_and_access": {
+      "available_scopes": {
+        "builds": {
+          "description": "Available during site build process",
+          "use_cases": ["Framework configuration", "Build tools", "Dependency management"],
+          "access_method": "process.env.VARIABLE_NAME in build scripts"
+        },
+        "functions": {
+          "description": "Available to Netlify Functions and Edge Functions",
+          "use_cases": ["API keys", "Database connections", "Runtime secrets"],
+          "access_method": "process.env.VARIABLE_NAME in function code"
+        },
+        "runtime": {
+          "description": "Available to forms and signed proxy redirects",
+          "use_cases": ["Form processing tokens", "Proxy authentication"],
+          "access_method": "Automatic injection by Netlify services"
+        },
+        "post_processing": {
+          "description": "Available during snippet injection",
+          "use_cases": ["Analytics scripts", "A/B testing", "Dynamic content injection"],
+          "access_method": "Template substitution in snippets"
+        }
+      },
+      "scope_selection_strategy": {
+        "principle": "Principle of least privilege - only grant access to scopes that need the variable",
+        "examples": [
+          "API keys: Functions scope only",
+          "Build versions: Builds scope only",
+          "Analytics IDs: Post-processing scope only",
+          "Database URLs: Functions scope only"
+        ]
+      }
+    },
+    "netlify_toml_examples": {
+      "basic_context_configuration": {
+        "code": "# Production context - conservative settings\n[context.production]\n  command = \"npm run build:prod\"\n  [context.production.environment]\n    NODE_ENV = \"production\"\n    FEATURE_ANALYTICS = \"true\"\n    FEATURE_DEBUG = \"false\"\n\n# Deploy Preview context - testing friendly\n[context.deploy-preview]\n  command = \"npm run build:preview\"\n  [context.deploy-preview.environment]\n    NODE_ENV = \"staging\"\n    FEATURE_ANALYTICS = \"false\"\n    FEATURE_DEBUG = \"true\"\n    FEATURE_EXPERIMENTAL = \"true\"\n\n# Branch deploy context - development\n[context.branch-deploy.environment]\n    NODE_ENV = \"development\"\n    FEATURE_DEBUG = \"true\"\n\n# Specific branch context\n[context.staging.environment]\n    NODE_ENV = \"staging\"\n    API_ENDPOINT = \"https://staging-api.example.com\"",
+        "description": "Basic context-specific environment configuration"
+      },
+      "feature_flag_management": {
+        "code": "# Feature flags by deployment context\n[context.production.environment]\n    # Conservative production flags\n    FEATURE_NEW_UI = \"false\"\n    FEATURE_BETA_API = \"false\"\n    FEATURE_ANALYTICS = \"true\"\n\n[context.deploy-preview.environment]\n    # Aggressive testing in previews\n    FEATURE_NEW_UI = \"true\"\n    FEATURE_BETA_API = \"true\"\n    FEATURE_ANALYTICS = \"false\"\n    FEATURE_DEBUG_MODE = \"true\"\n\n# Branch-specific overrides\n[context.feature-ui-redesign.environment]\n    FEATURE_NEW_UI = \"true\"\n    FEATURE_OLD_UI_FALLBACK = \"true\"",
+        "description": "Feature flag configuration across deployment contexts"
+      },
+      "framework_integration": {
+        "code": "# Framework-specific variables with context awareness\n[context.production.environment]\n    # React App variables\n    REACT_APP_API_URL = \"https://api.production.com\"\n    REACT_APP_ANALYTICS_ID = \"GA-PROD-123\"\n    \n    # Next.js variables\n    NEXT_PUBLIC_API_URL = \"https://api.production.com\"\n    NEXTAUTH_URL = \"https://myapp.com\"\n    \n    # Build configuration\n    NODE_VERSION = \"18.17.0\"\n    NPM_VERSION = \"9\"\n\n[context.deploy-preview.environment]\n    # Preview-specific endpoints\n    REACT_APP_API_URL = \"https://api.staging.com\"\n    REACT_APP_ANALYTICS_ID = \"GA-STAGE-456\"\n    NEXT_PUBLIC_API_URL = \"https://api.staging.com\"",
+        "description": "Framework-specific environment variables with deployment context awareness"
+      }
+    },
+    "security_best_practices": {
+      "sensitive_variable_policy": {
+        "description": "Control access to sensitive variables for public repositories",
+        "options": [
+          {
+            "policy": "Require approval (default)",
+            "description": "Untrusted deploys must be approved before accessing sensitive variables",
+            "use_case": "High security requirements"
+          },
+          {
+            "policy": "Deploy without sensitive variables",
+            "description": "Untrusted deploys build automatically but without sensitive variables",
+            "use_case": "Moderate security with automatic testing"
+          },
+          {
+            "policy": "Deploy without restrictions",
+            "description": "All deploys have access to all variables",
+            "use_case": "Internal/private repositories only"
+          }
+        ]
+      },
+      "secrets_controller": {
+        "description": "Enhanced security for sensitive values",
+        "features": [
+          "Mark variables as 'Contains secret values'",
+          "Additional access restrictions",
+          "Enhanced audit logging",
+          "Automatic sensitive variable detection"
+        ]
+      },
+      "variable_naming_conventions": {
+        "rules": [
+          "Keys: alphanumeric and underscores only",
+          "Must start with a letter (not number or underscore)",
+          "Max 255 characters for keys",
+          "Max 5,000 characters for values"
+        ],
+        "framework_prefixes": {
+          "react": "REACT_APP_",
+          "gatsby": "GATSBY_",
+          "next": "NEXT_PUBLIC_",
+          "nuxt": "NUXT_ENV_",
+          "vue": "VUE_APP_"
+        }
+      }
+    },
+    "cli_and_api_usage": {
+      "netlify_cli_commands": [
+        {
+          "command": "netlify env:list",
+          "description": "List all environment variables",
+          "options": ["--context production", "--plain (for .env format)"]
+        },
+        {
+          "command": "netlify env:set KEY value",
+          "description": "Set environment variable",
+          "options": ["--context production", "--scope builds,functions"]
+        },
+        {
+          "command": "netlify env:import .env",
+          "description": "Import variables from .env file",
+          "options": ["--replace-existing"]
+        },
+        {
+          "command": "netlify env:unset KEY",
+          "description": "Delete environment variable"
+        }
+      ],
+      "context_specific_operations": {
+        "set_context_value": "netlify env:set API_KEY prod_key_123 --context production",
+        "set_branch_value": "netlify env:set DEBUG_MODE true --context branch:staging",
+        "list_context_values": "netlify env:list --context deploy-preview",
+        "export_for_env_file": "netlify env:list --plain --context production > .env.production"
+      }
+    },
+    "troubleshooting_guide": {
+      "common_issues": [
+        {
+          "issue": "Variable not available in function",
+          "solution": "Ensure scope includes 'Functions' and variable is set via UI/CLI/API (not netlify.toml)"
+        },
+        {
+          "issue": "Context-specific value not applied",
+          "solution": "Check context precedence: branch-specific > context-specific > global. Verify branch name matches exactly."
+        },
+        {
+          "issue": "Framework variables not working",
+          "solution": "Ensure proper prefix (REACT_APP_, NEXT_PUBLIC_, etc.) and scope includes 'Builds'"
+        },
+        {
+          "issue": "Sensitive variables exposed in PR",
+          "solution": "Configure sensitive variable policy and use Secrets Controller for sensitive values"
+        },
+        {
+          "issue": "netlify.toml overriding UI settings",
+          "solution": "Remove from netlify.toml or understand that file-based config takes precedence"
+        }
+      ],
+      "debugging_steps": [
+        "Check variable scope matches usage context",
+        "Verify deployment context is correct",
+        "Confirm variable naming follows framework conventions",
+        "Review sensitive variable policy settings",
+        "Check team audit log for recent changes",
+        "Test with netlify dev locally"
+      ]
+    },
+    "step_by_step_implementation": [
+      {
+        "step": 1,
+        "action": "Plan Environment Strategy",
+        "description": "Define which variables need different values per context",
+        "deliverables": [
+          "List of environment-specific variables",
+          "Security classification (sensitive vs non-sensitive)",
+          "Scope requirements (builds, functions, etc.)"
+        ]
+      },
+      {
+        "step": 2,
+        "action": "Configure Base Variables",
+        "description": "Set up variables via Netlify UI for sensitive values",
+        "commands": [
+          "Navigate to Project configuration > Environment variables",
+          "Add variables with appropriate scopes",
+          "Set default values for all contexts"
+        ]
+      },
+      {
+        "step": 3,
+        "action": "Add Context-Specific Values",
+        "description": "Override default values for specific deployment contexts",
+        "implementation": [
+          "Use 'Add value for another context' in UI",
+          "Or use CLI: netlify env:set KEY value --context production",
+          "Configure branch-specific values if needed"
+        ]
+      },
+      {
+        "step": 4,
+        "action": "Update netlify.toml",
+        "description": "Add non-sensitive, context-specific configuration",
+        "example": "See framework_integration example above"
+      },
+      {
+        "step": 5,
+        "action": "Configure Security Policies",
+        "description": "Set sensitive variable policy and enable Secrets Controller",
+        "location": "Project configuration > Environment variables > Site policies"
+      },
+      {
+        "step": 6,
+        "action": "Test Across Contexts",
+        "description": "Verify variables work correctly in each deployment context",
+        "testing": [
+          "Deploy to production - check production values",
+          "Create PR - verify preview values",
+          "Test locally with netlify dev",
+          "Check function logs for runtime access"
+        ]
+      }
+    ]
+  },
+  "advanced_patterns": {
+    "branch_wildcards": {
+      "description": "Use wildcards to match multiple branches",
+      "examples": [
+        "release/* matches release/1.0, release/2.0, etc.",
+        "feature/* matches all feature branches",
+        "hotfix/* matches all hotfix branches"
+      ],
+      "configuration": "[context.release/*.environment]"
+    },
+    "variable_injection": {
+      "description": "Inject Netlify read-only variables into custom variables",
+      "example": "REACT_APP_DEPLOY_URL=$DEPLOY_URL npm run build",
+      "netlify_variables": [
+        "CONTEXT (production, deploy-preview, branch-deploy)",
+        "BRANCH (current branch name)",
+        "COMMIT_REF (git commit hash)",
+        "DEPLOY_URL (unique deploy URL)",
+        "URL (main site URL)"
+      ]
+    },
+    "shared_team_variables": {
+      "description": "Team-level variables shared across all sites",
+      "access": "Team settings > Environment variables",
+      "use_cases": [
+        "Organization-wide API keys",
+        "Shared service endpoints",
+        "Common configuration values"
+      ],
+      "precedence": "Site variables override shared variables"
+    }
+  },
+  "integration_examples": {
+    "feature_flag_system": {
+      "description": "Complete feature flag configuration across contexts",
+      "netlify_toml": "See feature_flag_management example above",
+      "application_code": "if (process.env.REACT_APP_FEATURE_NEW_UI === 'true') { /* new UI */ }"
+    },
+    "api_environment_switching": {
+      "production": "API_URL=https://api.production.com",
+      "staging": "API_URL=https://api.staging.com",
+      "development": "API_URL=https://api.dev.com",
+      "local": "API_URL=http://localhost:3001"
+    },
+    "analytics_configuration": {
+      "production": "ANALYTICS_ENABLED=true, ANALYTICS_ID=GA-PROD-123",
+      "preview": "ANALYTICS_ENABLED=false, DEBUG_ANALYTICS=true",
+      "development": "ANALYTICS_ENABLED=false"
+    }
+  },
+  "tools_required": [
+    "Netlify account with appropriate permissions",
+    "Netlify CLI (for command-line management)",
+    "Text editor for netlify.toml configuration",
+    "Understanding of deployment contexts",
+    "Knowledge of framework-specific variable prefixes"
+  ],
+  "success_criteria": [
+    "Variables correctly configured for each deployment context",
+    "Sensitive variables properly secured and scoped",
+    "Framework integration working across all contexts",
+    "Team members can deploy without manual configuration",
+    "Audit trail maintained for all variable changes",
+    "No sensitive values exposed in repository or logs"
+  ],
+  "related_sops": [
+    "feature-flag-management",
+    "deployment-contexts",
+    "security-best-practices"
+  ],
+  "metadata": {
+    "created": "2025-01-08",
+    "last_updated": "2025-01-08",
+    "created_by": "ai-assistant",
+    "next_review": "2025-04-08",
+    "sources": [
+      "https://docs.netlify.com/environment-variables/overview/",
+      "https://docs.netlify.com/environment-variables/get-started/",
+      "https://docs.netlify.com/configure-builds/file-based-configuration/",
+      "https://www.netlify.com/blog/branch-specific-environment-variable-values/"
+    ]
+  }
+}

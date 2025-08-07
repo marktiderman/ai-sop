@@ -1,0 +1,88 @@
+{
+  "id": "workspace-cleanup",
+  "title": "Workspace Cleanup SOP",
+  "version": "1.0.0",
+  "type": "maintenance-sop",
+  "status": "active",
+  "description": "Organizing and cleaning development workspace files and directories",
+  "purpose": "Maintain clean, organized development environment for better productivity and collaboration",
+  "scope": "Periodic maintenance of development workspace files, folders, and documentation",
+  "roles": {
+    "developer": "Person performing workspace cleanup",
+    "team_lead": "Person reviewing cleanup changes before commit",
+    "team": "Development team benefiting from organized workspace"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "Duplicate files detected in workspace",
+      "Unorganized documentation scattered across directories",
+      "End of sprint/milestone cleanup",
+      "Before major releases or team onboarding"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Identify Cleanup Needs",
+        "description": "Assess current workspace state and identify issues",
+        "checklist": ["Duplicate files", "Orphaned documentation", "Untracked files", "Inconsistent naming"]
+      },
+      {
+        "step": 2,
+        "action": "Organize Documentation",
+        "description": "Move documents to appropriate directories",
+        "structure": ["docs/ for project documentation", "docs/issues/ for issue templates", "scripts/ for utility scripts", "tests/ for test files"]
+      },
+      {
+        "step": 3,
+        "action": "Remove Duplicates",
+        "description": "Identify and remove duplicate or obsolete files",
+        "approach": ["Compare file contents", "Check creation dates", "Verify no active references", "Remove safely"]
+      },
+      {
+        "step": 4,
+        "action": "Update File Organization",
+        "description": "Ensure files follow project conventions",
+        "standards": ["Consistent naming conventions", "Logical directory structure", "Proper file extensions", "Clear purpose for each file"]
+      },
+      {
+        "step": 5,
+        "action": "Verify Links and References",
+        "description": "Check that all documentation links still work",
+        "validation": ["Internal document links", "Code references", "Issue/PR references", "External links"]
+      },
+      {
+        "step": 6,
+        "action": "Update Git Status",
+        "description": "Add organized files to version control",
+        "commands": ["git add [organized-files]", "git status (verify clean)", "git commit with descriptive message"]
+      },
+      {
+        "step": 7,
+        "action": "Clean Untracked Files",
+        "description": "Remove unnecessary untracked files",
+        "approach": ["Review git status", "Identify truly unnecessary files", "Add to .gitignore if needed", "Remove temporary files"]
+      },
+      {
+        "step": 8,
+        "action": "Document Changes",
+        "description": "Record what was cleaned up and why",
+        "documentation": ["Commit messages", "README updates if structure changed", "Team communication if significant"]
+      }
+    ]
+  },
+  "tools_required": ["Git version control", "File system access", "Text editor for documentation updates"],
+  "success_criteria": ["Clean git status", "Logical file organization", "No broken links", "Team can easily find files", "Consistent naming conventions"],
+  "best_practices": [
+    "Regular cleanup prevents major reorganization needs",
+    "Always verify links before removing files",
+    "Use descriptive commit messages for cleanup changes",
+    "Communicate significant reorganizations to team"
+  ],
+  "related_sops": ["github-issue-creation", "sop-updates"],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "next_review": "2025-09-06"
+  }
+}

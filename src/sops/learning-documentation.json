@@ -1,0 +1,138 @@
+{
+  "id": "learning-documentation",
+  "title": "Learning Documentation Protocol",
+  "version": "1.0.0",
+  "type": "process-framework",
+  "status": "active",
+  "description": "Systematic approach to documenting learnings, mistakes, and process improvements to prevent future agents from making the same errors",
+  "purpose": "Capture critical learnings and mistakes in a way that future agents can understand and avoid, ensuring continuous improvement of the AI-SOP system",
+  "scope": "All development work, process improvements, and critical mistakes that should be documented for future reference",
+  "commander_intent": "How do we document learnings and mistakes so that future agents can understand what went wrong and avoid making the same errors?",
+  "trigger_conditions": [
+    "Critical mistake made during development",
+    "Process improvement discovered",
+    "Workflow confusion or misalignment",
+    "New agent onboarding gaps identified",
+    "SOP execution errors or misunderstandings"
+  ],
+  "sequence_steps": [
+    {
+      "step": 1,
+      "action": "Identify Learning Opportunity",
+      "description": "Recognize when a mistake, confusion, or improvement opportunity occurs",
+      "indicators": [
+        "User provides feedback about process confusion",
+        "Work cycle boundaries become unclear",
+        "SOP execution doesn't match expectations",
+        "New agent would struggle with current process",
+        "Process improvement opportunity identified"
+      ]
+    },
+    {
+      "step": 2,
+      "action": "Apply PB&J Test",
+      "description": "Test if a new agent could understand and execute the process correctly",
+      "pbj_test_questions": [
+        "If a new agent picked up this codebase tomorrow, could they understand this process?",
+        "Would they know what constitutes a single work cycle?",
+        "Could they execute the spirit and letter of what we're looking for?",
+        "Are there any assumptions or context they might miss?",
+        "Is the process self-documenting and clear?"
+      ]
+    },
+    {
+      "step": 3,
+      "action": "Document the Learning",
+      "description": "Create comprehensive documentation of the learning or mistake",
+      "format": {
+        "principle": "Clear statement of the correct principle or approach",
+        "common_mistake": "Description of what went wrong or was confusing",
+        "correct_approach": "Step-by-step correct approach with examples",
+        "pbj_test": "How this addresses the PB&J test for new agents",
+        "impact": "Why this learning is important for future work"
+      }
+    },
+    {
+      "step": 4,
+      "action": "Update Relevant SOPs",
+      "description": "Integrate the learning into existing SOPs or create new ones",
+      "methods": [
+        "Add critical_learnings section to existing SOPs",
+        "Update sequence steps to prevent the mistake",
+        "Add explicit requirements and warnings",
+        "Create new SOPs if needed for complex learnings",
+        "Update metadata with version notes"
+      ]
+    },
+    {
+      "step": 5,
+      "action": "Create Memory Entry",
+      "description": "Document the learning in agent memory for immediate recall",
+      "memory_format": {
+        "learning_type": "mistake|improvement|clarification",
+        "context": "When and where this learning occurred",
+        "principle": "The key principle to remember",
+        "application": "How to apply this learning in future work"
+      }
+    },
+    {
+      "step": 6,
+      "action": "Validate Documentation",
+      "description": "Ensure the learning is documented clearly enough for future agents",
+      "validation_criteria": [
+        "New agent could understand the principle without confusion",
+        "Common mistake is clearly identified and explained",
+        "Correct approach is step-by-step and actionable",
+        "PB&J test is addressed explicitly",
+        "Documentation is integrated into relevant SOPs"
+      ]
+    }
+  ],
+  "success_criteria": [
+    "Learning is documented with clear principle and common mistake",
+    "PB&J test is addressed for new agent understanding",
+    "Relevant SOPs are updated with the learning",
+    "Memory entry is created for immediate recall",
+    "Documentation is clear enough for future agents to avoid the mistake"
+  ],
+  "documentation_standards": {
+    "clarity": "Documentation must be clear enough for a new agent to understand without additional context",
+    "specificity": "Include specific examples and scenarios, not just general principles",
+    "actionability": "Provide step-by-step guidance on how to apply the learning",
+    "integration": "Integrate learnings into existing SOPs rather than creating separate documentation",
+    "validation": "Always apply PB&J test to ensure new agent understanding"
+  },
+  "common_learning_categories": {
+    "work_cycle_separation": "Issues with mixing multiple work cycles in same branch/commits",
+    "issue_review": "Skipping review of existing issues before creating new work",
+    "protocol_skipping": "Bypassing established protocols (Lighthouse, etc.)",
+    "process_confusion": "Unclear boundaries between different processes or steps",
+    "assumption_making": "Making assumptions that new agents wouldn't have",
+    "context_missing": "Missing critical context that new agents need"
+  },
+  "pbj_test_framework": {
+    "purpose": "Ensure any new agent can pick up the codebase and execute processes correctly",
+    "key_questions": [
+      "Could a new agent understand what constitutes a single work cycle?",
+      "Would they know when to create new issues vs. extend existing ones?",
+      "Could they execute the spirit and letter of our processes?",
+      "Are there any hidden assumptions or context they might miss?",
+      "Is the process self-documenting and clear?"
+    ],
+    "validation_method": "Documentation should answer all PB&J test questions explicitly"
+  },
+  "related_sops": [
+    "work-cycle-protocol",
+    "lighthouse-protocol",
+    "github-issue-creation",
+    "sop-updates"
+  ],
+  "metadata": {
+    "created": "2025-08-07",
+    "last_updated": "2025-08-07",
+    "created_by": "ai-assistant",
+    "process_type": "documentation_improvement",
+    "priority": "high",
+    "version_notes": "Created to capture critical learnings about work cycle separation and process clarity"
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "id": "sop-conductor",
+  "title": "AI-SOP Conductor - Fables-Based Orchestration Framework",
+  "version": "1.0.0",
+  "type": "meta-sop",
+  "status": "active",
+  "description": "Complete lifecycle management for AI-SOP Fables - creation, updates, and orchestration of both knowledge-based and prompt-based Standard Operating Procedures",
+  "purpose": "Enable AI agents to autonomously create, update, and execute operational procedures without human prompt engineering bottlenecks, while maintaining architect's vision and decision-making patterns through procedural fables",
+  "scope": "All SOP lifecycle management for AI agent orchestration and autonomous development execution",
+  "commanders_intent": "How do we enable any AI agent to autonomously create, update, and execute operational procedures without human prompt engineering bottlenecks, while maintaining the architect's vision and decision-making patterns?",
+  "architect_intent": "Trust but verify - agents should execute independently using these SOPs as daily reference guides like fables that teach wisdom, only escalating when SOPs don't address the situation",
+  "fables_metaphor": "Each SOP is a fable - a story that teaches AI agents wisdom for autonomous execution, preserving architect's decision-making patterns",
+  "conductor_metaphor": "AI agents are orchestra musicians, SOPs are the sheet music, and this framework is the conductor coordinating the performance while maintaining the composer's (architect's) artistic vision",
+  "vehicles_vs_values": {
+    "principle": "Vehicles < Values",
+    "vehicle": "The exact prompt or precise code/action",
+    "value": "The goal we are trying to achieve in plain english",
+    "rule": "Vehicle can be adapted as necessary. Value cannot."
+  },
+  "roles": {
+    "architect": "Composer - defines vision, heart, style, and structural guidelines for SOPs",
+    "general_manager": "Conductor - AI coordinating agent who understands architect intent and orchestrates SOP execution",
+    "skilled_agents": "Orchestra musicians - AI agents executing work autonomously using SOP guidance",
+    "orchestrator": "Concert hall - system managing agent-to-agent coordination and workflow"
+  },
+  "sop_taxonomy": {
+    "knowledge_based": {
+      "description": "Dev workflow procedures, process frameworks, operational knowledge - human-executable",
+      "examples": ["git workflows", "testing procedures", "deployment steps", "monitoring setup"],
+      "format": "Step-by-step instructions with specific commands and tools",
+      "vehicles": "Exact commands, file paths, tool configurations",
+      "values": "Operational outcomes, quality standards, consistency goals"
+    },
+    "prompt_based": {
+      "description": "AI interaction patterns, agent orchestration, prompt engineering frameworks - AI-executable",
+      "examples": ["sequence logic", "style filters", "agent communication", "prompt templates"],
+      "format": "Structured prompts with variables, decision trees, and response patterns",
+      "vehicles": "Exact prompt text, model parameters, response formats",
+      "values": "AI behavior patterns, output quality, interaction style"
+    }
+  },
+    "peanut_butter_jelly_principle": "Every step must be executable by someone with ZERO prior knowledge - like making a PB&J sandwich from scratch",
+    "procedure": {
+      "prerequisites_check": {
+        "required_tools": ["Text editor (VS Code, Cursor, etc.)", "Terminal access", "Git installed", "Access to aisop-system folder"],
+        "required_knowledge": ["Basic file navigation", "Copy/paste operations"],
+        "validation": "Can you navigate to /Users/markt/Git/coach-loop-ai/aisop-system/ folder? If not, stop and get help."
+      },
+      "trigger_conditions": [
+        "AI agent encounters decision point without clear guidance",
+        "Recurring architect requests that need autonomous execution",
+        "New workflow requiring agent orchestration",
+        "Agent escalation patterns indicating missing blueprints",
+        "Manual prompt engineering bottlenecks identified"
+      ],
+      "unified_steps": [
+        {
+          "step": 1,
+          "action": "Capture Commander's Intent",
+          "description": "Extract the core purpose using the commander's intent framework",
+          "exact_questions": [
+            "What specific problem does this solve?",
+            "Who benefits from this blueprint?",
+            "What outcome should agents achieve?",
+            "What decisions should agents make autonomously vs escalate?",
+            "What style and tone should agents maintain?",
+            "What are the non-negotiable principles?",
+            "How should agents handle edge cases?"
+          ],
+          "deliverable": "Write a single sentence starting with 'How do we...' that captures the intent"
+        },
+        {
+          "step": 2,
+          "action": "Classify Blueprint Type",
+          "description": "Determine if this is knowledge-based or prompt-based using clear criteria",
+          "decision_tree": {
+            "if_involves_ai_prompts_or_sequences": "prompt_based",
+            "if_involves_dev_procedures_or_processes": "knowledge_based"
+          },
+          "validation": "Can a human execute this without AI? If yes, it's knowledge-based. If no, it's prompt-based."
+        },
+        {
+          "step": 3,
+          "action": "Create Blueprint File",
+          "description": "Create the actual JSON file with PB&J-level specificity",
+          "exact_commands": [
+            "1. Navigate to: /Users/markt/Git/coach-loop-ai/aisop-system/sops/",
+            "2. Create new file: [sop-name].json",
+            "3. Copy this template and fill in ALL fields:",
+            "4. Template location: See template_structure section below"
+          ],
+          "file_naming": "Use kebab-case: my-sop-name.json (no spaces, no capitals)",
+          "required_fields_explained": {
+            "id": "Same as filename without .json",
+            "title": "Human readable name",
+            "version": "Start with 1.0.0",
+            "type": "Either 'knowledge-based' or 'prompt-based'",
+            "status": "Always start with 'active'",
+            "description": "One sentence explaining what this does",
+            "purpose": "Why this blueprint exists",
+            "scope": "When to use this blueprint"
+          }
+        },
+        {
+          "step": 4,
+          "action": "Write Procedure Steps",
+          "description": "Document exact steps with copy-paste commands",
+          "knowledge_based_format": {
+            "each_step_must_include": ["Exact command to run", "Expected output", "What to do if it fails", "How to verify success"],
+            "example": "Run: 'git status'. Expected: Shows clean working tree. If fails: Check you're in correct directory."
+          },
+          "prompt_based_format": {
+            "each_step_must_include": ["Exact prompt text", "Expected AI response pattern", "How to handle variations", "Success criteria"],
+            "example": "Prompt: 'Generate 3 blog ideas about AI'. Expected: Numbered list. Success: Ideas are specific and actionable."
+          }
+        },
+        {
+          "step": 5,
+          "action": "Update Registry",
+          "description": "Add blueprint to devsop-config.json with exact copy-paste instructions",
+          "exact_steps": [
+            "1. Open file: /Users/markt/Git/coach-loop-ai/aisop-system/aisop-config.json",
+            "2. Find the appropriate 'sops' section (knowledge_based or prompt_based around line 9)",
+            "3. Add this line: '\"[sop-id]\": \"./sops/[sop-name].json\",',
+            "4. Save file",
+            "5. Verify JSON is valid using: jsonlint aisop-config.json"
+          ],
+          "example": "\"my-new-sop\": \"./sops/my-new-sop.json\","
+        },
+        {
+          "step": 6,
+          "action": "PB&J Test",
+          "description": "Have someone completely unfamiliar execute the blueprint",
+          "test_criteria": [
+            "Give blueprint to someone who has never seen it",
+            "They should complete the task using ONLY the blueprint",
+            "No additional explanations allowed",
+            "If they get stuck, the blueprint fails the test"
+          ],
+          "success_definition": "Complete novice achieves expected outcome in reasonable time"
+        },
+        {
+          "step": 7,
+          "action": "Git Commit",
+          "description": "Save changes to version control with specific commands",
+          "exact_commands": [
+            "cd /Users/markt/Git/coach-loop-ai",
+            "git add aisop-system/",
+            "git status (verify files are staged)",
+            "git commit -m \"feat: add [sop-name] SOP - [brief description]\"",
+            "git push origin [current-branch-name]"
+          ],
+          "branch_check": "Run 'git branch' to see current branch name before pushing"
+        },
+        {
+          "step": 8,
+          "action": "Update Integration",
+          "description": "For prompt-based blueprints, integrate with existing AI systems",
+          "prompt_based_only": {
+            "integration_checklist": [
+              "Does this work with our current AI tools?",
+              "Can agents chain this with other blueprints?",
+              "Are variables clearly defined?",
+              "Is the output format compatible?"
+            ]
+          }
+        }
+      ]
+    },
+  "tools_required": [
+    "Text editor with JSON support",
+    "Git version control",
+    "JSON schema validator",
+    "Team communication channel"
+  ],
+  "success_criteria": [
+    "SOP is discoverable in registry",
+    "Team members can execute procedure successfully",
+    "Process improvement demonstrated through usage",
+    "Documentation stays current with practice"
+  ],
+  "template_structure": {
+    "knowledge_based_sop": {
+      "id": "my-sop-name",
+      "title": "My SOP Title",
+      "version": "1.0.0",
+      "type": "knowledge-based",
+      "status": "active",
+      "description": "One sentence explaining what this SOP does",
+      "purpose": "Why this SOP exists and what problem it solves",
+      "scope": "When and where to use this SOP",
+      "commanders_intent": "How do we [achieve specific outcome] while [maintaining specific constraints]?",
+      "roles": {
+        "executor": "Who performs the steps",
+        "reviewer": "Who validates the output",
+        "stakeholder": "Who benefits from the result"
+      },
+      "procedure": {
+        "prerequisites": ["Tool X installed", "Access to Y", "Knowledge of Z"],
+        "steps": [
+          {
+            "step": 1,
+            "action": "Specific Action Name",
+            "command": "exact command to run",
+            "expected_output": "what you should see",
+            "if_fails": "what to do if it doesn't work",
+            "validation": "how to verify success"
+          }
+        ]
+      },
+      "tools_required": ["Specific tool names with versions"],
+      "success_criteria": ["Measurable outcome 1", "Measurable outcome 2"],
+      "related_sops": ["sop-id-1", "sop-id-2"],
+      "metadata": {
+        "created": "YYYY-MM-DD",
+        "last_updated": "YYYY-MM-DD",
+        "created_by": "author-name",
+        "next_review": "YYYY-MM-DD"
+      }
+    },
+    "prompt_based_sop": {
+      "id": "my-prompt-sop",
+      "title": "My Prompt SOP Title",
+      "version": "1.0.0",
+      "type": "prompt-based",
+      "status": "active",
+      "description": "One sentence explaining what this AI interaction pattern does",
+      "purpose": "Why this prompt sequence exists and what AI behavior it enables",
+      "scope": "When and where agents should use this prompt pattern",
+      "commanders_intent": "How do we enable AI agents to [achieve specific outcome] while [maintaining specific style/constraints]?",
+      "roles": {
+        "ai_agent": "Which AI agent types can use this",
+        "human_shepherd": "Human oversight required",
+        "output_consumer": "Who uses the AI output"
+      },
+      "procedure": {
+        "prerequisites": ["AI model access", "Input data format", "Output requirements"],
+        "prompt_sequence": [
+          {
+            "step": 1,
+            "prompt_template": "Exact prompt text with {variables}",
+            "expected_response_pattern": "Format AI should follow",
+            "success_criteria": "How to know prompt worked",
+            "fallback_handling": "What to do if AI doesn't follow pattern"
+          }
+        ]
+      },
+      "ai_models_tested": ["GPT-4", "Claude-3", "etc"],
+      "success_criteria": ["AI produces expected format", "Output meets quality threshold"],
+      "related_sops": ["other-prompt-sop", "knowledge-sop"],
+      "metadata": {
+        "created": "YYYY-MM-DD",
+        "last_updated": "YYYY-MM-DD",
+        "created_by": "author-name",
+        "next_review": "YYYY-MM-DD"
+      }
+    }
+  },
+  "quality_guidelines": [
+    "Write for someone completely unfamiliar with the process",
+    "Include specific commands and examples where possible",
+    "Reference external dependencies and prerequisites",
+    "Keep procedures focused and atomic",
+    "Update related SOPs when dependencies change"
+  ],
+  "related_sops": [
+    "sop-updates",
+    "lighthouse-protocol",
+    "feature-discussions"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "reviewed_by": "development-team",
+    "next_review": "2025-09-06"
+  }
+}

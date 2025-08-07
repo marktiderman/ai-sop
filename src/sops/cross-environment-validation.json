@@ -1,0 +1,171 @@
+{
+  "id": "cross-environment-validation",
+  "title": "Cross-Environment Validation - Module & Testing Compatibility",
+  "version": "1.0.0",
+  "type": "sequence",
+  "status": "active",
+  "description": "Validates code works correctly across different environments (Jest, Node.js, browsers, etc.)",
+  "purpose": "Prevent environment-specific bugs by ensuring code is compatible across execution contexts",
+  "scope": "All code that may run in multiple environments or testing frameworks",
+  "commanders_intent": "How do we ensure code works seamlessly across development, testing, and production environments?",
+  "trigger_conditions": [
+    "Before committing code changes",
+    "When using environment-specific APIs (import.meta, require, etc.)",
+    "When adding new module detection logic", 
+    "When setting up new testing frameworks",
+    "Called by commit-sequence for quality gates"
+  ],
+  "vehicles_vs_values": {
+    "vehicle": "Specific environment checks, testing commands, compatibility patterns",
+    "value": "Reliable code execution, reduced debugging time, seamless CI/CD pipeline"
+  },
+  "prerequisite_checks": [
+    "Code uses potential environment-specific features",
+    "Tests are configured for the project",
+    "Multiple execution environments exist (dev, test, prod)"
+  ],
+  "sequence_steps": [
+    {
+      "step": 1,
+      "action": "Identify Environment-Specific Code",
+      "description": "Scan for code that may behave differently across environments",
+      "detection_patterns": [
+        "import.meta.url usage",
+        "require.main === module checks", 
+        "process.argv usage",
+        "__dirname or __filename references",
+        "global or window object access",
+        "Module resolution differences"
+      ],
+      "scanning_commands": [
+        "grep -r 'import\\.meta' src/",
+        "grep -r 'require\\.main' src/",
+        "grep -r 'process\\.argv' src/",
+        "grep -r '__dirname\\|__filename' src/"
+      ],
+      "success_criteria": "All environment-specific code patterns are identified"
+    },
+    {
+      "step": 2, 
+      "action": "Test in Development Environment",
+      "description": "Verify code works in local development setup",
+      "commands": [
+        "npm run dev (if available)",
+        "node src/index.js (or equivalent)",
+        "Verify no module resolution errors",
+        "Check console for environment warnings"
+      ],
+      "success_criteria": "Code starts and runs without environment errors"
+    },
+    {
+      "step": 3,
+      "action": "Test in Testing Environment", 
+      "description": "Ensure compatibility with testing frameworks (Jest, Mocha, etc.)",
+      "commands": [
+        "npm test",
+        "npm run test:ci (if available)",
+        "Check for module compatibility errors",
+        "Verify all test suites pass"
+      ],
+      "common_issues": [
+        "import.meta not supported in Jest",
+        "ES module vs CommonJS conflicts",
+        "Mock incompatibilities",
+        "Timeout issues with environment detection"
+      ],
+      "success_criteria": "All tests pass without environment-related failures"
+    },
+    {
+      "step": 4,
+      "action": "Test Build Environment",
+      "description": "Validate code compiles and builds correctly", 
+      "commands": [
+        "npm run build",
+        "npm run type-check",
+        "Verify no compilation errors",
+        "Check output for environment assumptions"
+      ],
+      "success_criteria": "Clean build with no environment-related warnings"
+    },
+    {
+      "step": 5,
+      "action": "Apply Cross-Environment Patterns",
+      "description": "Use proven patterns for environment detection",
+      "recommended_patterns": {
+        "main_module_detection": "typeof require !== 'undefined' && require.main === module",
+        "browser_detection": "typeof window !== 'undefined'",
+        "node_detection": "typeof process !== 'undefined' && process.versions?.node",
+        "esm_detection": "typeof __dirname === 'undefined'"
+      },
+      "anti_patterns": [
+        "Direct import.meta.url usage without fallbacks",
+        "Hardcoded file path assumptions", 
+        "Environment-specific global references",
+        "Fragile endsWith() logic for module detection"
+      ],
+      "success_criteria": "Code uses robust, cross-environment compatible patterns"
+    },
+    {
+      "step": 6,
+      "action": "Document Environment Dependencies",
+      "description": "Record any environment-specific requirements or behaviors",
+      "documentation_items": [
+        "List supported environments",
+        "Document any environment-specific configuration",
+        "Note testing framework requirements",
+        "Record known compatibility limitations"
+      ],
+      "success_criteria": "Environment requirements are clearly documented"
+    }
+  ],
+  "quality_gates": [
+    "All environment-specific patterns identified",
+    "Code runs successfully in development",
+    "All tests pass in testing environment", 
+    "Build completes without environment errors",
+    "Robust patterns used instead of fragile ones",
+    "Environment dependencies documented"
+  ],
+  "success_criteria": [
+    "Code works consistently across all target environments",
+    "No environment-specific bugs introduced",
+    "Testing pipeline remains stable",
+    "Documentation reflects environment requirements"
+  ],
+  "error_handling": {
+    "import_meta_in_jest": "Replace with cross-environment module detection",
+    "require_in_esm": "Use dynamic imports or conditional requires",
+    "global_conflicts": "Use environment detection before accessing globals",
+    "module_resolution_errors": "Check package.json module configuration"
+  },
+  "integration_points": [
+    "Called by commit-sequence for pre-commit validation",
+    "Referenced by testing strategy documentation",
+    "Used in CI/CD pipeline setup"
+  ],
+  "related_sops": [
+    "commit-sequence",
+    "the-standard",
+    "bugbot-workflow"
+  ],
+  "examples": [
+    {
+      "problem": "import.meta.url causes Jest test failures",
+      "solution": "Use: typeof require !== 'undefined' && require.main === module",
+      "explanation": "This pattern works in both CommonJS and ESM environments"
+    },
+    {
+      "problem": "Main module detection fails when imported as dependency",
+      "solution": "Avoid fragile endsWith() checks, use exact module comparison",
+      "explanation": "Prevents false positives from similar file names"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-01-06",
+    "last_updated": "2025-01-06", 
+    "created_by": "AI Agent",
+    "review_frequency": "quarterly",
+    "complexity": "intermediate",
+    "estimated_time": "10-15 minutes"
+  }
+}

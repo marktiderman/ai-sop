@@ -1,0 +1,91 @@
+{
+  "id": "feature-discussions",
+  "title": "Feature Discussions SOP",
+  "version": "1.0.0",
+  "type": "communication-sop",
+  "status": "active",
+  "description": "Standard Operating Procedure for conducting feature discussions and posting insights to GitHub issues",
+  "purpose": "Enable living documentation by capturing development conversations and insights directly in GitHub issues for future reference and team knowledge sharing",
+  "scope": "All feature-related discussions, design conversations, and strategic insights during development",
+  "roles": {
+    "discussion_facilitator": "AI assistant or team lead conducting the discussion",
+    "stakeholders": "Development team members, product owners, users providing input",
+    "documentarian": "Person responsible for ensuring insights are captured"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "Substantive discussion about existing GitHub issue topic",
+      "Strategic insights emerging from development conversation",
+      "Process improvements or methodology discussions",
+      "User feedback that affects product direction"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Identify discussion relevance",
+        "description": "Determine if the conversation contains insights valuable for future reference",
+        "criteria": ["Strategic decisions", "Process improvements", "Technical insights", "User feedback"]
+      },
+      {
+        "step": 2,
+        "action": "Locate related GitHub issue",
+        "description": "Find the appropriate GitHub issue that relates to the discussion topic",
+        "commands": ["gh issue list --search 'keywords'", "Review issue titles and content"]
+      },
+      {
+        "step": 3,
+        "action": "Format discussion summary",
+        "description": "Structure the insights in a clear, scannable format with proper context",
+        "format": {
+          "header": "## 💡 [Insight Type]: [Brief Summary]",
+          "metadata": "**From Conversation on [Date]:**",
+          "content": "User insights, AI analysis, strategic implications",
+          "footer": "---\\n*This discussion happened during active development and represents evolving product thinking.*"
+        }
+      },
+      {
+        "step": 4,
+        "action": "Post to GitHub issue",
+        "description": "Add the formatted discussion as a comment to the relevant issue",
+        "command": "gh issue comment [issue_number] --body 'formatted_content'"
+      },
+      {
+        "step": 5,
+        "action": "Confirm posting",
+        "description": "Verify the comment was posted successfully and is properly formatted",
+        "validation": ["Comment appears on issue", "Formatting is correct", "Links work properly"]
+      }
+    ]
+  },
+  "tools_required": [
+    "GitHub CLI (gh)",
+    "Access to relevant GitHub repository",
+    "Markdown formatting knowledge"
+  ],
+  "success_criteria": [
+    "Discussion insights captured in appropriate GitHub issue",
+    "Information is searchable and discoverable",
+    "Future team members can understand context and decisions",
+    "Living documentation principle maintained"
+  ],
+  "examples": [
+    {
+      "scenario": "SOP realization discussion",
+      "trigger": "User recognizes that style guides are actually SOPs",
+      "action": "Posted insights to ASFE issue #4 about strategic reframing",
+      "outcome": "Product positioning evolved from 'style guides' to 'SOPs'"
+    }
+  ],
+  "related_sops": [
+    "lighthouse-protocol",
+    "github-issue-creation",
+    "sop-updates"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "reviewed_by": "development-team",
+    "next_review": "2025-09-06"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "commander-intent-filter",
+  "title": "Commander Intent Filter - Goal Alignment Validation",
+  "version": "1.0.0",
+  "type": "filter",
+  "status": "active",
+  "description": "Specialized filter that validates all approaches against the original commander's intent",
+  "purpose": "Ensure solutions remain aligned with the fundamental purpose and goals",
+  "scope": "Applied to all decision points and solution evaluations",
+  "commanders_intent": "How do we ensure every decision and approach serves the original commander's intent?",
+  "filter_metaphor": "I am the Intent Guardian - protecting the original purpose from mission drift",
+  "filter_questions": {
+    "intent_alignment": [
+      "Does this approach serve the original commander's intent?",
+      "Are we solving the right problem or getting distracted?",
+      "How does this deliver value toward the stated goal?",
+      "Are we preserving the VALUES while adapting VEHICLES?"
+    ]
+  },
+  "success_criteria": [
+    "All approaches clearly serve the original intent",
+    "Mission drift is detected and corrected",
+    "Values are preserved through vehicle adaptations"
+  ],
+  "related_sops": [
+    "vehicles-vs-values",
+    "lighthouse-protocol"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "filter_type": "alignment_validation",
+    "priority": "highest"
+  }
+}

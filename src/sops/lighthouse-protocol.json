@@ -1,0 +1,128 @@
+{
+  "id": "lighthouse-protocol",
+  "title": "Lighthouse Protocol SOP",
+  "version": "1.0.0",
+  "type": "process-framework",
+  "status": "active",
+  "description": "Structured Issue-Driven Development Process for systematic feature development",
+  "purpose": "Provide a lighthouse protocol that guides feature decisions through systematic analysis to prevent scope creep and ensure user value delivery",
+  "scope": "All new feature requests, enhancements, and significant development initiatives",
+  "roles": {
+    "product_owner": "Person applying product owner mindset to analyze requests",
+    "development_team": "Team members implementing features using the protocol",
+    "stakeholders": "Users and team members providing input and feedback"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "New feature request received",
+      "Enhancement proposal submitted",
+      "Significant scope addition to existing work",
+      "Strategic initiative planning"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Product Owner Analysis",
+        "description": "Analyze the request through product owner lens",
+        "substeps": [
+          "Who benefits? (Primary, Secondary, Tertiary users)",
+          "What outcome? (Specific, measurable result)",
+          "Why important? (Business/user value proposition)"
+        ]
+      },
+      {
+        "step": 2,
+        "action": "How Might We? (3 Pathways)",
+        "description": "Brainstorm three distinct technical approaches",
+        "format": [
+          "Pathway 1: [Approach Name] - [Brief description]",
+          "Pathway 2: [Approach Name] - [Brief description]",
+          "Pathway 3: [Approach Name] - [Brief description]"
+        ]
+      },
+      {
+        "step": 3,
+        "action": "Decision Rationale",
+        "description": "Evaluate options and choose the best path",
+        "criteria": [
+          "Pros and cons for each pathway",
+          "Alignment with Elon's 5 Rules",
+          "Resource requirements and timeline",
+          "Risk assessment and mitigation"
+        ]
+      },
+      {
+        "step": 4,
+        "action": "Creative Naming",
+        "description": "Generate memorable, meaningful names for the feature",
+        "process": [
+          "Extract essential keywords",
+          "Brainstorm 10 concepts (places, people, stories, etc.)",
+          "Choose name that communicates essence",
+          "Add meaning explanation and alternatives"
+        ]
+      },
+      {
+        "step": 5,
+        "action": "User Story Formation",
+        "description": "Create clear user story as first element",
+        "format": "As a [user type], I want [goal] so that [benefit]"
+      },
+      {
+        "step": 6,
+        "action": "Documentation Creation",
+        "description": "Document the complete analysis in GitHub issue",
+        "includes": [
+          "User story (first after title)",
+          "Name meaning and alternatives",
+          "Product owner analysis",
+          "How Might We pathways",
+          "Decision rationale",
+          "Acceptance criteria",
+          "Success metrics",
+          "AI prompt templates used",
+          "Original word-for-word request"
+        ]
+      }
+    ]
+  },
+  "tools_required": [
+    "GitHub Issues",
+    "Markdown formatting knowledge",
+    "Product thinking frameworks",
+    "Decision-making templates"
+  ],
+  "success_criteria": [
+    "Clear user value proposition established",
+    "Technical approach validated through comparison",
+    "All stakeholders understand scope and rationale",
+    "Feature has memorable, meaningful name",
+    "Complete documentation available for future reference"
+  ],
+  "elons_5_rules_integration": [
+    "Make requirements less dumb - Question every requirement in Product Owner Analysis",
+    "Delete the part or process - Eliminate unnecessary complexity in pathway evaluation",
+    "Simplify and optimize - Choose simplest viable approach in Decision Rationale",
+    "Accelerate cycle time - Systematic process reduces decision time",
+    "Automate - Template and process automation through GitHub integration"
+  ],
+  "examples": [
+    {
+      "feature": "Lighthouse Protocol itself",
+      "user_story": "As a product owner navigating rapid development cycles, I want a lighthouse protocol that guides feature decisions through systematic analysis so that every feature safely reaches its intended user value destination without shipwrecking on scope creep",
+      "outcome": "Self-referential application demonstrating protocol effectiveness"
+    }
+  ],
+  "related_sops": [
+    "github-issue-creation",
+    "feature-discussions",
+    "sop-creation"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "reviewed_by": "development-team",
+    "next_review": "2025-09-06"
+  }
+}

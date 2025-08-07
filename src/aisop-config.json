@@ -1,0 +1,78 @@
+{
+  "name": "aisop-system",
+  "product_name": "AI-SOP (AISops Fables)",
+  "version": "1.0.0",
+  "description": "AI-SOP orchestration framework for knowledge-based and prompt-based Standard Operating Procedures",
+  "tagline": "Where AI agents learn wisdom through procedural fables",
+  "sop_conductor": "./sops/sop-conductor.json",
+  "knowledge_blocks": {
+    "description": "Foundation mindset and general knowledge - loaded at agent initialization",
+    "loading": "all_at_startup",
+    "vehicles-vs-values": "./sops/vehicles-vs-values.json",
+    "peanut-butter-jelly-principle": "./sops/peanut-butter-jelly-principle.json",
+    "ai-first-company-mindset": "./sops/ai-first-company-mindset.json",
+    "trust-but-verify-leadership": "./sops/trust-but-verify-leadership.json",
+    "netlify-environment-variables": "./sops/netlify-environment-variables.json"
+  },
+  "sequences": {
+    "description": "Step-by-step procedures with triggers, beginning, and end - Zapier-like recipes",
+    "loading": "triggered_by_conditions",
+    "lighthouse-protocol": "./sops/lighthouse-protocol.json",
+    "bugbot-workflow": "./sops/bugbot-workflow.json",
+    "git-workflow": "./sops/git-workflow.json",
+    "commit-sequence": "./sops/commit-sequence.json",
+    "github-issue-creation": "./sops/github-issue-creation.json",
+    "ai-development-cycle": "./sops/ai-development-cycle.json",
+    "monitoring-setup": "./sops/monitoring-setup.json",
+    "workspace-cleanup": "./sops/workspace-cleanup.json",
+    "update-documentation-model": "./sops/update-documentation-model.json",
+    "cross-environment-validation": "./sops/cross-environment-validation.json",
+    "work-cycle-protocol": "./sops/work-cycle-protocol.json",
+    "learning-documentation": "./sops/learning-documentation.json"
+  },
+  "filters": {
+    "description": "Specialized agents asking targeted questions to validate thinking - quality assurance lenses",
+    "loading": "called_within_sequences_or_on_demand",
+    "elons-5-rules": "./sops/elons-5-rules-filter.json",
+    "industry-best-practice": "./sops/industry-best-practice-filter.json",
+    "ai-first-company": "./sops/ai-first-company-filter.json",
+    "pb-and-j-clarity": "./sops/pb-and-j-clarity-filter.json",
+    "commander-intent": "./sops/commander-intent-filter.json"
+  },
+  "constitution_sequence": ["knowledge_blocks", "sequences", "filters"],
+  "mandatory_agent_loading": {
+    "description": "Critical files that every AI agent MUST read before starting work",
+    "loading_order": [
+      "AGENT_CONSTITUTION.md",
+      "aisop-config.json",
+      "sops/work-cycle-protocol.json",
+      "sops/lighthouse-protocol.json",
+      "sops/learning-documentation.json"
+    ],
+    "verification_requirements": [
+      "Agent must acknowledge constitution loading",
+      "Agent must identify current phase",
+      "Agent must demonstrate work cycle separation understanding",
+      "Agent must apply PB&J test to processes"
+    ],
+    "cursor_integration": {
+      "rules_file": ".cursor/rules/AGENT_CONSTITUTION.md",
+      "auto_load": true,
+      "mandatory_acknowledgment": true
+    }
+  },
+  "deprecated": {
+    "sop-updates": "./sops/sop-updates.json",
+    "ai-development-cycle-fable": "./sops/ai-development-cycle-fable.json"
+  },
+  "fables_metaphor": "Each SOP is a fable - a story that teaches AI agents wisdom for autonomous execution",
+  "conductor_metaphor": "AI agents are orchestra musicians, SOPs are sheet music, this system is the conductor",
+  "vehicles_vs_values": {
+    "principle": "Vehicles < Values",
+    "vehicle": "The exact prompt or precise code/action",
+    "value": "The goal we are trying to achieve in plain english",
+    "rule": "Vehicle can be adapted as necessary. Value cannot."
+  },
+  "created": "2025-08-06",
+  "updated": "2025-08-06"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "industry-best-practice-filter",
+  "title": "Industry Best Practice Filter - Standards Validation",
+  "version": "1.0.0",
+  "type": "filter",
+  "status": "active",
+  "description": "Specialized filter that validates approaches against established industry best practices",
+  "purpose": "Ensure solutions align with proven industry standards and established methodologies",
+  "scope": "Applied to architectural decisions, process design, and solution selection",
+  "commanders_intent": "How do we ensure our approach aligns with industry best practices while avoiding unnecessary complexity?",
+  "filter_metaphor": "I am the Industry Standards Specialist - ensuring we build on proven foundations",
+  "filter_questions": {
+    "standards_alignment": [
+      "Does this approach follow established industry patterns?",
+      "Are we reinventing solutions to solved problems?",
+      "What industry standards should we consider?",
+      "How does this compare to market leaders' approaches?"
+    ]
+  },
+  "success_criteria": [
+    "Solutions build on proven industry foundations",
+    "Unnecessary reinvention is avoided",
+    "Industry standards are appropriately applied"
+  ],
+  "related_sops": [
+    "elons-5-rules-filter",
+    "vehicles-vs-values"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "filter_type": "standards_validation",
+    "priority": "medium"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "monitoring-setup",
+  "title": "Monitoring Setup SOP",
+  "version": "1.0.0",
+  "type": "infrastructure-sop",
+  "status": "active",
+  "description": "Setting up automated development assistant monitoring system",
+  "purpose": "Enable automated responses to development events through webhook monitoring",
+  "scope": "Initial setup and configuration of development assistant monitoring infrastructure",
+  "roles": {
+    "devops_engineer": "Person setting up monitoring infrastructure",
+    "developer": "Team member configuring webhook integration",
+    "admin": "Person with access to deployment environment variables"
+  },
+  "procedure": {
+    "trigger_conditions": [
+      "New project requiring automated monitoring",
+      "Existing project needs monitoring enhancement",
+      "Development assistant integration required"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Deploy Webhook Function",
+        "description": "Ensure dev-assistant-webhook function is deployed",
+        "file": "netlify/functions/dev-assistant-webhook.ts",
+        "validation": "Function accessible at /.netlify/functions/dev-assistant-webhook"
+      },
+      {
+        "step": 2,
+        "action": "Configure Environment Variables",
+        "description": "Set up required environment variables in deployment",
+        "variables": ["DEV_ASSISTANT_WEBHOOK_URL", "DEV_ASSISTANT_WEBHOOK_SECRET (optional)"],
+        "location": "Netlify dashboard > Site settings > Environment variables"
+      },
+      {
+        "step": 3,
+        "action": "Set Up GitHub Workflow",
+        "description": "Ensure GitHub Actions workflow is configured",
+        "file": ".github/workflows/notify-dev-assistant.yml",
+        "triggers": ["issue_comment", "workflow_run", "pull_request"]
+      },
+      {
+        "step": 4,
+        "action": "Configure GitHub Secrets",
+        "description": "Add webhook URL to GitHub repository secrets",
+        "secret_name": "DEV_ASSISTANT_WEBHOOK_URL",
+        "value": "https://your-site.netlify.app/.netlify/functions/dev-assistant-webhook"
+      },
+      {
+        "step": 5,
+        "action": "Test Webhook Integration",
+        "description": "Verify webhook receives and processes events",
+        "test_methods": ["Manual GitHub comment with @bugbot", "Trigger test workflow run", "Use test script: npm run test:webhook"]
+      },
+      {
+        "step": 6,
+        "action": "Verify Event Processing",
+        "description": "Check webhook logs for proper event handling",
+        "log_locations": ["Netlify Functions logs", "GitHub Actions workflow logs", "Local test script output"]
+      },
+      {
+        "step": 7,
+        "action": "Configure Event Priorities",
+        "description": "Ensure event priority mapping works correctly",
+        "priorities": ["Critical: Production deployment failures", "High: BugBot comments, CI failures", "Medium: Successful deployments", "Low: General status updates"]
+      },
+      {
+        "step": 8,
+        "action": "Document Monitoring Setup",
+        "description": "Update documentation with monitoring configuration",
+        "files": ["docs/DEVELOPMENT_ASSISTANT.md", "README.md monitoring section"]
+      }
+    ]
+  },
+  "tools_required": ["Netlify CLI", "GitHub CLI", "curl for testing", "Access to deployment dashboard"],
+  "success_criteria": ["Webhook responds to test events", "GitHub Actions triggers notifications", "Event priorities correctly assigned", "Logs show proper event processing"],
+  "troubleshooting": {
+    "webhook_not_receiving": ["Check GitHub webhook delivery history", "Verify Netlify function deployment", "Test webhook URL accessibility"],
+    "events_not_processing": ["Check function logs for errors", "Verify event format matches schema", "Test individual event types"],
+    "integration_issues": ["Confirm environment variables set", "Check network connectivity", "Verify webhook URLs accessible"]
+  },
+  "related_sops": ["bugbot-workflow", "github-issue-creation"],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "next_review": "2025-09-06"
+  }
+}

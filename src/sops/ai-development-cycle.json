@@ -1,0 +1,52 @@
+{
+  "id": "ai-development-cycle",
+  "title": "AI Development Cycle Sequence - Modular Development Orchestration",
+  "version": "1.0.0",
+  "type": "sequence",
+  "status": "active",
+  "description": "Modular sequence orchestrating the complete AI development cycle from discovery through delivery",
+  "purpose": "Coordinate multiple specialized sequences to deliver complete development outcomes",
+  "scope": "End-to-end development projects requiring systematic progression through phases",
+  "commanders_intent": "How do we orchestrate complete development cycles using modular sequences while maintaining focus and quality?",
+  "trigger_conditions": [
+    "New development project initiated",
+    "Complex feature requiring systematic approach",
+    "Multi-phase development work needed"
+  ],
+  "sequence_composition": [
+    {
+      "phase": "Discovery",
+      "sequences": ["research-and-analysis", "problem-definition"]
+    },
+    {
+      "phase": "Planning",
+      "sequences": ["lighthouse-protocol", "github-issue-creation"]
+    },
+    {
+      "phase": "Development",
+      "sequences": ["git-workflow", "commit-sequence"]
+    },
+    {
+      "phase": "Quality",
+      "sequences": ["bugbot-workflow", "update-documentation-model"]
+    }
+  ],
+  "success_criteria": [
+    "All phases completed systematically",
+    "Quality maintained throughout cycle",
+    "Documentation updated and accurate"
+  ],
+  "related_sops": [
+    "lighthouse-protocol",
+    "git-workflow",
+    "commit-sequence",
+    "update-documentation-model"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "sequence_type": "orchestration",
+    "priority": "high"
+  }
+}

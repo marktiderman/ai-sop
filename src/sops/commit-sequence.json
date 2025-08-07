@@ -1,0 +1,237 @@
+{
+  "id": "commit-sequence",
+  "title": "Git Commit Sequence - Quality Controlled Code Delivery",
+  "version": "1.0.0",
+  "type": "sequence",
+  "status": "active",
+  "description": "Systematic sequence for committing code changes with quality checks, proper messaging, and issue linking",
+  "purpose": "Ensure all commits follow best practices, pass quality gates, and maintain clear project history",
+  "scope": "All code commits in the development workflow",
+  "commanders_intent": "How do we ensure every commit delivers value, passes quality checks, and maintains clear project history for future reference?",
+  "trigger_conditions": [
+    "Code changes ready for commit",
+    "Feature development completed",
+    "Bug fixes implemented",
+    "Documentation updates ready",
+    "Called by other sequences requiring clean commits"
+  ],
+  "vehicles_vs_values": {
+    "vehicle": "Specific git commands, commit message formats, quality check processes",
+    "value": "Clean project history, traceable changes, quality assurance, collaborative development"
+  },
+  "prerequisite_checks": [
+    "Working directory contains changes to commit",
+    "All tests are passing locally",
+    "Code follows established patterns",
+    "No obvious security issues present"
+  ],
+  "sequence_steps": [
+    {
+      "step": 1,
+      "action": "Pre-Commit Quality Checks",
+      "description": "Ensure code quality and cross-environment compatibility before staging changes",
+      "commands": [
+        "npm run lint (if available)",
+        "npm run type-check (if available)", 
+        "npm test (if available)",
+        "npm run build (if available)",
+        "Validate AISop references in config match existing files"
+      ],
+      "enhanced_checks": [
+        "Cross-environment validation for module detection patterns",
+        "Testing framework compatibility verification",
+        "Environment-specific API usage review"
+      ],
+      "sequence_calls": [
+        "cross-environment-validation (if environment-specific code detected)"
+      ],
+      "filters_to_apply": ["elons-5-rules"],
+      "success_criteria": "All automated checks pass and code works across environments",
+      "failure_handling": "Fix issues and run cross-environment validation before proceeding to staging"
+    },
+    {
+      "step": 2,
+      "action": "Stage Changes Strategically",
+      "description": "Stage related changes together for logical commits",
+      "commands": [
+        "git status (review all changes)",
+        "git add [specific files] (stage related changes)",
+        "git status (verify correct files staged)"
+      ],
+      "best_practices": [
+        "Group related changes in single commits",
+        "Separate feature changes from documentation updates",
+        "Avoid staging unrelated changes together"
+      ],
+      "success_criteria": "Only related changes are staged together"
+    },
+    {
+      "step": 3,
+      "action": "Craft Quality Commit Message",
+      "description": "Create clear, informative commit messages following conventions",
+      "format": "type(scope): description\n\n[optional body]\n\n[optional footer]",
+      "commit_types": {
+        "feat": "New feature",
+        "fix": "Bug fix",
+        "docs": "Documentation changes",
+        "style": "Code style changes (formatting, etc.)",
+        "refactor": "Code refactoring",
+        "test": "Adding or updating tests",
+        "chore": "Build process or auxiliary tool changes"
+      },
+      "message_guidelines": [
+        "Use imperative mood (Add feature, Fix bug)",
+        "Capitalize first letter",
+        "No period at end of subject line",
+        "Limit subject line to 50 characters",
+        "Separate subject from body with blank line",
+        "Explain what and why, not how"
+      ],
+      "examples": [
+        "feat: add AI-SOP Constitution loading system",
+        "fix: resolve CORS configuration for authentication",
+        "docs: update README with new architecture overview"
+      ]
+    },
+    {
+      "step": 4,
+      "action": "Link to Issues When Relevant",
+      "description": "Connect commits to related GitHub issues",
+      "linking_patterns": [
+        "Related to #123 (references issue)",
+        "Closes #123 (closes issue)",
+        "Fixes #123 (fixes bug issue)",
+        "Part of #123 (partial implementation)"
+      ],
+      "when_to_link": [
+        "Commit addresses specific issue",
+        "Commit is part of larger feature",
+        "Commit fixes reported bug",
+        "Commit implements requested enhancement"
+      ]
+    },
+    {
+      "step": 5,
+      "action": "Execute Commit",
+      "description": "Perform the actual commit with quality message",
+      "command": "git commit -m \"[commit message]\"",
+      "verification": "git log --oneline -1 (verify commit appears)",
+      "success_criteria": "Commit created with proper message and linked issues"
+    },
+    {
+      "step": 6,
+      "action": "Post-Commit Verification",
+      "description": "Verify commit quality and prepare for push",
+      "checks": [
+        "git log --oneline -3 (review recent commits)",
+        "git status (ensure clean working directory)",
+        "Verify commit message accuracy",
+        "Check that all intended changes are included"
+      ],
+      "quality_verification": [
+        "Commit message clearly describes changes",
+        "All related changes are included",
+        "No unintended changes are committed",
+        "Issue links are correct"
+      ]
+    },
+    {
+      "step": 7,
+      "action": "Push Strategy Decision",
+      "description": "Determine appropriate push strategy based on context",
+      "decision_tree": {
+        "feature_branch": "Push to feature branch for review",
+        "main_branch": "Only if explicitly approved and tested",
+        "documentation_only": "Can push directly if no functional changes"
+      },
+      "commands": [
+        "git push origin [branch-name]",
+        "git push (if tracking branch set)"
+      ],
+      "validation": "Changes appear in remote repository"
+    },
+    {
+      "step": 8,
+      "action": "Branch Management Decision Gate",
+      "description": "Evaluate if next request requires staying on current branch or switching back to default branch",
+      "decision_gate": {
+        "trigger": "When starting work on a new user request after completing commits/pushes",
+        "evaluation_criteria": [
+          "Is the new request a continuation of the current feature/fix?",
+          "Does the new request build directly on the changes just committed?",
+          "Is the new request part of the same logical work unit?"
+        ]
+      },
+      "decision_paths": {
+        "continue_current_branch": {
+          "condition": "New request is directly related to current work",
+          "action": "Stay on current branch and continue development",
+          "rationale": "Maintains logical grouping of related changes"
+        },
+        "switch_to_default_branch": {
+          "condition": "New request is unrelated or starts new work",
+          "action": "Switch back to default branch (dev) before starting new work",
+          "commands": [
+            "git checkout dev",
+            "git pull origin dev (ensure up to date)"
+          ],
+          "rationale": "Ensures clean separation of unrelated features and prevents branch confusion"
+        }
+      },
+      "best_practices": [
+        "When in doubt, switch back to default branch",
+        "Document branch switching decision in commit/branch naming",
+        "Always pull latest changes when switching to default branch",
+        "Consider creating new feature branch from updated default branch"
+      ],
+      "success_criteria": "Agent is on appropriate branch for the next request type"
+    }
+  ],
+  "quality_gates": [
+    "All automated tests pass",
+    "Linting checks pass",
+    "Type checking passes (if applicable)",
+    "Commit message follows conventions",
+    "Related issues are properly linked",
+    "Only intended changes are committed"
+  ],
+  "success_criteria": [
+    "Clean commit with descriptive message",
+    "All quality checks passed",
+    "Changes properly staged and committed",
+    "Remote repository updated (if pushed)",
+    "Project history remains clean and traceable",
+    "Agent is positioned on correct branch for next request"
+  ],
+  "error_handling": {
+    "lint_failures": "Fix linting issues before committing",
+    "test_failures": "Address failing tests before proceeding",
+    "merge_conflicts": "Resolve conflicts and re-run sequence",
+    "push_failures": "Check remote status and resolve conflicts",
+    "branch_confusion": "Use branch management decision gate to determine correct branch",
+    "uncommitted_changes": "Commit or stash changes before switching branches"
+  },
+  "integration_points": [
+    "Called by update-documentation-model sequence",
+    "Used in AI development cycle delivery phase",
+    "Integrated with bugbot-workflow for reviews",
+    "Part of lighthouse-protocol implementation"
+  ],
+  "related_sops": [
+    "git-workflow",
+    "update-documentation-model", 
+    "ai-development-cycle",
+    "elons-5-rules-filter",
+    "cross-environment-validation"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "sequence_type": "foundational",
+    "usage_frequency": "high",
+    "recent_updates": [
+      "Added Step 8: Branch Management Decision Gate for proper workflow transitions"
+    ]
+  }
+}

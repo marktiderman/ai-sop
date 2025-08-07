@@ -1,0 +1,37 @@
+{
+  "id": "peanut-butter-jelly-principle",
+  "title": "Peanut Butter & Jelly Principle - Zero Knowledge Assumption",
+  "version": "1.0.0",
+  "type": "knowledge_block",
+  "status": "active",
+  "description": "Foundation principle requiring every instruction to be executable by someone with ZERO prior knowledge",
+  "purpose": "Ensure all procedures are accessible to complete beginners without hidden assumptions",
+  "scope": "Applied to all documentation, SOPs, and user-facing instructions",
+  "commanders_intent": "How do we ensure every instruction is so clear that anyone can follow it successfully?",
+  "core_principle": "Every step must be executable by someone with ZERO prior knowledge - like making a PB&J sandwich from scratch",
+  "knowledge_content": {
+    "fundamental_rule": "Assume nothing. Explain everything. Test with novices.",
+    "application_areas": [
+      "All SOP procedures and instructions",
+      "Documentation and user guides",
+      "Command sequences and workflows",
+      "Setup and configuration steps"
+    ]
+  },
+  "success_criteria": [
+    "Complete novices can execute procedures successfully",
+    "No hidden assumptions remain in instructions",
+    "All prerequisites are explicitly stated"
+  ],
+  "related_sops": [
+    "pb-and-j-clarity-filter",
+    "vehicles-vs-values"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "knowledge_type": "accessibility_principle",
+    "priority": "high"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "id": "pb-and-j-clarity-filter",
+  "title": "PB&J Clarity Filter - Complete Novice Accessibility Validation",
+  "version": "1.0.0",
+  "type": "filter",
+  "status": "active",
+  "description": "Specialized filter that validates all procedures can be executed by someone with ZERO prior knowledge",
+  "purpose": "Ensure every SOP, sequence, and instruction passes the Peanut Butter & Jelly test for absolute beginner clarity",
+  "scope": "Applied to all user-facing procedures, documentation, and instructional content",
+  "commanders_intent": "How do we ensure every instruction is so clear that a complete novice can execute it successfully without additional help?",
+  "filter_metaphor": "I am the Absolute Beginner Advocate - challenging every assumption and demanding crystal clarity",
+  "pb_j_principle": "Every step must be executable by someone with ZERO prior knowledge - like making a PB&J sandwich from scratch",
+  "filter_questions": {
+    "assumption_detection": {
+      "title": "Hidden Assumptions Detector",
+      "questions": [
+        "What knowledge am I assuming the user already has?",
+        "What tools am I assuming are already installed or available?",
+        "What context am I assuming from previous steps?",
+        "What jargon or technical terms need explanation?",
+        "What 'obvious' steps might not be obvious to a beginner?"
+      ],
+      "red_flags": [
+        "Obviously...", "Simply...", "Just...", "Easily...",
+        "Use the standard method", "Follow normal procedure",
+        "As you know...", "Like before...",
+        "The usual way", "Standard practice"
+      ]
+    },
+    "specificity_validation": {
+      "title": "Exact Instructions Checker",
+      "questions": [
+        "Are file paths exact and copy-pasteable?",
+        "Are commands complete with all required parameters?",
+        "Are button/menu locations precisely described?",
+        "Are expected outcomes explicitly stated?",
+        "Are error handling instructions provided?"
+      ],
+      "requirements": [
+        "Exact file paths: /Users/markt/Git/coach-loop-ai/aisop-system/",
+        "Complete commands: git commit -m \"exact message format\"",
+        "Precise locations: Click the blue 'Save' button in the top right",
+        "Expected results: You should see 'Success' message appear",
+        "Error handling: If you see 'Error X', do Y"
+      ]
+    },
+    "prerequisite_validation": {
+      "title": "Prerequisites Completeness Check",
+      "questions": [
+        "What tools must be installed before starting?",
+        "What permissions or access is required?",
+        "What prior knowledge is actually necessary?",
+        "What setup steps must be completed first?",
+        "How can users verify they're ready to proceed?"
+      ],
+      "format": {
+        "required_tools": ["Specific tool name with version", "Another tool"],
+        "required_access": ["GitHub account", "Repository write access"],
+        "required_knowledge": ["Basic file navigation", "Copy/paste operations"],
+        "validation_check": "Can you navigate to X folder? If not, stop and get help."
+      }
+    },
+    "step_atomicity": {
+      "title": "Step Size Validation",
+      "questions": [
+        "Is each step small enough to execute without sub-decisions?",
+        "Can each step be verified before proceeding?",
+        "Are steps logically sequential without gaps?",
+        "Does each step have a clear success indicator?",
+        "Can someone recover if a step fails?"
+      ],
+      "good_step_format": {
+        "action": "Specific action name",
+        "command": "exact command to run",
+        "expected_output": "what you should see",
+        "validation": "how to verify success",
+        "if_fails": "what to do if it doesn't work"
+      }
+    }
+  },
+  "filter_execution": {
+    "validation_process": [
+      {
+        "step": 1,
+        "action": "Read through entire procedure as a beginner",
+        "mindset": "Pretend you've never done this before and know nothing about the domain"
+      },
+      {
+        "step": 2,
+        "action": "Identify all assumptions",
+        "output": "List every piece of assumed knowledge"
+      },
+      {
+        "step": 3,
+        "action": "Check for exact instructions",
+        "validation": "Can every command be copy-pasted exactly?"
+      },
+      {
+        "step": 4,
+        "action": "Verify prerequisites are explicit",
+        "requirement": "All tools, access, and knowledge requirements listed"
+      },
+      {
+        "step": 5,
+        "action": "Test step atomicity",
+        "validation": "Each step can be completed without sub-decisions"
+      }
+    ],
+    "pb_j_test": {
+      "description": "The ultimate test - have someone completely unfamiliar execute the procedure",
+      "success_criteria": [
+        "Complete novice achieves expected outcome",
+        "No additional explanations needed",
+        "User doesn't get stuck or confused",
+        "Time to completion is reasonable"
+      ],
+      "failure_indicators": [
+        "User asks 'what does this mean?'",
+        "User gets stuck on any step",
+        "User produces unexpected results",
+        "User requires additional help"
+      ]
+    }
+  },
+  "output_format": {
+    "clarity_score": "Scale 1-10 where 10 = perfect PB&J compliance",
+    "assumptions_found": "List of hidden assumptions to address",
+    "specificity_gaps": "Instructions that need more detail",
+    "prerequisite_issues": "Missing or unclear requirements",
+    "step_problems": "Steps that are too large or unclear",
+    "recommendations": "Specific changes to improve clarity"
+  },
+  "success_criteria": [
+    "All procedures pass the actual PB&J test with real novices",
+    "Hidden assumptions are eliminated",
+    "Instructions are copy-pasteable and exact",
+    "Prerequisites are explicitly stated",
+    "Steps are atomic and verifiable"
+  ],
+  "integration_points": [
+    "Applied during SOP creation and updates",
+    "Used in documentation reviews",
+    "Required for user-facing procedures",
+    "Part of quality assurance process"
+  ],
+  "related_sops": [
+    "vehicles-vs-values",
+    "sop-conductor",
+    "update-documentation-model"
+  ],
+  "metadata": {
+    "created": "2025-08-06",
+    "last_updated": "2025-08-06",
+    "created_by": "ai-assistant",
+    "filter_type": "accessibility",
+    "priority": "high"
+  }
+}
