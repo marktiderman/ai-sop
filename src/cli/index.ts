@@ -2,12 +2,12 @@
 
 /**
  * AI-SOP CLI Tool
- * 
+ *
  * Command-line interface for AI-SOP operations
  */
 
-import { Command } from 'commander';
 import chalk from 'chalk';
+import { Command } from 'commander';
 import inquirer from 'inquirer';
 import { AISop } from '../index';
 
@@ -27,7 +27,7 @@ program
     try {
       const aiSop = new AISop();
       const sops = aiSop.listSOPs();
-      
+
       console.log(chalk.blue('📚 Available SOPs:'));
       sops.forEach(sop => {
         console.log(chalk.green(`  • ${sop}`));
@@ -46,7 +46,7 @@ program
     try {
       const aiSop = new AISop();
       const result = await aiSop.executeSOP(sopId, options.context);
-      
+
       console.log(chalk.green('✅ SOP executed successfully:'));
       console.log(result);
     } catch (error) {
@@ -60,15 +60,15 @@ program
   .description('Start interactive AI-SOP session')
   .action(async () => {
     console.log(chalk.blue('🎭 Welcome to AI-SOP Interactive Mode!'));
-    
+
     const aiSop = new AISop();
     const sops = aiSop.listSOPs();
-    
+
     if (sops.length === 0) {
       console.log(chalk.yellow('No SOPs available. Please load some SOPs first.'));
       return;
     }
-    
+
     const { selectedSop } = await inquirer.prompt([
       {
         type: 'list',
@@ -77,7 +77,7 @@ program
         choices: sops
       }
     ]);
-    
+
     console.log(chalk.green(`Executing: ${selectedSop}`));
     // TODO: Implement interactive execution
   });

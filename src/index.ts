@@ -1,13 +1,13 @@
 /**
  * AI-SOP Core Package
- * 
- * AI-SOP orchestration framework for knowledge-based and prompt-based 
+ *
+ * AI-SOP orchestration framework for knowledge-based and prompt-based
  * Standard Operating Procedures
  */
 
 export * from './core/engine';
-export * from './core/registry';
 export * from './core/loader';
+export * from './core/registry';
 export * from './types';
 
 // Main AI-SOP class

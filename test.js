@@ -12,10 +12,10 @@ console.log('🎭 Testing AI-SOP Package...\n');
 try {
   const aiSop = new AISop();
   console.log('✅ AISop class instantiated successfully');
-  
+
   const sops = aiSop.listSOPs();
   console.log(`✅ listSOPs() returned: ${sops.length} SOPs`);
-  
+
   console.log('\n🎉 All tests passed! Package is working correctly.');
 } catch (error) {
   console.error('❌ Test failed:', error.message);

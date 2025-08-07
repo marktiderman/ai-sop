@@ -2,7 +2,7 @@
 
 /**
  * Basic Usage Example for AI-SOP Package
- * 
+ *
  * This example shows how to use the AI-SOP package in a Node.js application
  */
 

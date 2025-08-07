@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Generated files
+*.d.ts.map
+*.js.map
+
+# Documentation
+*.md
+
+# Config files
+*.json
+*.yml
+*.yaml
+
+# Test files
+*.test.js
+*.test.ts
+test.js
