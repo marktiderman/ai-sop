@@ -1,6 +1,6 @@
 {
   "name": "ai-sop",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "AI-SOP orchestration framework for knowledge-based and prompt-based Standard Operating Procedures",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
