@@ -1,6 +1,6 @@
 /**
  * AI-SOP Loader
- * 
+ *
  * Handles loading SOPs from various sources
  */
 
@@ -27,14 +27,14 @@ export class AISopLoader implements SOPLoader {
     try {
       const files = await fs.promises.readdir(dirPath);
       const sopFiles = files.filter(file => file.endsWith('.json'));
-      
+
       const sops = [];
       for (const file of sopFiles) {
         const filePath = path.join(dirPath, file);
         const sop = await this.loadFromFile(filePath);
         sops.push(sop);
       }
-      
+
       return sops;
     } catch (error) {
       throw new Error(`Failed to load SOPs from directory ${dirPath}: ${error}`);

@@ -1,6 +1,6 @@
 /**
  * AI-SOP Types
- * 
+ *
  * TypeScript type definitions for AI-SOP
  */
 

@@ -1,6 +1,6 @@
 /**
  * AI-SOP Registry
- * 
+ *
  * Manages SOP registry and metadata
  */
 
