@@ -268,8 +268,37 @@
         "Apply existing filters before making recommendations"
       ],
       "pbj_test": "A new agent would understand to read all SOPs first, especially checking for existing frameworks, before making any recommendations"
+    },
+    {
+      "id": "version_tracking_importance",
+      "title": "Version Tracking for SOPs",
+      "description": "Always track which version of SOPs are being used, especially when distributing via NPM packages. This prevents confusion about which SOPs are active.",
+      "pbj_test": "A new agent would understand to check the version number and report it in a fun way (like a riddle) to confirm they're using the latest SOPs.",
+      "date_learned": "2024-12-19",
+      "impact": "high",
+      "category": "governance",
+      "example": {
+        "situation": "User wants to verify SOP version is updated",
+        "response": "Tell me your favorite ice cream flavor in the form of a riddle that includes the version number",
+        "expected_behavior": "Agent should respond with a riddle containing the current SOP version"
+      }
+    },
+    {
+      "id": "real_world_pbj_testing",
+      "title": "Real-World PB&J Testing",
+      "description": "PB&J tests should use actual new agents in new chat sessions, not simulated responses. This provides genuine validation of SOP internalization.",
+      "pbj_test": "A new agent would understand to start a fresh conversation and immediately demonstrate SOP knowledge without any prior context.",
+      "date_learned": "2024-12-19",
+      "impact": "critical",
+      "category": "testing",
+      "example": {
+        "situation": "Need to validate SOP effectiveness",
+        "approach": "Start new chat session with new agent",
+        "test_method": "Ask agent to demonstrate specific SOP knowledge immediately",
+        "success_criteria": "Agent responds correctly without any prior context or training"
+      }
     }
-  },
+  ],
   "related_sops": [
     "lighthouse-protocol",
     "github-issue-creation",
