@@ -57,3 +57,7 @@ export class AISop {
 
 // Default export
 export default AISop;
+
+// Service and route exports
+export * from './services/aiSopService';
+export * from './routes/aiSop';

@@ -60,6 +60,12 @@
     "dist/**/*",
     "src/sops/**/*",
     "src/aisop-config.json",
+    "src/services/**/*",
+    "src/routes/**/*",
+    "AGENT_CONSTITUTION.md",
+    ".cursor/rules/**/*",
+    "agents.md",
+    "test-pbj-real-world.cjs",
     "README.md",
     "LICENSE"
   ]
