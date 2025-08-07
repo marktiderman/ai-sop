@@ -1,6 +1,6 @@
 {
   "name": "ai-sop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AI-SOP orchestration framework for knowledge-based and prompt-based Standard Operating Procedures",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -58,6 +58,8 @@
   },
   "files": [
     "dist/**/*",
+    "src/sops/**/*",
+    "src/aisop-config.json",
     "README.md",
     "LICENSE"
   ]

@@ -109,6 +109,76 @@
         "Real-world testing scenarios described",
         "Ready for human and AI testing"
       ]
+    },
+    {
+      "step": 9,
+      "action": "Capture Lessons Learned (AAR)",
+      "description": "Document what worked, what didn't, and update SOPs if needed",
+      "requirements": [
+        "Write down 3 things that went well in this work cycle",
+        "Write down 3 things that could have gone better",
+        "Check if any SOPs need updates (see sop-updates.json)",
+        "Update the GitHub issue with your learnings"
+      ],
+      "advanced_guidance": {
+        "for_experienced_agents": [
+          "Apply SOP Conductor framework for systematic review",
+          "Use existing filters (Elon's 5 Rules, Commander Intent, AI-First)",
+          "Follow learning-documentation protocol for comprehensive capture"
+        ],
+        "sop_references": {
+          "sop_conductor": "./sops/sop-conductor.json",
+          "sop_updates": "./sops/sop-updates.json",
+          "learning_documentation": "./sops/learning-documentation.json"
+        }
+      }
+    },
+    {
+      "step": 10,
+      "action": "Back on Track Filter - Focus Management & Priority Alignment",
+      "description": "Systematic approach to returning to main work stream and managing competing priorities",
+      "requirements": [
+        "Confirm current work cycle is complete",
+        "Review current GitHub issues for context and open items",
+        "Identify what we were working on before this cycle (if it was a side quest)",
+        "Check for any urgent issues that emerged during the cycle",
+        "Update issue list with any new tasks or learnings",
+        "Recommend next priority task based on strategic importance",
+        "Get user confirmation before proceeding to next work cycle"
+      ],
+      "back_on_track_filter": {
+        "priority_1": "Complete current work cycle if unfinished",
+        "priority_2": "Return to main work stream if this was a side quest",
+        "priority_3": "Address urgent issues that emerged during cycle",
+        "decision_framework": "If competing priorities exist, present all options to user for choice"
+      },
+      "issue_management": {
+        "review_current_issues": [
+          "List all open GitHub issues for context",
+          "Note any issues that might be relevant to current work",
+          "Identify issues that could be affected by current changes",
+          "Keep in mind for future work cycles (don't prioritize unless urgent)"
+        ],
+        "update_issue_list": [
+          "Add new tasks discovered during work cycle",
+          "Update existing issues with new learnings or blockers",
+          "Check for duplicate issues before creating new ones",
+          "Use existing issue templates and labels",
+          "Follow issue creation SOP for new items"
+        ],
+        "issue_bloat_prevention": [
+          "Search existing issues before creating new ones",
+          "Extend existing issues if appropriate",
+          "Use labels and milestones for organization",
+          "Close issues that are resolved or no longer relevant"
+        ]
+      },
+      "adhd_support": {
+        "context_restoration": "Always remind user of previous context before proceeding",
+        "priority_clarity": "Present clear, numbered priorities with rationale",
+        "momentum_preservation": "Return to work with highest strategic value and momentum",
+        "issue_context": "Review issues to maintain awareness of full project scope"
+      }
     }
   ],
   "success_criteria": [
@@ -117,7 +187,9 @@
     "Real-world functionality is testable",
     "Pull request created and ready for review",
     "Work cycle completed within estimated time (5-120 minutes)",
-    "Progress tracking maintained throughout development"
+    "Progress tracking maintained throughout development",
+    "After Action Report completed with lessons learned captured",
+    "SOP governance review completed and documented"
   ],
   "checklist_management": {
     "update_methods": [
@@ -185,6 +257,17 @@
         "Create user stories with clear value proposition",
         "Define acceptance criteria before starting work"
       ]
+    },
+    "sop_review_completeness": {
+      "principle": "Always read ALL existing SOPs before proposing new ones or changes",
+      "common_mistake": "Proposing new SOPs without checking existing ones, missing critical frameworks like Elon's 5 Rules and SOP Conductor",
+      "correct_approach": [
+        "Systematically read all SOPs in aisop-system/sops/",
+        "Check for existing frameworks that might cover proposed functionality",
+        "Use existing SOPs instead of creating new ones",
+        "Apply existing filters before making recommendations"
+      ],
+      "pbj_test": "A new agent would understand to read all SOPs first, especially checking for existing frameworks, before making any recommendations"
     }
   },
   "related_sops": [
@@ -192,7 +275,10 @@
     "github-issue-creation",
     "git-workflow",
     "commit-sequence",
-    "ai-development-cycle-fable"
+    "ai-development-cycle-fable",
+    "sop-conductor",
+    "sop-updates",
+    "learning-documentation"
   ],
   "metadata": {
     "created": "2025-08-07",

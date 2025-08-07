@@ -1,0 +1,27 @@
+{
+  "id": "ice-cream-test",
+  "title": "Ice Cream Preference Test",
+  "version": "1.0.0",
+  "type": "knowledge_block",
+  "status": "active",
+  "description": "Simple test SOP for demonstrating override functionality",
+  "purpose": "Test that local overrides work correctly by changing ice cream preference",
+  "scope": "Testing override system functionality",
+  "commander_intent": "How do we test that local overrides work correctly?",
+  "content": {
+    "default_response": "my favorite ice cream is Graeters Raspberry Chocolate Chip",
+    "override_response": "chocolate",
+    "test_scenario": {
+      "step_1": "Query without override - should return 'Graeters Raspberry Chocolate Chip'",
+      "step_2": "Activate local override - should return 'chocolate'",
+      "step_3": "Deactivate override - should return 'Graeters Raspberry Chocolate Chip'"
+    }
+  },
+  "metadata": {
+    "created": "2024-12-19",
+    "last_updated": "2024-12-19",
+    "created_by": "ai-assistant",
+    "test_type": "override_functionality",
+    "priority": "test"
+  }
+}
