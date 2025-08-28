@@ -42,9 +42,9 @@
     "peanut_butter_jelly_principle": "Every step must be executable by someone with ZERO prior knowledge - like making a PB&J sandwich from scratch",
     "procedure": {
       "prerequisites_check": {
-        "required_tools": ["Text editor (VS Code, Cursor, etc.)", "Terminal access", "Git installed", "Access to aisop-system folder"],
+        "required_tools": ["Text editor (VS Code, Cursor, etc.)", "Terminal access", "Git installed", "Access to src folder"],
         "required_knowledge": ["Basic file navigation", "Copy/paste operations"],
-        "validation": "Can you navigate to /Users/markt/Git/coach-loop-ai/aisop-system/ folder? If not, stop and get help."
+        "validation": "Can you navigate to /path/to/repo/src/ folder? If not, stop and get help."
       },
       "trigger_conditions": [
         "AI agent encounters decision point without clear guidance",
@@ -84,7 +84,7 @@
           "action": "Create Blueprint File",
           "description": "Create the actual JSON file with PB&J-level specificity",
           "exact_commands": [
-            "1. Navigate to: /Users/markt/Git/coach-loop-ai/aisop-system/sops/",
+              "1. Navigate to: /path/to/repo/src/sops/",
             "2. Create new file: [sop-name].json",
             "3. Copy this template and fill in ALL fields:",
             "4. Template location: See template_structure section below"
@@ -119,7 +119,7 @@
           "action": "Update Registry",
           "description": "Add blueprint to devsop-config.json with exact copy-paste instructions",
           "exact_steps": [
-            "1. Open file: /Users/markt/Git/coach-loop-ai/aisop-system/aisop-config.json",
+              "1. Open file: /path/to/repo/src/aisop-config.json",
             "2. Find the appropriate 'sops' section (knowledge_based or prompt_based around line 9)",
             "3. Add this line: '\"[sop-id]\": \"./sops/[sop-name].json\",',
             "4. Save file",
@@ -144,8 +144,8 @@
           "action": "Git Commit",
           "description": "Save changes to version control with specific commands",
           "exact_commands": [
-            "cd /Users/markt/Git/coach-loop-ai",
-            "git add aisop-system/",
+              "cd /path/to/repo",
+              "git add src/",
             "git status (verify files are staged)",
             "git commit -m \"feat: add [sop-name] SOP - [brief description]\"",
             "git push origin [current-branch-name]"
