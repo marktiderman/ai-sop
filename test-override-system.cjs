@@ -87,16 +87,15 @@ if (!fs.existsSync(localSopsDir)) {
 
 // Step 4: Create override SOP
 console.log('📝 Step 4: Creating Override SOP...');
-const overrideSop = {
-    ...originalSop,
-    content: {
-        ...originalSop.content,
-        default_response: `my favorite ice cream is ${originalSop.content.override_response}`,
-        override_active: true
-    }
-};
-
-fs.writeFileSync(overrideSopPath, JSON.stringify(overrideSop, null, 2));
+const overrideSop = structuredClone(originalSop);
+overrideSop.content.default_response = `my favorite ice cream is ${originalSop.content.override_response}`;
+overrideSop.content.override_active = true;
+try {
+  fs.writeFileSync(overrideSopPath, JSON.stringify(overrideSop, null, 2));
+} catch (e) {
+  console.error(`❌ Failed to write override SOP: ${e.message}`);
+  process.exit(1);
+}
 console.log('✅ Override SOP created with chocolate flavor\n');
 
 // Step 5: Test with override
