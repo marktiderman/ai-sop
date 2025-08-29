@@ -6,7 +6,7 @@
 
 ### **MANDATORY INITIALIZATION SEQUENCE**
 1. **Read this entire constitution** (this file)
-2. **Load the AI-SOP system** (`aisop-system/aisop-config.json`)
+2. **Load the AI-SOP system** (`src/aisop-config.json`)
 3. **Acknowledge understanding** by stating which phase you're in
 4. **Reference constitution** in every decision and response
 
@@ -190,10 +190,10 @@ Every step must be executable by someone with ZERO prior knowledge - like making
 ## 📚 **Required Reading Order**
 
 1. **This Constitution** (AGENT_CONSTITUTION.md)
-2. **AI-SOP Config** (`aisop-system/aisop-config.json`)
-3. **Work Cycle Protocol** (`aisop-system/sops/work-cycle-protocol.json`)
-4. **Lighthouse Protocol** (`aisop-system/sops/lighthouse-protocol.json`)
-5. **Learning Documentation** (`aisop-system/sops/learning-documentation.json`)
+2. **AI-SOP Config** (`src/aisop-config.json`)
+3. **Work Cycle Protocol** (`src/sops/work-cycle-protocol.json`)
+4. **Lighthouse Protocol** (`src/sops/lighthouse-protocol.json`)
+5. **Learning Documentation** (`src/sops/learning-documentation.json`)
 
 ---
 

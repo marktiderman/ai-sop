@@ -43,7 +43,7 @@ AI-SOP is a revolutionary **modular cognitive architecture** for AI agent orches
 ## Quick Start
 
 ### 1. **Load the Constitution**
-Every AI agent must load `aisop-config.json` - this IS the Constitution:
+Every AI agent must load `src/aisop-config.json` - this IS the Constitution:
 
 ```json
 {
@@ -83,21 +83,9 @@ Each SOP is a fable - a story that teaches AI agents wisdom for autonomous execu
 ## Directory Structure
 
 ```text
-aisop-system/
+src/
 ├── aisop-config.json          # The Constitution - defines everything
-├── agent-constitution-loader.md # How agents load the Constitution
-├── sops/
-│   ├── sop-conductor.json     # Meta-framework for SOP management
-│   ├── Knowledge Blocks/
-│   │   ├── vehicles-vs-values.json
-│   │   └── peanut-butter-jelly-principle.json
-│   ├── Sequences/
-│   │   ├── lighthouse-protocol.json
-│   │   ├── commit-sequence.json
-│   │   └── update-documentation-model.json
-│   └── Filters/
-│       ├── elons-5-rules-filter.json
-│       └── pb-and-j-clarity-filter.json
+├── sops/                      # All SOP files
 └── README.md                  # This file
 ```text
 
@@ -107,7 +95,7 @@ aisop-system/
 1. Follow `sop-conductor.json` guidance
 2. Define trigger conditions and steps
 3. Specify prerequisite sequences and filters
-4. Update `aisop-config.json` registry
+4. Update `src/aisop-config.json` registry
 
 ### Using a Filter
 ```javascript

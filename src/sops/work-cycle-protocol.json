@@ -262,7 +262,7 @@
       "principle": "Always read ALL existing SOPs before proposing new ones or changes",
       "common_mistake": "Proposing new SOPs without checking existing ones, missing critical frameworks like Elon's 5 Rules and SOP Conductor",
       "correct_approach": [
-        "Systematically read all SOPs in aisop-system/sops/",
+        "Systematically read all SOPs in src/sops/",
         "Check for existing frameworks that might cover proposed functionality",
         "Use existing SOPs instead of creating new ones",
         "Apply existing filters before making recommendations"
