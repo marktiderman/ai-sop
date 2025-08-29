@@ -20,11 +20,6 @@ console.log(`✅ Original SOP: ${originalSopPath}`);
 console.log(`✅ Override Dir: ${localSopsDir}`);
 console.log(`✅ Override SOP: ${overrideSopPath}\n`);
 
-const fs = require('fs');
-const path = require('path');
-
-console.log('🔧 AI-SOP Override System Test\n');
-
 // Step 1: Load original SOP
 console.log('🔍 Step 1: Loading Original SOP...');
 if (!fs.existsSync(originalSopPath)) {
