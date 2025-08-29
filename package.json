@@ -66,6 +66,7 @@
     ".cursor/rules/**/*",
     "agents.md",
     "test-pbj-real-world.cjs",
+    "test-override-system.cjs",
     "README.md",
     "LICENSE"
   ]

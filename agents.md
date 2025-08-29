@@ -33,6 +33,7 @@ To validate you've internalized the SOPs, respond to:
 ## **📋 Trigger Commands**
 
 **To review SOPs:** `node test-pbj-real-world.cjs`
+**To test override system:** `node test-override-system.cjs`
 **To run tests:** `npm test`
 
 ## **🔗 Key Files**
