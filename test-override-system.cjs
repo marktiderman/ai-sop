@@ -89,9 +89,16 @@ console.log('✅ Riddle format: PRESERVED\n');
 // Step 7: Test scenario validation
 console.log('🧪 Step 7: Test Scenario Validation...');
 console.log('   Test scenarios from ice-cream-test.json:');
-Object.entries(originalSop.content.test_scenario).forEach(([step, description]) => {
+const scenarios = (originalSop.content && originalSop.content.test_scenario && typeof originalSop.content.test_scenario === 'object')
+  ? originalSop.content.test_scenario
+  : {};
+if (Object.keys(scenarios).length === 0) {
+  console.log('   ⚠️ No scenarios found.');
+} else {
+  Object.entries(scenarios).forEach(([step, description]) => {
     console.log(`   ✅ ${step}: ${description}`);
-});
+  });
+}
 console.log('');
 
 // Step 8: Cleanup option
