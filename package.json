@@ -14,7 +14,16 @@
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "prepublishOnly": "npm run build && npm test",
-    "start": "node dist/cli.js"
+    "start": "node dist/cli.js",
+    "sop:list": "npm run build && node dist/cli/index.js list",
+    "sop:execute": "npm run build && node dist/cli/index.js execute",
+    "sop:init": "npm run build && node dist/cli/index.js init-agent",
+    "sop:interactive": "npm run build && node dist/cli/index.js interactive",
+    "sop:status": "npm run build && node -e \"const {AISop} = require('./dist/index.js'); const aiSop = new AISop(); aiSop.loadSOPs().then(() => console.log(JSON.stringify(aiSop.getStatus(), null, 2)))\"",
+    "workflow:development": "npm run build && node scripts/development-workflow.js",
+    "workflow:quality": "npm run build && node scripts/quality-workflow.js",
+    "workflow:knowledge": "npm run build && node scripts/knowledge-workflow.js",
+    "dogfooding:validate": "npm run workflow:development && npm run workflow:quality && npm run workflow:knowledge"
   },
   "keywords": [
     "ai",

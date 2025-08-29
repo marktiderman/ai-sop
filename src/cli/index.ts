@@ -28,12 +28,17 @@ program
   .action(async () => {
     try {
       const aiSop = new AISop();
+      await aiSop.loadSOPs();
       const sops = aiSop.listSOPs();
 
       console.log(chalk.blue('📚 Available SOPs:'));
-      sops.forEach(sop => {
-        console.log(chalk.green(`  • ${sop}`));
-      });
+      if (sops.length === 0) {
+        console.log(chalk.yellow('  No SOPs loaded. Check configuration.'));
+      } else {
+        sops.forEach(sop => {
+          console.log(chalk.green(`  • ${sop}`));
+        });
+      }
     } catch (error) {
       console.error(chalk.red('Error listing SOPs:'), error);
     }
@@ -47,6 +52,7 @@ program
   .action(async (sopId, options) => {
     try {
       const aiSop = new AISop();
+      await aiSop.loadSOPs();
       const result = await aiSop.executeSOP(sopId, options.context);
 
       console.log(chalk.green('✅ SOP executed successfully:'));
@@ -191,6 +197,7 @@ program
     console.log(chalk.blue('🎭 Welcome to AI-SOP Interactive Mode!'));
 
     const aiSop = new AISop();
+    await aiSop.loadSOPs();
     const sops = aiSop.listSOPs();
 
     if (sops.length === 0) {
