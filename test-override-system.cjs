@@ -121,6 +121,9 @@ console.log('✅ local-sops directory: CREATED');
 console.log(`✅ Override SOP: ${overrideOk ? 'ACTIVE' : 'INACTIVE'}`);
 console.log(`✅ Version tracking: ${versionOk ? 'MAINTAINED' : 'MISMATCH'}`);
 console.log('✅ Riddle format: PRESERVED\n');
+if (!overrideOk || !versionOk) {
+  process.exitCode = 1;
+}
 // Step 7: Test scenario validation
 console.log('🧪 Step 7: Test Scenario Validation...');
 console.log('   Test scenarios from ice-cream-test.json:');
