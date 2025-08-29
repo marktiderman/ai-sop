@@ -20,6 +20,11 @@ console.log(`✅ Original SOP: ${originalSopPath}`);
 console.log(`✅ Override Dir: ${localSopsDir}`);
 console.log(`✅ Override SOP: ${overrideSopPath}\n`);
 
+const fs = require('fs');
+const path = require('path');
+
+console.log('🔧 AI-SOP Override System Test\n');
+
 // Step 1: Load original SOP
 console.log('🔍 Step 1: Loading Original SOP...');
 if (!fs.existsSync(originalSopPath)) {
@@ -27,11 +32,37 @@ if (!fs.existsSync(originalSopPath)) {
     process.exit(1);
 }
 
-const originalSop = JSON.parse(fs.readFileSync(originalSopPath, 'utf-8'));
+function readJsonSafe(filePath, label) {
+  try {
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error(`❌ Failed to load ${label} at ${filePath}: ${e.message}`);
+    process.exit(1);
+  }
+}
+
+function assertIceCreamSop(sop) {
+  const ok =
+    sop &&
+    sop.content &&
+    sop.content.default_response &&
+    sop.content.override_response &&
+    sop.content.version_tracking &&
+    sop.content.version_tracking.sop_version &&
+    sop.content.version_tracking.riddle_template;
+  if (!ok) {
+    console.error('❌ SOP structure invalid or missing required fields.');
+    process.exit(1);
+  }
+}
+
+const originalSop = readJsonSafe(originalSopPath, 'Original SOP');
+assertIceCreamSop(originalSop);
+
 console.log(`✅ Original SOP loaded: ${originalSop.title}`);
 console.log(`   Default flavor: ${originalSop.content.default_response}`);
 console.log(`   Version: ${originalSop.content.version_tracking.sop_version}\n`);
-
 // Step 2: Test without override
 console.log('🎯 Step 2: Testing WITHOUT Override...');
 const defaultFlavor = (() => {
