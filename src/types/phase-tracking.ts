@@ -25,7 +25,7 @@ export interface DecisionLog {
   phase: PhaseId;
   decision: string;
   reasoning: string;
-  context: Record<string, any>;
+  context: Record<string, unknown>;
   outcome?: string;
   tags: string[];
 }
@@ -39,7 +39,7 @@ export interface PhaseTransition {
   trigger: string;
   approvedBy?: string;
   notes?: string;
-  context: Record<string, any>;
+  context: Record<string, unknown>;
 }
 
 export interface PBJCheckpoint {
@@ -62,7 +62,7 @@ export interface AgentSession {
   workCycleId?: string;
   gitBranch?: string;
   issueNumber?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   decisions: DecisionLog[];
   transitions: PhaseTransition[];
   pbjCheckpoints: PBJCheckpoint[];
@@ -72,7 +72,7 @@ export interface AgentSession {
 export interface DashboardStats {
   totalSessions: number;
   activeSessions: number;
-  phaseDistribution: Record<string, number>;
+  phaseDistribution: Partial<Record<PhaseId, number>>;
   recentDecisions: DecisionLog[];
   recentTransitions: PhaseTransition[];
   pbjSuccessRate: number;
@@ -85,7 +85,7 @@ export interface PhaseTrackingConfig {
   autoLogDecisions: boolean;
   pbjCheckpointFrequency: number; // minutes
   sessionTimeout: number; // minutes
-  storageBackend: 'filesystem' | 'memory' | 'database';
+  storageBackend: 'filesystem' | 'memory';
   dashboardPort: number;
 }
 

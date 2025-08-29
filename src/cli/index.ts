@@ -423,9 +423,9 @@ phaseCommand
   .option('-j, --json', 'Output as JSON')
   .action(async (options) => {
     try {
-      const sessions = options.all ? 
-        Array.from(phaseTracker['sessions'].values()) : 
-        phaseTracker.getActiveSessions();
+      const sessions = options.all
+        ? phaseTracker.getAllSessions()
+        : phaseTracker.getActiveSessions();
       
       if (options.json) {
         console.log(JSON.stringify(sessions, null, 2));
@@ -453,8 +453,9 @@ phaseCommand
         console.log(chalk.white(`   Phase: ${session.currentPhase}`));
         console.log(chalk[statusColor](`   Status: ${session.status}`));
         console.log(chalk.white(`   Duration: ${duration} minutes`));
-        if (session.gitBranch) console.log(chalk.white(`   Branch: ${session.gitBranch}`));
-        if (session.issueNumber) console.log(chalk.white(`   Issue: #${session.issueNumber}`));
+        const md = (session as any).metadata || {};
+        if (md.gitBranch) console.log(chalk.white(`   Branch: ${md.gitBranch}`));
+        if (md.issueNumber) console.log(chalk.white(`   Issue: #${md.issueNumber}`));
         console.log(chalk.white(`   Decisions: ${session.decisions.length}`));
         console.log(chalk.white(`   Transitions: ${session.transitions.length}`));
         console.log(chalk.white(`   PB&J Checkpoints: ${session.pbjCheckpoints.length}`));

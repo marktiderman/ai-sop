@@ -1,0 +1,22 @@
+{
+  "agentId": "test-agent",
+  "sessionId": "test-agent-8c1879e0-b75a-46e7-ae74-7bf5b919b386",
+  "startTime": "2025-08-29T09:38:42.801Z",
+  "currentPhase": "discovery",
+  "decisions": [
+    {
+      "id": "5a6080d8-94a7-4b87-af4d-5016097a9a3b",
+      "timestamp": "2025-08-29T09:38:42.801Z",
+      "agentId": "test-agent",
+      "phase": "discovery",
+      "decision": "Session started",
+      "reasoning": "Agent test-agent initialized in discovery phase",
+      "context": {},
+      "tags": []
+    }
+  ],
+  "transitions": [],
+  "pbjCheckpoints": [],
+  "status": "active",
+  "metadata": {}
+}

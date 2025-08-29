@@ -7,6 +7,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { randomUUID } from 'crypto';
 import { 
   AgentSession, 
   DecisionLog, 
@@ -25,6 +26,7 @@ export class PhaseTracker {
   private sessions: Map<string, AgentSession> = new Map();
   private dataDir: string;
   private phases: PhaseDefinition[];
+  private useFs: boolean;
 
   constructor(config?: Partial<PhaseTrackingConfig>) {
     this.config = {
@@ -39,13 +41,16 @@ export class PhaseTracker {
     };
 
     this.phases = this.config.phases;
+    this.useFs = this.config.storageBackend === 'filesystem';
     this.dataDir = path.join(process.cwd(), '.ai-sop', 'phase-tracking');
-    this.ensureDataDirectory();
-    this.loadSessions();
+    if (this.useFs) {
+      this.ensureDataDirectory();
+      this.loadSessions();
+    }
   }
 
   private ensureDataDirectory(): void {
-    if (!fs.existsSync(this.dataDir)) {
+    if (this.useFs && !fs.existsSync(this.dataDir)) {
       fs.mkdirSync(this.dataDir, { recursive: true });
     }
   }
@@ -61,6 +66,7 @@ export class PhaseTracker {
   }
 
   private loadSessions(): void {
+    if (!this.useFs) return;
     try {
       if (fs.existsSync(this.dataDir)) {
         const files = fs.readdirSync(this.dataDir);
@@ -101,6 +107,8 @@ export class PhaseTracker {
   }
 
   private saveSession(session: AgentSession): void {
+    // No-op when not persisting to disk
+    if (!this.useFs) return;
     try {
       const filePath = this.getSessionFilePath(session.sessionId);
       fs.writeFileSync(filePath, JSON.stringify(session, null, 2));
@@ -112,14 +120,14 @@ export class PhaseTracker {
   /**
    * Start a new agent session
    */
-  startSession(agentId: string, initialPhase: PhaseId = 'discovery', context?: Record<string, any>): AgentSession {
+  startSession(agentId: string, initialPhase: PhaseId = 'discovery', context?: Record<string, unknown>): AgentSession {
     // Validate that the requested phase actually exists
     if (!this.phases.some(p => p.id === initialPhase)) {
       throw new Error(`Unknown initial phase: ${initialPhase}`);
     }
 
     const safeAgentId = this.sanitizeId(agentId);
-    const sessionId = `${safeAgentId}-${Date.now()}`;
+    const sessionId = `${safeAgentId}-${randomUUID()}`;
     const session: AgentSession = {
       agentId,
       sessionId,
@@ -136,7 +144,7 @@ export class PhaseTracker {
     this.saveSession(session);
 
     // Log initial phase entry
-    this.logDecision(sessionId, 'Session started', `Agent ${agentId} initialized in ${initialPhase} phase`, context || {});
+    this.logDecision(sessionId, 'Session started', `Agent ${agentId} initialized in ${initialPhase} phase`, (context as Record<string, unknown>) || {});
 
     return session;
   }
@@ -201,7 +209,7 @@ export class PhaseTracker {
     }
 
     const transition: PhaseTransition = {
-      id: `${sessionId}-transition-${Date.now()}`,
+      id: randomUUID(),
       timestamp: new Date(),
       agentId: session.agentId,
       fromPhase,
@@ -232,7 +240,7 @@ export class PhaseTracker {
     sessionId: string,
     decision: string,
     reasoning: string,
-    context: Record<string, any>,
+    context: Record<string, unknown>,
     outcome?: string,
     tags: string[] = []
   ): void {
@@ -242,7 +250,7 @@ export class PhaseTracker {
     }
 
     const decisionLog: DecisionLog = {
-      id: `${sessionId}-decision-${Date.now()}`,
+      id: randomUUID(),
       timestamp: new Date(),
       agentId: session.agentId,
       phase: session.currentPhase,
@@ -273,7 +281,7 @@ export class PhaseTracker {
     }
 
     const pbjCheckpoint: PBJCheckpoint = {
-      id: `${sessionId}-pbj-${Date.now()}`,
+      id: randomUUID(),
       timestamp: new Date(),
       agentId: session.agentId,
       phase: session.currentPhase,
@@ -284,8 +292,7 @@ export class PhaseTracker {
     };
 
     session.pbjCheckpoints.push(pbjCheckpoint);
-    this.saveSession(session);
-
+    
     // Auto-log decision for failed checkpoints
     if (status === 'fail' && this.config.autoLogDecisions) {
       this.logDecision(
@@ -296,6 +303,8 @@ export class PhaseTracker {
         undefined,
         ['pbj-failure', 'quality-issue']
       );
+    } else {
+      this.saveSession(session);
     }
   }
 
@@ -304,6 +313,13 @@ export class PhaseTracker {
    */
   getActiveSessions(): AgentSession[] {
     return Array.from(this.sessions.values()).filter(s => s.status === 'active');
+  }
+
+  /**
+   * Get all sessions (including completed ones)
+   */
+  getAllSessions(): AgentSession[] {
+    return Array.from(this.sessions.values());
   }
 
   /**
@@ -328,7 +344,7 @@ export class PhaseTracker {
     const activeSessions = allSessions.filter(s => s.status === 'active');
     
     // Phase distribution
-    const phaseDistribution: Record<string, number> = {};
+    const phaseDistribution: Partial<Record<PhaseId, number>> = {};
     activeSessions.forEach(session => {
       phaseDistribution[session.currentPhase] = (phaseDistribution[session.currentPhase] || 0) + 1;
     });
@@ -413,9 +429,9 @@ export class PhaseTracker {
       const lastActivity = session.endTime ?? session.startTime;
       if (session.status === 'completed' && lastActivity < cutoffDate) {
         try {
-          const filePath = this.getSessionFilePath(sessionId);
-          if (fs.existsSync(filePath)) {
-            fs.unlinkSync(filePath);
+          if (this.useFs) {
+            const filePath = this.getSessionFilePath(sessionId);
+            if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
           }
           this.sessions.delete(sessionId);
           cleanedCount++;

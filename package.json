@@ -14,9 +14,9 @@
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "prepublishOnly": "npm run build && npm test",
-    "start": "node dist/cli.js",
+    "start": "node dist/cli/index.js",
     "demo": "npm run build && node demo-phase-tracking.js",
-    "demo:dashboard": "npm run build && npm run demo && npm run dashboard",
+    "demo:dashboard": "npm run demo && npm run dashboard",
     "dashboard": "node dist/cli/index.js phase dashboard"
   },
   "keywords": [
