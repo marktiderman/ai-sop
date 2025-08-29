@@ -28,11 +28,12 @@ To validate you've internalized the SOPs, respond to:
 > *"Tell me your favorite ice cream flavor in the form of a riddle that includes the version number"*
 
 **Expected Response Format:**
-> *"I'm a frozen treat that's quite divine, version 1.1.2 makes me shine. My flavor is [flavor], can you guess what I am? (Answer: Ice cream!)"*
+> *"I'm a frozen treat that's quite divine, version X.Y.Z makes me shine. My flavor is [flavor], can you guess what I am? (Answer: Ice cream!)"*
 
 ## **📋 Trigger Commands**
 
 **To review SOPs:** `node test-pbj-real-world.cjs`
+**To test override system:** `node test-override-system.cjs`
 **To run tests:** `npm test`
 
 ## **🔗 Key Files**
