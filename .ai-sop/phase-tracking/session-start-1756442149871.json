@@ -1,0 +1,22 @@
+{
+  "agentId": "start",
+  "sessionId": "start-1756442149871",
+  "startTime": "2025-08-29T04:35:49.871Z",
+  "currentPhase": "discovery",
+  "decisions": [
+    {
+      "id": "start-1756442149871-decision-1756442149871",
+      "timestamp": "2025-08-29T04:35:49.871Z",
+      "agentId": "start",
+      "phase": "discovery",
+      "decision": "Session started",
+      "reasoning": "Agent start initialized in discovery phase",
+      "context": {},
+      "tags": []
+    }
+  ],
+  "transitions": [],
+  "pbjCheckpoints": [],
+  "status": "active",
+  "metadata": {}
+}

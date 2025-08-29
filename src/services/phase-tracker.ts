@@ -15,6 +15,7 @@ import {
   DashboardStats,
   PhaseTrackingConfig,
   PhaseDefinition,
+  PhaseId,
   CONSTITUTION_PHASES,
   DEVELOPMENT_CYCLE_PHASES
 } from '../types/phase-tracking';
@@ -49,8 +50,14 @@ export class PhaseTracker {
     }
   }
 
+  private sanitizeId(input: string): string {
+    // Alphanumeric, dash, underscore; everything else -> underscore
+    return input.replace(/[^a-z0-9_-]/gi, '_').slice(0, 120);
+  }
+
   private getSessionFilePath(sessionId: string): string {
-    return path.join(this.dataDir, `session-${sessionId}.json`);
+    const sanitizedId = this.sanitizeId(sessionId);
+    return path.join(this.dataDir, `session-${sanitizedId}.json`);
   }
 
   private loadSessions(): void {
@@ -105,8 +112,14 @@ export class PhaseTracker {
   /**
    * Start a new agent session
    */
-  startSession(agentId: string, initialPhase: string = 'discovery', context?: Record<string, any>): AgentSession {
-    const sessionId = `${agentId}-${Date.now()}`;
+  startSession(agentId: string, initialPhase: PhaseId = 'discovery', context?: Record<string, any>): AgentSession {
+    // Validate that the requested phase actually exists
+    if (!this.phases.some(p => p.id === initialPhase)) {
+      throw new Error(`Unknown initial phase: ${initialPhase}`);
+    }
+
+    const safeAgentId = this.sanitizeId(agentId);
+    const sessionId = `${safeAgentId}-${Date.now()}`;
     const session: AgentSession = {
       agentId,
       sessionId,
@@ -116,7 +129,7 @@ export class PhaseTracker {
       transitions: [],
       pbjCheckpoints: [],
       status: 'active',
-      ...context
+      metadata: context ?? {}
     };
 
     this.sessions.set(sessionId, session);
@@ -139,16 +152,16 @@ export class PhaseTracker {
       
       if (outcome) {
         this.logDecision(sessionId, 'Session completed', outcome, {});
+      } else {
+        this.saveSession(session);
       }
-      
-      this.saveSession(session);
     }
   }
 
   /**
    * Get current phase for an agent session
    */
-  getCurrentPhase(sessionId: string): string | null {
+  getCurrentPhase(sessionId: string): PhaseId | null {
     const session = this.sessions.get(sessionId);
     return session?.currentPhase || null;
   }
@@ -158,7 +171,7 @@ export class PhaseTracker {
    */
   transitionPhase(
     sessionId: string, 
-    toPhase: string, 
+    toPhase: PhaseId, 
     trigger: string, 
     approvedBy?: string,
     notes?: string
@@ -170,9 +183,15 @@ export class PhaseTracker {
 
     const fromPhase = session.currentPhase;
     const fromPhaseDefinition = this.phases.find(p => p.id === fromPhase);
-    
+    if (!fromPhaseDefinition) {
+      throw new Error(`Unknown current phase: ${fromPhase}`);
+    }
+    const toPhaseDefinition = this.phases.find(p => p.id === toPhase);
+    if (!toPhaseDefinition) {
+      throw new Error(`Unknown target phase: ${toPhase}`);
+    }
     // Validate transition is allowed
-    if (fromPhaseDefinition && !fromPhaseDefinition.nextPhases.includes(toPhase)) {
+    if (!fromPhaseDefinition.nextPhases.includes(toPhase)) {
       throw new Error(`Invalid phase transition from ${fromPhase} to ${toPhase}`);
     }
 
@@ -195,8 +214,6 @@ export class PhaseTracker {
 
     session.currentPhase = toPhase;
     session.transitions.push(transition);
-    
-    this.saveSession(session);
     
     this.logDecision(
       sessionId,
@@ -408,8 +425,6 @@ export class PhaseTracker {
       }
     }
 
-    return cleanedCount;
-  }
     return cleanedCount;
   }
 }

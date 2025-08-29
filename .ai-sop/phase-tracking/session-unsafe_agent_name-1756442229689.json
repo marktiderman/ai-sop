@@ -1,0 +1,22 @@
+{
+  "agentId": "unsafe/agent\\name",
+  "sessionId": "unsafe_agent_name-1756442229689",
+  "startTime": "2025-08-29T04:37:09.689Z",
+  "currentPhase": "discovery",
+  "decisions": [
+    {
+      "id": "unsafe_agent_name-1756442229689-decision-1756442229689",
+      "timestamp": "2025-08-29T04:37:09.689Z",
+      "agentId": "unsafe/agent\\name",
+      "phase": "discovery",
+      "decision": "Session started",
+      "reasoning": "Agent unsafe/agent\\name initialized in discovery phase",
+      "context": {},
+      "tags": []
+    }
+  ],
+  "transitions": [],
+  "pbjCheckpoints": [],
+  "status": "active",
+  "metadata": {}
+}

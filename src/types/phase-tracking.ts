@@ -5,21 +5,24 @@
  * and PB&J checkpoints as required by the constitution.
  */
 
+// Type-safe phase IDs
+export type PhaseId = 'discovery' | 'build' | 'delivery' | 'feedback' | 'planning' | 'development' | 'quality';
+
 export interface PhaseDefinition {
-  id: string;
+  id: PhaseId;
   name: string;
   description: string;
   objectives: string[];
   entryConditions: string[];
   exitConditions: string[];
-  nextPhases: string[];
+  nextPhases: PhaseId[];
 }
 
 export interface DecisionLog {
   id: string;
   timestamp: Date;
   agentId: string;
-  phase: string;
+  phase: PhaseId;
   decision: string;
   reasoning: string;
   context: Record<string, any>;
@@ -31,8 +34,8 @@ export interface PhaseTransition {
   id: string;
   timestamp: Date;
   agentId: string;
-  fromPhase: string;
-  toPhase: string;
+  fromPhase: PhaseId;
+  toPhase: PhaseId;
   trigger: string;
   approvedBy?: string;
   notes?: string;
@@ -43,7 +46,7 @@ export interface PBJCheckpoint {
   id: string;
   timestamp: Date;
   agentId: string;
-  phase: string;
+  phase: PhaseId;
   checkpoint: string;
   status: 'pass' | 'fail' | 'pending';
   details: string;
@@ -55,7 +58,7 @@ export interface AgentSession {
   sessionId: string;
   startTime: Date;
   endTime?: Date;
-  currentPhase: string;
+  currentPhase: PhaseId;
   workCycleId?: string;
   gitBranch?: string;
   issueNumber?: string;

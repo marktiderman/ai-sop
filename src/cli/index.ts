@@ -219,9 +219,14 @@ program
 // Phase Tracking Commands
 const phaseTracker = new PhaseTracker();
 
+// Create phase command group
+const phaseCommand = program
+  .command('phase')
+  .description('Phase tracking commands for AI-SOP agents');
+
 // Start agent session command
-program
-  .command('phase start <agentId>')
+phaseCommand
+  .command('start <agentId>')
   .description('Start a new agent session with phase tracking')
   .option('-p, --phase <phase>', 'Initial phase (discovery, build, delivery, feedback)', 'discovery')
   .option('-w, --work-cycle <id>', 'Work cycle ID')
@@ -263,8 +268,8 @@ program
   });
 
 // Phase transition command
-program
-  .command('phase transition <sessionId> <toPhase>')
+phaseCommand
+  .command('transition <sessionId> <toPhase>')
   .description('Transition agent to a new phase')
   .option('-t, --trigger <trigger>', 'Reason for transition', 'Manual transition')
   .option('-a, --approved-by <approver>', 'Approver name (required if approval is enabled)')
@@ -292,8 +297,8 @@ program
   });
 
 // Log decision command
-program
-  .command('phase decision <sessionId> <decision>')
+phaseCommand
+  .command('decision <sessionId> <decision>')
   .description('Log a decision made by the agent')
   .option('-r, --reasoning <reasoning>', 'Reasoning behind the decision', '')
   .option('-c, --context <context>', 'Context as JSON string', '{}')
@@ -330,8 +335,8 @@ program
   });
 
 // PB&J checkpoint command
-program
-  .command('phase pbj <sessionId> <checkpoint>')
+phaseCommand
+  .command('pbj <sessionId> <checkpoint>')
   .description('Record a PB&J (Peanut Butter & Jelly) checkpoint')
   .option('-s, --status <status>', 'Checkpoint status (pass, fail, pending)', 'pending')
   .option('-d, --details <details>', 'Checkpoint details', '')
@@ -368,8 +373,8 @@ program
   });
 
 // Dashboard stats command
-program
-  .command('phase stats')
+phaseCommand
+  .command('stats')
   .description('Show dashboard statistics')
   .option('-j, --json', 'Output as JSON')
   .action(async (options) => {
@@ -411,8 +416,8 @@ program
   });
 
 // List active sessions command
-program
-  .command('phase sessions')
+phaseCommand
+  .command('sessions')
   .description('List all active agent sessions')
   .option('-a, --all', 'Show all sessions (including completed)')
   .option('-j, --json', 'Output as JSON')
@@ -460,8 +465,8 @@ program
   });
 
 // End session command
-program
-  .command('phase end <sessionId>')
+phaseCommand
+  .command('end <sessionId>')
   .description('End an agent session')
   .option('-o, --outcome <outcome>', 'Session outcome description')
   .action(async (sessionId, options) => {
@@ -477,8 +482,8 @@ program
   });
 
 // Phase info command
-program
-  .command('phase info')
+phaseCommand
+  .command('info')
   .description('Show information about available phases')
   .option('--dev-cycle', 'Show development cycle phases instead of constitution phases')
   .action(async (options) => {
@@ -504,8 +509,8 @@ program
   });
 
 // Dashboard server command
-program
-  .command('phase dashboard')
+phaseCommand
+  .command('dashboard')
   .description('Start the web dashboard for phase tracking')
   .option('-p, --port <port>', 'Port to run the dashboard on', '3000')
   .option('--dev-cycle', 'Use development cycle phases instead of constitution phases')

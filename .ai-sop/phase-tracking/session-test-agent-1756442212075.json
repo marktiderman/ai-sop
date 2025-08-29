@@ -1,0 +1,48 @@
+{
+  "agentId": "test-agent",
+  "sessionId": "test-agent-1756442212075",
+  "startTime": "2025-08-29T04:36:52.075Z",
+  "currentPhase": "build",
+  "decisions": [
+    {
+      "id": "test-agent-1756442212075-decision-1756442212076",
+      "timestamp": "2025-08-29T04:36:52.076Z",
+      "agentId": "test-agent",
+      "phase": "discovery",
+      "decision": "Session started",
+      "reasoning": "Agent test-agent initialized in discovery phase",
+      "context": {},
+      "tags": []
+    },
+    {
+      "id": "test-agent-1756442212075-decision-1756442245735",
+      "timestamp": "2025-08-29T04:37:25.735Z",
+      "agentId": "test-agent",
+      "phase": "build",
+      "decision": "Phase transition",
+      "reasoning": "Transitioned from discovery to build: Requirements complete",
+      "context": {
+        "fromPhase": "discovery",
+        "toPhase": "build",
+        "trigger": "Requirements complete",
+        "approvedBy": "tech-lead"
+      },
+      "tags": []
+    }
+  ],
+  "transitions": [
+    {
+      "id": "test-agent-1756442212075-transition-1756442245735",
+      "timestamp": "2025-08-29T04:37:25.735Z",
+      "agentId": "test-agent",
+      "fromPhase": "discovery",
+      "toPhase": "build",
+      "trigger": "Requirements complete",
+      "approvedBy": "tech-lead",
+      "context": {}
+    }
+  ],
+  "pbjCheckpoints": [],
+  "status": "active",
+  "metadata": {}
+}
