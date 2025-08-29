@@ -15,7 +15,10 @@ console.log('═'.repeat(50));
 
 // Ensure we're using the built CLI
 const cliPath = path.join(__dirname, 'dist', 'cli', 'index.js');
-
+if (!require('fs').existsSync(cliPath)) {
+  console.error('Built CLI not found at dist/cli/index.js. Run: npm run build');
+  process.exit(1);
+}
 function runCommand(command, silent = false) {
   try {
     const result = execSync(`node ${cliPath} ${command}`, { 
