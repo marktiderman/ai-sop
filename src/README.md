@@ -15,7 +15,7 @@ AI-SOP is a revolutionary **modular cognitive architecture** for AI agent orches
 
 ### 🧠 **Three-Layer Cognitive System**
 
-```text
+```
 ┌─────────────────────────────────────────────────┐
 │  🎯 FILTERS (Quality Assurance)                 │
 │  Specialized agents asking targeted questions   │
@@ -31,7 +31,7 @@ AI-SOP is a revolutionary **modular cognitive architecture** for AI agent orches
 │  Core mindset loaded at agent initialization   │
 │  • Vehicles < Values • PB&J Principle          │
 └─────────────────────────────────────────────────┘
-```text
+```
 
 ### 🎼 **The Conductor Metaphor**
 
@@ -43,7 +43,7 @@ AI-SOP is a revolutionary **modular cognitive architecture** for AI agent orches
 ## Quick Start
 
 ### 1. **Load the Constitution**
-Every AI agent must load `aisop-config.json` - this IS the Constitution:
+Every AI agent must load `src/aisop-config.json` - this IS the Constitution:
 
 ```json
 {
@@ -53,7 +53,7 @@ Every AI agent must load `aisop-config.json` - this IS the Constitution:
     "filters"            // Understand quality gates
   ]
 }
-```text
+```
 
 ### 2. **Use Sequences for Tasks**
 Trigger sequences like:
@@ -82,24 +82,12 @@ Each SOP is a fable - a story that teaches AI agents wisdom for autonomous execu
 
 ## Directory Structure
 
-```text
-aisop-system/
+```
+src/
 ├── aisop-config.json          # The Constitution - defines everything
-├── agent-constitution-loader.md # How agents load the Constitution
-├── sops/
-│   ├── sop-conductor.json     # Meta-framework for SOP management
-│   ├── Knowledge Blocks/
-│   │   ├── vehicles-vs-values.json
-│   │   └── peanut-butter-jelly-principle.json
-│   ├── Sequences/
-│   │   ├── lighthouse-protocol.json
-│   │   ├── commit-sequence.json
-│   │   └── update-documentation-model.json
-│   └── Filters/
-│       ├── elons-5-rules-filter.json
-│       └── pb-and-j-clarity-filter.json
+├── sops/                      # All SOP files
 └── README.md                  # This file
-```text
+```
 
 ## Examples
 
@@ -107,7 +95,7 @@ aisop-system/
 1. Follow `sop-conductor.json` guidance
 2. Define trigger conditions and steps
 3. Specify prerequisite sequences and filters
-4. Update `aisop-config.json` registry
+4. Update `src/aisop-config.json` registry
 
 ### Using a Filter
 ```javascript
@@ -117,7 +105,7 @@ aisop-system/
 3. Simplify and optimize - Only after deletion
 4. Accelerate cycle time - Go faster without skipping steps
 5. Automate - Only after perfecting manual process
-```text
+```
 
 ## Integration with Development Workflow
 
@@ -129,7 +117,7 @@ AI-SOP integrates seamlessly with:
 
 ## Getting Started
 
-1. **Read the Constitution**: Start with `aisop-config.json`
+1. **Read the Constitution**: Start with `src/aisop-config.json`
 2. **Load Knowledge Blocks**: Understand core principles
 3. **Try a Sequence**: Use `lighthouse-protocol` for your next feature
 4. **Apply Filters**: Validate your approach with `elons-5-rules`

@@ -6,7 +6,7 @@ Every AI agent working on this project MUST follow this protocol:
 
 ### **1. Initial Context Loading**
 - Read `AGENT_CONSTITUTION.md` completely
-- Load `aisop-system/aisop-config.json`
+- Load `src/aisop-config.json`
 - Internalize all Knowledge Blocks, Sequences, and Filters
 
 ### **2. Phase Awareness**
@@ -33,13 +33,12 @@ To validate you've internalized the SOPs, respond to:
 ## **📋 Trigger Commands**
 
 **To review SOPs:** `node test-pbj-real-world.cjs`
-
-**To validate override system:** `node test-override-system.cjs`
+**To run tests:** `npm test`
 
 ## **🔗 Key Files**
 - `AGENT_CONSTITUTION.md` - Mandatory reading
-- `aisop-system/aisop-config.json` - SOP registry
-- `aisop-system/sops/` - All SOP files
+- `src/aisop-config.json` - SOP registry
+- `src/sops/` - All SOP files
 - `node_modules/ai-sop/` - NPM package with SOPs
 
 ## **🎭 Remember**

@@ -37,7 +37,7 @@
         "Are error handling instructions provided?"
       ],
       "requirements": [
-        "Exact file paths: /Users/markt/Git/coach-loop-ai/aisop-system/",
+        "Exact file paths: <repo-root>/src/ (e.g., /Users/alex/projects/ai-sop/src/)",
         "Complete commands: git commit -m \"exact message format\"",
         "Precise locations: Click the blue 'Save' button in the top right",
         "Expected results: You should see 'Success' message appear",
