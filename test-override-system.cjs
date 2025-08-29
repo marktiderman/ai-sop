@@ -97,10 +97,14 @@ console.log('');
 // Step 8: Cleanup option
 console.log('🧹 Step 8: Cleanup...');
 console.log('   To remove override and test default behavior:');
-console.log(`   rm ${overrideSopPath}`);
+if (process.platform === 'win32') {
+  console.log(`   del ${overrideSopPath}   (CMD)`);
+  console.log(`   Remove-Item ${overrideSopPath}   (PowerShell)`);
+} else {
+  console.log(`   rm ${overrideSopPath}`);
+}
 console.log('   To reactivate override:');
 console.log(`   node ${__filename}\n`);
-
 console.log('🚀 Override System Test Complete!');
 console.log('The system successfully demonstrates:');
 console.log('- Local SOP override functionality');
