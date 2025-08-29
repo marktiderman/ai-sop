@@ -15,7 +15,7 @@ AI-SOP is a revolutionary **modular cognitive architecture** for AI agent orches
 
 ### 🧠 **Three-Layer Cognitive System**
 
-```text
+```
 ┌─────────────────────────────────────────────────┐
 │  🎯 FILTERS (Quality Assurance)                 │
 │  Specialized agents asking targeted questions   │
@@ -31,7 +31,7 @@ AI-SOP is a revolutionary **modular cognitive architecture** for AI agent orches
 │  Core mindset loaded at agent initialization   │
 │  • Vehicles < Values • PB&J Principle          │
 └─────────────────────────────────────────────────┘
-```text
+```
 
 ### 🎼 **The Conductor Metaphor**
 
@@ -53,7 +53,7 @@ Every AI agent must load `src/aisop-config.json` - this IS the Constitution:
     "filters"            // Understand quality gates
   ]
 }
-```text
+```
 
 ### 2. **Use Sequences for Tasks**
 Trigger sequences like:
@@ -82,12 +82,12 @@ Each SOP is a fable - a story that teaches AI agents wisdom for autonomous execu
 
 ## Directory Structure
 
-```text
+```
 src/
 ├── aisop-config.json          # The Constitution - defines everything
 ├── sops/                      # All SOP files
 └── README.md                  # This file
-```text
+```
 
 ## Examples
 
@@ -105,7 +105,7 @@ src/
 3. Simplify and optimize - Only after deletion
 4. Accelerate cycle time - Go faster without skipping steps
 5. Automate - Only after perfecting manual process
-```text
+```
 
 ## Integration with Development Workflow
 
@@ -117,7 +117,7 @@ AI-SOP integrates seamlessly with:
 
 ## Getting Started
 
-1. **Read the Constitution**: Start with `aisop-config.json`
+1. **Read the Constitution**: Start with `src/aisop-config.json`
 2. **Load Knowledge Blocks**: Understand core principles
 3. **Try a Sequence**: Use `lighthouse-protocol` for your next feature
 4. **Apply Filters**: Validate your approach with `elons-5-rules`
