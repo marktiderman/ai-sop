@@ -334,7 +334,9 @@ export class PhaseTracker {
     // PB&J success rate
     const allCheckpoints = allSessions.flatMap(s => s.pbjCheckpoints);
     const passedCheckpoints = allCheckpoints.filter(c => c.status === 'pass').length;
-    const pbjSuccessRate = allCheckpoints.length > 0 ? (passedCheckpoints / allCheckpoints.length) * 100 : 100;
+    const pbjSuccessRate = allCheckpoints.length > 0
+      ? (passedCheckpoints / allCheckpoints.length) * 100
+      : 0;
 
     // Average session duration
     const completedSessions = allSessions.filter(s => s.status === 'completed' && s.endTime);
@@ -342,7 +344,6 @@ export class PhaseTracker {
       return sum + (s.endTime!.getTime() - s.startTime.getTime());
     }, 0);
     const avgSessionDuration = completedSessions.length > 0 ? totalDuration / completedSessions.length / (1000 * 60) : 0;
-
     return {
       totalSessions: allSessions.length,
       activeSessions: activeSessions.length,
