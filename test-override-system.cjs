@@ -34,7 +34,13 @@ console.log(`   Version: ${originalSop.content.version_tracking.sop_version}\n`)
 
 // Step 2: Test without override
 console.log('🎯 Step 2: Testing WITHOUT Override...');
-const defaultFlavor = originalSop.content.default_response.replace('my favorite ice cream is ', '');
+const defaultFlavor = (() => {
+  const prefix = 'my favorite ice cream is ';
+  const s = String(originalSop.content.default_response || '');
+  if (s.toLowerCase().startsWith(prefix)) return s.slice(prefix.length);
+  // Fallbacks if format changes
+  return originalSop.content.default_flavor || s;
+})();
 const version = originalSop.content.version_tracking.sop_version;
 const defaultRiddle = originalSop.content.version_tracking.riddle_template
     .replace('{version}', version)
