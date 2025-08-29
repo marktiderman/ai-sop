@@ -38,7 +38,7 @@ export class AISopEngine implements SOPEngine {
   }
 
   getMetadata(sopId: string): any {
-    return this.loadedSOPs.get(sopId)?.metadata || null;
+    return this.loadedSOPs.get(sopId) || null;
   }
 
   loadSOP(sopId: string, sopData: any): void {
