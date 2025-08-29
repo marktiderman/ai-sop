@@ -387,11 +387,13 @@ export class PhaseTracker {
    * Clean up old sessions (older than specified days)
    */
   cleanupOldSessions(olderThanDays: number = 30): number {
+    if (olderThanDays <= 0) return 0;
     const cutoffDate = new Date(Date.now() - olderThanDays * 24 * 60 * 60 * 1000);
     let cleanedCount = 0;
 
     for (const [sessionId, session] of this.sessions.entries()) {
-      if (session.startTime < cutoffDate && session.status === 'completed') {
+      const lastActivity = session.endTime ?? session.startTime;
+      if (session.status === 'completed' && lastActivity < cutoffDate) {
         try {
           const filePath = this.getSessionFilePath(sessionId);
           if (fs.existsSync(filePath)) {
@@ -405,6 +407,8 @@ export class PhaseTracker {
       }
     }
 
+    return cleanedCount;
+  }
     return cleanedCount;
   }
 }
