@@ -37,7 +37,9 @@ export class AISopLoader implements SOPLoader {
 
       return sops;
     } catch (error) {
-      throw new Error(`Failed to load SOPs from directory ${dirPath}: ${error}`);
+      throw new Error(
+        `Failed to load SOPs from directory ${dirPath}: ${error}`
+      );
     }
   }
 
