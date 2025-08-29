@@ -59,6 +59,7 @@ export interface AgentSession {
   workCycleId?: string;
   gitBranch?: string;
   issueNumber?: string;
+  metadata?: Record<string, any>;
   decisions: DecisionLog[];
   transitions: PhaseTransition[];
   pbjCheckpoints: PBJCheckpoint[];
