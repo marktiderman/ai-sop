@@ -107,7 +107,7 @@ export const CONSTITUTION_PHASES: PhaseDefinition[] = [
       'Requirements documented',
       'Solution approach identified'
     ],
-    nextPhases: ['build', 'planning']
+    nextPhases: ['build']
   },
   {
     id: 'build',
@@ -129,7 +129,7 @@ export const CONSTITUTION_PHASES: PhaseDefinition[] = [
       'Tests passing',
       'Code review completed'
     ],
-    nextPhases: ['delivery', 'quality']
+    nextPhases: ['delivery']
   },
   {
     id: 'delivery',
