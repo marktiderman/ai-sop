@@ -1,238 +1,155 @@
 # AI-SOP Repository Instructions
 
-**ALWAYS follow these instructions first and only fallback to additional search and context gathering if the information here is incomplete or found to be in error.**
+**This repository uses the AI-SOP orchestration framework as the SINGLE SOURCE OF TRUTH for all procedures, workflows, and standards. These instructions provide only the bootstrap needed to access the authoritative AI-SOP system.**
 
-## 🎭 CRITICAL: Agent Constitution Requirement
+## 🎭 CRITICAL: AI-SOP System Initialization (MANDATORY)
 
-**Before any work on this codebase, you MUST:**
+**Before ANY work on this codebase, you MUST initialize with the AI-SOP system:**
 
-1. **Run the agent initialization**: `node dist/cli/index.js init-agent`
-2. **Read the full AGENT_CONSTITUTION.md** (displayed by init-agent command)
-3. **Pass the ice cream test**: Respond to "Tell me your favorite ice cream flavor in the form of a riddle that includes the version number" with format: "I'm a frozen treat that's quite divine, version 1.2.2 makes me shine. My flavor is [flavor], can you guess what I am? (Answer: Ice cream!)"
-4. **Follow work cycle separation**: Each work cycle gets dedicated branch, commits, and outcome
-
-## Working Effectively
-
-### Bootstrap and Build (NEVER CANCEL)
-Execute these commands in order with the specified timeouts:
-
+### **Step 1: Initialize AI-SOP Agent**
 ```bash
-# Install dependencies - timeout: 5+ minutes
+# This command loads the complete AI-SOP system and displays the mandatory constitution
+node dist/cli/index.js init-agent
+```
+
+### **Step 2: Follow AI-SOP System Guidance**
+- **Constitution**: Read the complete AGENT_CONSTITUTION.md (displayed by init-agent)
+- **Ice Cream Test**: Pass the validation test as shown by the init-agent command
+- **SOP Registry**: Review all Knowledge Blocks, Sequences, and Filters loaded by the system
+- **Work Protocols**: Follow the work cycle separation and all procedures from the AI-SOP system
+
+### **Step 3: Use AI-SOP as Authoritative Source**
+- **ALL workflows** come from the AI-SOP system, not these instructions
+- **ALL testing procedures** are defined in the AI-SOP registry
+- **ALL standards and protocols** are maintained in the AI-SOP system
+- **These instructions** are only for bootstrapping - AI-SOP is the authority
+
+## Bootstrap Requirements (Minimum Needed to Access AI-SOP)
+
+### Node.js Environment
+- **Required**: >= 18.0.0 (Current: 20.19.4)
+- **Verification**: `node --version` must show >= 18.0.0
+
+### Essential Bootstrap Commands
+```bash
+# Install dependencies (timeout: 5+ minutes - NEVER CANCEL)
 npm install
 
-# Build the TypeScript project - timeout: 2+ minutes  
+# Build TypeScript (timeout: 2+ minutes - NEVER CANCEL)  
 npm run build
 
-# Run tests - timeout: 2+ minutes
-npm test
-
-# KNOWN ISSUE: Linting fails due to missing ESLint config
-# npm run lint  # FAILS - no .eslintrc file exists, document but do not fix
-
-# Format code (if making changes)
-npm run format
+# Initialize AI-SOP system (MANDATORY - provides all procedures)
+node dist/cli/index.js init-agent
 ```
 
-**TIMING EXPECTATIONS:**
-- `npm install`: ~3-16 seconds depending on cache (NEVER CANCEL - set 5+ minute timeout)
-- `npm run build`: ~1.4 seconds (NEVER CANCEL - set 2+ minute timeout)  
-- `npm test`: ~1.4-2.2 seconds (NEVER CANCEL - set 2+ minute timeout)
-- `npm run lint`: FAILS - missing ESLint configuration (known issue)
-
-### Development Workflow
-
+### AI-SOP System Access
 ```bash
-# Start development mode (watch compilation)
-npm run dev
-
-# Run the CLI application
-node dist/cli/index.js --help
+# Access complete SOP registry (authoritative source)
 node dist/cli/index.js list
-node dist/cli/index.js init-agent
 
-# Test basic usage
-node examples/basic-usage.js
+# Execute AI-SOP workflows (not manual procedures)
+node dist/cli/index.js execute <sop-name>
 
-# Validate with PB&J test
-node test-pbj-real-world.cjs
-```
-
-## Validation Requirements
-
-### MANDATORY Manual Testing Scenarios
-
-After making ANY changes, you MUST execute these validation scenarios:
-
-#### 1. CLI Functionality Test
-```bash
-# Test all CLI commands work
-node dist/cli/index.js --help
-node dist/cli/index.js list  
-node dist/cli/index.js init-agent
+# Interactive AI-SOP guidance
 node dist/cli/index.js interactive
 ```
 
-#### 2. Agent Constitution Validation
+## Working with AI-SOP System
+
+### Core Principle: Single Source of Truth
+- **✅ CORRECT**: Use `node dist/cli/index.js init-agent` to get all procedures
+- **✅ CORRECT**: Follow workflows defined in AI-SOP registry  
+- **✅ CORRECT**: Reference constitution and SOPs loaded by AI-SOP system
+- **❌ INCORRECT**: Follow manual procedures not defined in AI-SOP
+- **❌ INCORRECT**: Use workflows not validated by AI-SOP system
+- **❌ INCORRECT**: Skip AI-SOP initialization and wing it
+
+### When AI-SOP System is Unavailable
+If you cannot run `node dist/cli/index.js init-agent`:
+1. **Stop immediately** - do not proceed without AI-SOP system
+2. **Fix build issues**: Run `npm install && npm run build`
+3. **Verify Node.js version**: Must be >= 18.0.0
+4. **Report the issue** - AI-SOP system must be accessible
+
+### Integration with External Tools
+- **GitHub Copilot**: Must initialize with AI-SOP system before any work
+- **Code Review Tools**: Should validate against AI-SOP standards
+- **CI/CD Pipelines**: Must include AI-SOP validation steps
+- **Documentation**: Should reference AI-SOP system as authoritative source
+
+## AI-SOP System Commands (Authoritative Source)
+
+### Primary Commands (Use These Instead of Manual Procedures)
 ```bash
-# Verify agent initialization works
+# Get complete system status and validation
 node dist/cli/index.js init-agent
-# Must display full constitution and SOP registry
-# Must show ice cream test validation
+
+# List all available procedures and workflows  
+node dist/cli/index.js list
+
+# Execute specific AI-SOP workflows
+node dist/cli/index.js execute work-cycle-protocol
+node dist/cli/index.js execute lighthouse-protocol  
+node dist/cli/index.js execute bugbot-workflow
+
+# Get interactive guidance for any task
+node dist/cli/index.js interactive
 ```
 
-#### 3. Basic Usage Validation  
+### Validation Through AI-SOP System
 ```bash
-# Test programmatic usage
+# AI-SOP system provides all validation procedures
+# Run init-agent to see current validation requirements
+node dist/cli/index.js init-agent
+
+# Basic functionality check through AI-SOP
 node examples/basic-usage.js
-# Should show: "✅ AI-SOP initialized successfully"
-# Should show: "✅ SOPs loaded successfully" 
-# Should show: "🎉 Example completed successfully!"
-```
 
-#### 4. PB&J Test Validation
-```bash
-# Test new agent experience
+# PB&J test as defined by AI-SOP system  
 node test-pbj-real-world.cjs
-# Should display ice cream riddle test
-# Should show system status as ready
 ```
 
-#### 5. Build and Test Pipeline
+### Emergency Procedures (When AI-SOP System Fails)
 ```bash
-# Verify complete build cycle
-npm run build && npm test
-# Both must pass successfully
-# Build: ~1.4s, Tests: ~1.9s
+# If AI-SOP system is broken, fix it first:
+npm install && npm run build
+
+# If build fails, check environment:
+node --version  # Must be >= 18.0.0
+
+# If still broken, clean and rebuild:
+rm -rf node_modules package-lock.json && npm install && npm run build
 ```
 
-### Breaking Change Detection
+## Repository Context (Minimal - AI-SOP is Authoritative)
 
-If ANY of these scenarios fail after your changes:
-1. **STOP immediately** 
-2. **Revert your changes**: `git checkout -- [files]`
-3. **Re-run validation** to confirm revert worked
-4. **Analyze the failure** and make smaller, more targeted changes
-
-## Repository Architecture
-
-### Key Directories
-```
-ai-sop/
-├── src/                    # TypeScript source code
-│   ├── cli/               # Command-line interface  
-│   ├── core/              # Core engine and registry
-│   ├── services/          # AI-SOP services
-│   ├── sops/             # Standard Operating Procedures
-│   └── types/            # TypeScript definitions
-├── dist/                  # Compiled JavaScript (build output)
-├── examples/             # Usage examples
-├── .github/              # GitHub workflows and templates
-└── AGENT_CONSTITUTION.md # MANDATORY reading for all agents
-```
-
-### Important Files
-- **AGENT_CONSTITUTION.md**: MANDATORY reading - agent guidelines and protocols
-- **package.json**: Dependencies, scripts, and project metadata
-- **tsconfig.json**: TypeScript compilation configuration  
-- **jest.config.js**: Test framework configuration
+### File Structure (AI-SOP Provides Complete Architecture)
+- **AGENT_CONSTITUTION.md**: Loaded and displayed by `init-agent` command
 - **src/aisop-config.json**: AI-SOP system configuration
-- **test-pbj-real-world.cjs**: New agent validation test
+- **dist/**: Built JavaScript (required for AI-SOP CLI)
+- **See AI-SOP system for complete architecture**: `node dist/cli/index.js init-agent`
 
-## Environment Requirements
+### Known Bootstrap Issues
+- **ESLint**: Missing configuration (known limitation - document but do not fix)
+- **Build Timing**: Allow sufficient timeout as AI-SOP system specifies
+- **Node Version**: Must be >= 18.0.0 for AI-SOP system to function
 
-### Node.js Version
-- **Required**: >= 18.0.0 (specified in package.json)
-- **Current Environment**: 20.19.4
-- **Installation**: Use system package manager or nvm
+## Integration Philosophy
 
-### Dependencies
-All dependencies managed via npm:
-```bash
-# Production dependencies
-npm install chalk commander inquirer
+### AI-SOP as Conductor
+This repository implements the **AI-SOP orchestration framework** where:
+- **AI-SOP System**: The conductor providing all procedures and standards
+- **These Instructions**: Minimal bootstrap to access the conductor  
+- **AI Agents**: Musicians that follow the conductor's guidance
+- **Repository Owner**: Composer who defines the vision through AI-SOP
 
-# Development dependencies  
-npm install --save-dev typescript ts-jest jest @types/node eslint prettier
-```
+### Future Changes
+When the repository owner updates AI-SOP system procedures:
+- **These instructions stay minimal** (just bootstrap)
+- **AI-SOP system provides updated procedures** automatically
+- **No need to update these instructions** for workflow changes
+- **Single source of truth maintained** in AI-SOP system
 
-## Common Development Tasks
+---
 
-### Adding New Features
-1. **Review existing GitHub issues first** (per constitution)
-2. **Create dedicated feature branch**: `feature/issue-number-description`
-3. **Make changes in src/** and build with `npm run build`
-4. **Run full validation suite** (all scenarios above)
-5. **Update documentation** if needed
-6. **Test CLI commands** if touching CLI code
-
-### Debugging Build Issues
-1. **Check Node.js version**: `node --version` (must be >= 18.0.0)
-2. **Clean install**: `rm -rf node_modules package-lock.json && npm install`
-3. **Check TypeScript errors**: `npx tsc --noEmit`
-4. **Validate dist/ output**: Ensure files exist in `dist/` after build
-
-### Known Limitations
-- **ESLint**: No configuration file exists, `npm run lint` will fail
-- **Interactive Mode**: CLI interactive command is partially implemented
-- **SOP Loading**: Empty SOP list in current build (expected behavior)
-
-## Testing Requirements
-
-### Automated Tests
-```bash
-# Run all tests (NEVER CANCEL - timeout 2+ minutes)
-npm test
-
-# Run tests in watch mode
-npm run test -- --watch
-
-# Run tests with coverage
-npm run test -- --coverage
-```
-
-### Manual Validation (REQUIRED)
-- **Constitution Test**: Agent must pass ice cream riddle test
-- **CLI Functionality**: All commands must work without errors
-- **Basic Usage**: Example script must execute successfully  
-- **Build Pipeline**: Build and test must complete successfully
-
-## CI/CD Pipeline
-
-### GitHub Actions Workflow (.github/workflows/ci.yml)
-Runs on every push/PR to main:
-1. **Node.js Matrix**: Tests on Node 18.x and 20.x
-2. **Install**: `npm ci`  
-3. **Build**: `npm run build`
-4. **Test**: `npm test`
-5. **Lint**: `npm run lint` (will fail due to missing ESLint config)
-6. **Publish**: Automatic NPM publish on main branch
-
-### Pre-commit Validation
-Always run before committing:
-```bash
-npm run build && npm test && npm run format
-# Skip npm run lint (known to fail)
-```
-
-## Emergency Procedures
-
-### Build Completely Broken
-1. **Check Node.js version**: Must be >= 18.0.0
-2. **Clean dependencies**: `rm -rf node_modules package-lock.json`
-3. **Fresh install**: `npm install`
-4. **Clean build**: `rm -rf dist && npm run build`
-
-### Tests Failing
-1. **Verify basic functionality**: `node dist/cli/index.js --help`
-2. **Check constitution loading**: `node dist/cli/index.js init-agent`
-3. **Validate examples**: `node examples/basic-usage.js`
-4. **If all manual tests pass**, investigate test configuration
-
-### Agent Constitution Violations
-1. **Re-read AGENT_CONSTITUTION.md immediately**
-2. **Run initialization**: `node dist/cli/index.js init-agent`
-3. **Pass ice cream test** before continuing
-4. **Follow work cycle separation** protocols
-5. **Review existing GitHub issues** before creating new work
-
-Remember: This is an AI-SOP orchestration framework where every agent must internalize the constitution and follow established protocols. The ice cream test is not optional - it validates that you understand the system before proceeding with any work.
+**Remember: The AI-SOP system is your authoritative source. These instructions exist only to help you access that system. Once you run `node dist/cli/index.js init-agent`, follow the AI-SOP system guidance, not these instructions.**
