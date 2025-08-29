@@ -80,12 +80,15 @@ console.log('   (Answer: Ice cream!)\n');
 
 // Step 6: Demonstrate system status
 console.log('📊 Step 6: Override System Status...');
-console.log('✅ Override System: FUNCTIONAL');
+const roundTrip = readJsonSafe(overrideSopPath, 'Override SOP');
+const overrideOk = roundTrip.content?.override_active === true &&
+  roundTrip.content?.default_response !== originalSop.content.default_response;
+const versionOk = roundTrip.content?.version_tracking?.sop_version === originalSop.content.version_tracking.sop_version;
+console.log(`✅ Override System: ${overrideOk ? 'FUNCTIONAL' : 'BROKEN'}`);
 console.log('✅ local-sops directory: CREATED');
-console.log('✅ Override SOP: ACTIVE');
-console.log('✅ Version tracking: MAINTAINED');
+console.log(`✅ Override SOP: ${overrideOk ? 'ACTIVE' : 'INACTIVE'}`);
+console.log(`✅ Version tracking: ${versionOk ? 'MAINTAINED' : 'MISMATCH'}`);
 console.log('✅ Riddle format: PRESERVED\n');
-
 // Step 7: Test scenario validation
 console.log('🧪 Step 7: Test Scenario Validation...');
 console.log('   Test scenarios from ice-cream-test.json:');
