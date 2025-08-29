@@ -43,7 +43,7 @@
   "mandatory_agent_loading": {
     "description": "Critical files that every AI agent MUST read before starting work",
     "loading_order": [
-      "AGENT_CONSTITUTION.md",
+      "agents.md",
       "aisop-config.json",
       "sops/work-cycle-protocol.json",
       "sops/lighthouse-protocol.json",
@@ -56,7 +56,7 @@
       "Agent must apply PB&J test to processes"
     ],
     "cursor_integration": {
-      "rules_file": ".cursor/rules/AGENT_CONSTITUTION.md",
+      "rules_file": ".cursor/rules/agents.md",
       "auto_load": true,
       "mandatory_acknowledgment": true
     }

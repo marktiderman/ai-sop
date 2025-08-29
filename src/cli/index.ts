@@ -82,7 +82,7 @@ program
       __dirname,
       '..',
       '..',
-      'AGENT_CONSTITUTION.md'
+      'agents.md'
     );
     if (fs.existsSync(constitutionPath)) {
       const constitution = fs.readFileSync(constitutionPath, 'utf-8');
@@ -158,7 +158,7 @@ program
     console.log('');
 
     console.log(chalk.red.bold('⚠️  MANDATORY REQUIREMENTS:'));
-    console.log(chalk.white('1. Read the AGENT_CONSTITUTION.md completely'));
+    console.log(chalk.white('1. Read the agents.md completely'));
     console.log(
       chalk.white('2. Review all Knowledge Blocks, Sequences, and Filters')
     );

@@ -387,7 +387,7 @@ ai-sop/
 
 | File | Purpose | Why It Matters |
 |------|---------|----------------|
-| `🎭 AGENT_CONSTITUTION.md` | **MANDATORY** agent guidelines | Ensures all AI agents work in harmony |
+| `🎭 agents.md` | **MANDATORY** agent guidelines | Ensures all AI agents work in harmony |
 | `⚙️ src/aisop-config.json` | System configuration hub | Single source of truth for orchestration |
 | `📦 package.json` | Dependencies and metadata | Project lifecycle management |
 | `🏗️ tsconfig.json` | TypeScript compilation rules | Type safety and build optimization |
@@ -509,7 +509,7 @@ gh pr create --title "Add amazing feature #42" --body "Fixes #42"
 
 ### 📋 **Contributor Requirements**
 
-✅ **MANDATORY**: Read `AGENT_CONSTITUTION.md` completely  
+✅ **MANDATORY**: Read `agents.md` completely  
 ✅ **MANDATORY**: Pass the ice cream test validation  
 ✅ **MANDATORY**: Follow work cycle separation protocols  
 ✅ **MANDATORY**: Apply PB&J principle to all contributions  
@@ -631,7 +631,7 @@ npm update ai-sop
 
 ### 📖 **Official Documentation**
 
-- 🎭 **[Agent Constitution](AGENT_CONSTITUTION.md)**: MANDATORY reading for all AI agents
+- 🎭 **[Agent Constitution](agents.md)**: MANDATORY reading for all AI agents
 - 🛠️ **[Contributing Guide](CONTRIBUTING.md)**: Detailed contribution guidelines  
 - 📝 **[API Reference](docs/api.md)**: Complete API documentation
 - 🎪 **[SOP Creation Guide](docs/sop-creation.md)**: Build your own orchestrations
