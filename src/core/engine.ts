@@ -29,7 +29,7 @@ export class AISopEngine implements SOPEngine {
       sopId,
       status: 'executed',
       context,
-      result: 'SOP execution completed'
+      result: 'SOP execution completed',
     };
   }
 
