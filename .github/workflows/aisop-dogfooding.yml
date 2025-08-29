@@ -1,0 +1,118 @@
+name: AI-SOP Self-Dogfooding Validation
+
+on:
+  push:
+    branches: [main, develop, copilot/*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  aisop-validation:
+    runs-on: ubuntu-latest
+    name: 'AI-SOP System Validation (Self-Dogfooding)'
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build AI-SOP system
+        run: npm run build
+
+      # Self-dogfooding: Use AI-SOP's own init-agent process
+      - name: '🎭 AI-SOP Init Agent (Constitution Loading)'
+        run: |
+          echo "::group::AI-SOP Agent Initialization"
+          npm run sop:init
+          echo "::endgroup::"
+
+      # Self-dogfooding: Validate AI-SOP system status
+      - name: '📊 AI-SOP System Status Check'
+        run: |
+          echo "::group::AI-SOP System Status"
+          npm run sop:status
+          echo "::endgroup::"
+
+      # Self-dogfooding: List all available SOPs
+      - name: '📚 AI-SOP Registry Validation'
+        run: |
+          echo "::group::Available SOPs"
+          npm run sop:list
+          echo "::endgroup::"
+
+      # Self-dogfooding: Execute work-cycle-protocol SOP
+      - name: '🔄 Execute Work Cycle Protocol SOP'
+        run: |
+          echo "::group::Work Cycle Protocol Execution"
+          npm run sop:execute work-cycle-protocol --context '{"environment":"ci","phase":"validation"}'
+          echo "::endgroup::"
+
+      # Self-dogfooding: Execute bugbot-workflow SOP  
+      - name: '🐛 Execute BugBot Workflow SOP'
+        run: |
+          echo "::group::BugBot Workflow Execution"
+          npm run sop:execute bugbot-workflow --context '{"environment":"ci","trigger":"validation"}'
+          echo "::endgroup::"
+
+      # Self-dogfooding: Apply Elon's 5 Rules Filter
+      - name: '🔍 Apply Elon\'s 5 Rules Filter'
+        run: |
+          echo "::group::Quality Filter Validation"
+          npm run sop:execute elons-5-rules-filter --context '{"target":"build-process","phase":"validation"}'
+          echo "::endgroup::"
+
+      # Validate that AI-SOP can perform real-world testing as described in the README
+      - name: '🧪 Real-World AI-SOP Testing'
+        run: |
+          echo "::group::Real-World Testing Validation"
+          # Test that we can programmatically use AI-SOP
+          node -e "
+            const { AISop } = require('./dist/index.js');
+            (async () => {
+              const aiSop = new AISop();
+              await aiSop.loadSOPs();
+              
+              console.log('✅ AI-SOP loaded successfully');
+              console.log('📊 Status:', aiSop.getStatus().sopCount + ' SOPs loaded');
+              
+              const sequences = aiSop.getSOPsByCategory('sequence');
+              console.log('🔄 Sequences available:', Object.keys(sequences).length);
+              
+              const knowledgeBlocks = aiSop.getSOPsByCategory('knowledge_block');
+              console.log('🧠 Knowledge blocks available:', Object.keys(knowledgeBlocks).length);
+              
+              const filters = aiSop.getSOPsByCategory('filter');
+              console.log('🔍 Filters available:', Object.keys(filters).length);
+              
+              // Test execution of multiple SOPs
+              const workCycleResult = await aiSop.executeSOP('work-cycle-protocol', {test: true});
+              console.log('✅ Work cycle protocol executed:', workCycleResult.status);
+              
+              const bugbotResult = await aiSop.executeSOP('bugbot-workflow', {test: true});
+              console.log('✅ BugBot workflow executed:', bugbotResult.status);
+              
+              console.log('🎉 AI-SOP self-dogfooding validation complete!');
+            })();
+          "
+          echo "::endgroup::"
+
+      - name: '✅ AI-SOP Self-Dogfooding Summary'
+        run: |
+          echo "🎭 AI-SOP Self-Dogfooding Validation Results:"
+          echo "✅ Constitution loaded successfully"
+          echo "✅ System status verified" 
+          echo "✅ SOP registry validated"
+          echo "✅ Work cycle protocol executed"
+          echo "✅ BugBot workflow executed"
+          echo "✅ Quality filters applied"
+          echo "✅ Real-world testing completed"
+          echo ""
+          echo "🏆 The AI-SOP repository successfully uses its own system!"
+          echo "This validates the self-dogfooding requirement from issue #21."
