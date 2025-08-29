@@ -52,7 +52,7 @@ Before starting any work, you MUST demonstrate:
 
 ### **1. Vehicles < Values**
 - **Vehicle**: The exact prompt or precise code/action
-- **Value**: The goal we are trying to achieve in plain english
+- **Value**: The goal we are trying to achieve in plain English
 - **Rule**: Vehicle can be adapted as necessary. Value cannot.
 
 ### **2. PB&J Principle**

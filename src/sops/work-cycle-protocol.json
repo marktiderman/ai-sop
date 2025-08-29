@@ -39,9 +39,9 @@
         "Set realistic time estimate (5-120 minutes)"
       ]
     },
-    {
-      "step": 2,
-      "action": "Break Down Checklist",
+      {
+        "step": 3,
+        "action": "Break Down Checklist",
       "description": "Create granular checklist items that can be completed and tracked individually",
       "format": [
         "- [ ] Task 1: [Specific, measurable action]",
@@ -126,13 +126,13 @@
           "Use existing filters (Elon's 5 Rules, Commander Intent, AI-First)",
           "Follow learning-documentation protocol for comprehensive capture"
         ],
-        "sop_references": {
-          "sop_conductor": "./sops/sop-conductor.json",
-          "sop_updates": "./sops/sop-updates.json",
-          "learning_documentation": "./sops/learning-documentation.json"
+          "sop_references": {
+            "sop_conductor": "./sop-conductor.json",
+            "sop_updates": "./sop-updates.json",
+            "learning_documentation": "./learning-documentation.json"
+          }
         }
-      }
-    },
+      },
     {
       "step": 10,
       "action": "Back on Track Filter - Focus Management & Priority Alignment",
@@ -269,7 +269,7 @@
       ],
       "pbj_test": "A new agent would understand to read all SOPs first, especially checking for existing frameworks, before making any recommendations"
     },
-    {
+    "version_tracking_importance": {
       "id": "version_tracking_importance",
       "title": "Version Tracking for SOPs",
       "description": "Always track which version of SOPs are being used, especially when distributing via NPM packages. This prevents confusion about which SOPs are active.",
@@ -283,7 +283,7 @@
         "expected_behavior": "Agent should respond with a riddle containing the current SOP version"
       }
     },
-    {
+    "real_world_pbj_testing": {
       "id": "real_world_pbj_testing",
       "title": "Real-World PB&J Testing",
       "description": "PB&J tests should use actual new agents in new chat sessions, not simulated responses. This provides genuine validation of SOP internalization.",
@@ -298,7 +298,7 @@
         "success_criteria": "Agent responds correctly without any prior context or training"
       }
     }
-  ],
+  },
   "related_sops": [
     "lighthouse-protocol",
     "github-issue-creation",
@@ -311,7 +311,7 @@
   ],
   "metadata": {
     "created": "2025-08-07",
-    "last_updated": "2025-08-07",
+    "last_updated": "2025-08-28",
     "created_by": "ai-assistant",
     "sequence_type": "development_workflow",
     "priority": "high",
