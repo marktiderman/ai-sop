@@ -61,7 +61,7 @@ program
   .command('init-agent')
   .description('Initialize agent with AI-SOP system (STOP and review)')
   .option('-f, --force', 'Force initialization even if already initialized')
-  .action(async options => {
+  .action(async () => {
     console.log(chalk.red.bold('🛑 STOP! Agent Initialization Required'));
     console.log(chalk.yellow('='.repeat(60)));
     console.log(
