@@ -10,6 +10,10 @@ export * from './core/loader';
 export * from './core/registry';
 export * from './types';
 
+// Phase Tracking exports (browser-safe)
+export * from './types/phase-tracking';
+export * from './services/phase-tracker';
+
 // Main AI-SOP class
 export class AISop {
   private registry: any;
