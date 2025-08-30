@@ -13,7 +13,7 @@ node dist/cli/index.js init-agent
 ```
 
 ### **Step 2: Follow AI-SOP System Guidance**
-- **Constitution**: Read the complete AGENT_CONSTITUTION.md (displayed by init-agent)
+- **Constitution**: Read the complete agents.md (displayed by init-agent)
 - **Ice Cream Test**: Pass the validation test as shown by the init-agent command
 - **SOP Registry**: Review all Knowledge Blocks, Sequences, and Filters loaded by the system
 - **Work Protocols**: Follow the work cycle separation and all procedures from the AI-SOP system
@@ -124,7 +124,7 @@ rm -rf node_modules package-lock.json && npm install && npm run build
 ## Repository Context (Minimal - AI-SOP is Authoritative)
 
 ### File Structure (AI-SOP Provides Complete Architecture)
-- **AGENT_CONSTITUTION.md**: Loaded and displayed by `init-agent` command
+- **agents.md**: Loaded and displayed by `init-agent` command
 - **src/aisop-config.json**: AI-SOP system configuration
 - **dist/**: Built JavaScript (required for AI-SOP CLI)
 - **See AI-SOP system for complete architecture**: `node dist/cli/index.js init-agent`

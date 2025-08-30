@@ -61,7 +61,7 @@ program
   .command('init-agent')
   .description('Initialize agent with AI-SOP system (STOP and review)')
   .option('-f, --force', 'Force initialization even if already initialized')
-  .action(async options => {
+  .action(async () => {
     console.log(chalk.red.bold('🛑 STOP! Agent Initialization Required'));
     console.log(chalk.yellow('='.repeat(60)));
     console.log(
@@ -82,7 +82,7 @@ program
       __dirname,
       '..',
       '..',
-      'AGENT_CONSTITUTION.md'
+      'agents.md'
     );
     if (fs.existsSync(constitutionPath)) {
       const constitution = fs.readFileSync(constitutionPath, 'utf-8');
@@ -158,7 +158,7 @@ program
     console.log('');
 
     console.log(chalk.red.bold('⚠️  MANDATORY REQUIREMENTS:'));
-    console.log(chalk.white('1. Read the AGENT_CONSTITUTION.md completely'));
+    console.log(chalk.white('1. Read the agents.md completely'));
     console.log(
       chalk.white('2. Review all Knowledge Blocks, Sequences, and Filters')
     );
